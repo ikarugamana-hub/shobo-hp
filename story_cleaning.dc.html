@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;background:#0c1126;color:#fff;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
+@keyframes lineGrow{from{width:0;}to{width:44px;}}
+.step-card{transition:transform .25s ease,box-shadow .25s ease;}
+.step-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:15px;font-weight:700;gap:12px;}
+.faq-a{font-size:13.5px;line-height:2;color:rgba(255,255,255,.7);padding:0 0 20px;display:none;}
+.faq-a.open{display:block;}
+.trouble-item{display:flex;align-items:flex-start;gap:11px;padding:13px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;}
+.process-card{transition:transform .25s ease,box-shadow .25s ease;}
+.process-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.feature-card{transition:background .2s ease,border-color .2s ease;}
+.feature-card:hover{background:rgba(255,255,255,.09);border-color:rgba(159,192,255,.35);}
+</style>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#0c1126"/><rect x="15" y="20" width="30" height="60" rx="4" fill="#17307d"/><rect x="55" y="20" width="30" height="60" rx="4" fill="#7a1418" opacity=".7"/><text x="50" y="95" font-family="sans-serif" font-size="5" fill="white" text-anchor="middle">cleaning</text></svg>
+</template>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(8,12,30,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);">
+  <div style="display:flex;align-items:center;gap:11px;">
+    <div style="width:30px;height:34px;background:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6L12 2.5z" stroke="#17307d" stroke-width="1.9"/></svg>
+    </div>
+    <div>
+      <div style="font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;">MIYAKO UNILEASE</div>
+      <div style="font-size:14px;font-weight:900;">都ユニリース</div>
+    </div>
+  </div>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="HP8_nav.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-decoration:none;">← トップへ戻る</a>
+    <a href="#contact" style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:9px 20px;text-decoration:none;">CONTACT</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section style="position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:80px 80px 60px;">
+  <div style="position:absolute;inset:0;background-image:url(images/cleaning-bouka.png);background-size:cover;background-position:center 30%;opacity:.22;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(8,12,30,.98) 0%,rgba(8,12,30,.84) 52%,rgba(8,12,30,.62) 100%);"></div>
+  <div style="position:relative;z-index:2;max-width:780px;">
+    <div style="font-size:10px;letter-spacing:.38em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:20px;">FIREFIGHTER GEAR — PROFESSIONAL CLEANING SERVICE</div>
+    <h1 style="font-size:48px;line-height:1.5;font-weight:900;margin:0 0 10px;animation:fadeUp .7s .1s both;">防火服<br>専門クリーニング・管理サービス</h1>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.4);margin-bottom:28px;animation:lineGrow .8s .2s both;"></div>
+    <p style="font-size:15px;line-height:2.1;color:rgba(255,255,255,.72);margin:0 0 40px;">煤汚れ・油汚れ・有害物質に対応した専門洗浄で、<br>防火性能を守りながら衣類を長期管理します。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px;">
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">防火服の煤汚れ・油汚れが市販洗剤では落とせない</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">個人で洗濯してしまい、防火・撥水性能が劣化してしまった</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">防火服に対応できる専門クリーニング業者が見つからない</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">枚数が多く、クリーニングの回収・返却・管理が煩雑</span></div>
+    </div>
+    <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;background:#e0242c;padding:15px 32px;text-decoration:none;animation:glowRed 2.5s 1s infinite;">無料相談する →</a>
+  </div>
+</section>
+
+<!-- サービス概要 -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.6);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">SERVICE OVERVIEW</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">防火服に特化した<br>専門クリーニングとは</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <img src="images/cleaning-bouka.png" alt="防火服クリーニング作業" style="width:100%;border-radius:12px;display:block;object-fit:cover;height:380px;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <p style="font-size:14px;line-height:2.1;color:rgba(255,255,255,.75);margin:0 0 8px;">防火服は煤・油・有害化学物質など、通常の洗濯では除去困難な汚れにさらされます。市販の洗剤や家庭用洗濯機では防火・撥水性能を損なうリスクがあります。</p>
+        <p style="font-size:14px;line-height:2.1;color:rgba(255,255,255,.75);margin:0 0 8px;">都ユニリースでは、防火服専用の洗剤・設備・工程を用いて、防護性能を維持しながら徹底的にクリーニングします。</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+          <div class="feature-card" style="padding:18px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;gap:14px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;flex:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" fill="#9fc0ff"/></svg>
+            </div>
+            <div><div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:3px;">防火・撥水性能を維持</div><p style="font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.65);margin:0;">専用洗剤・乾燥工程で性能劣化を最小化</p></div>
+          </div>
+          <div class="feature-card" style="padding:18px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;gap:14px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(92,224,160,.15);border:1px solid rgba(92,224,160,.3);display:flex;align-items:center;justify-content:center;flex:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" fill="#5ce0a0"/></svg>
+            </div>
+            <div><div style="font-size:13px;font-weight:900;color:#5ce0a0;margin-bottom:3px;">有害物質・煤汚れに対応</div><p style="font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.65);margin:0;">業務用専門洗剤で頑固な現場汚れを除去</p></div>
+          </div>
+          <div class="feature-card" style="padding:18px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;display:flex;align-items:center;gap:14px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(248,180,100,.15);border:1px solid rgba(248,180,100,.3);display:flex;align-items:center;justify-content:center;flex:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" fill="#f8b464"/></svg>
+            </div>
+            <div><div style="font-size:13px;font-weight:900;color:#f8b464;margin-bottom:3px;">回収・返却・管理を一括対応</div><p style="font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.65);margin:0;">バーコード個別管理で枚数・状態を完全把握</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クリーニング工程 -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">CLEANING PROCESS</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">専門4工程による<br>徹底クリーニング</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div class="process-card" style="padding:30px 22px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#e0242c;font-size:10px;font-weight:900;letter-spacing:.1em;padding:4px 14px;color:#fff;">STEP 1</div>
+        <div style="margin-top:20px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:rgba(159,192,255,.12);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 11H5l7-9v7h4l-7 9v-7z" stroke="#9fc0ff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:900;margin-bottom:10px;">検品・バーコード読取</div>
+          <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.6);margin:0;">一点ずつバーコードで受入確認。破損・反射テープの状態を検品し、記録します。</p>
+        </div>
+      </div>
+      <div class="process-card" style="padding:30px 22px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#e0242c;font-size:10px;font-weight:900;letter-spacing:.1em;padding:4px 14px;color:#fff;">STEP 2</div>
+        <div style="margin-top:20px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:rgba(159,192,255,.12);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#9fc0ff" stroke-width="1.7"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z" stroke="#9fc0ff" stroke-width="1.7"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:900;margin-bottom:10px;">専用洗剤による前処理</div>
+          <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.6);margin:0;">煤・油・有害物質に対応した専用洗剤で前処理。頑固な汚れに集中的に対処します。</p>
+        </div>
+      </div>
+      <div class="process-card" style="padding:30px 22px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#e0242c;font-size:10px;font-weight:900;letter-spacing:.1em;padding:4px 14px;color:#fff;">STEP 3</div>
+        <div style="margin-top:20px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:rgba(159,192,255,.12);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 3h12a1 1 0 011 1v2a1 1 0 01-.29.71L13 13v7l-2-1v-6L5.29 6.71A1 1 0 015 6V4a1 1 0 011-1z" stroke="#9fc0ff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:900;margin-bottom:10px;">業務用洗濯機で洗浄</div>
+          <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.6);margin:0;">防火服専用の業務用洗濯機で適正温度・水量にて洗浄。性能劣化を防ぐ管理洗いです。</p>
+        </div>
+      </div>
+      <div class="process-card" style="padding:30px 22px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#e0242c;font-size:10px;font-weight:900;letter-spacing:.1em;padding:4px 14px;color:#fff;">STEP 4</div>
+        <div style="margin-top:20px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:rgba(159,192,255,.12);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#9fc0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3a9 9 0 100 18A9 9 0 0012 3z" stroke="#9fc0ff" stroke-width="1.7"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:900;margin-bottom:10px;">仕上げ検査・返却</div>
+          <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,.6);margin:0;">乾燥・仕上げ後に最終検品。バーコード照合で返却数量を確認してお届けします。</p>
+        </div>
+      </div>
+    </div>
+    <!-- 作業写真 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;">
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/cleaning-work.jpg" alt="検品作業" style="width:100%;height:260px;object-fit:cover;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">検品・バーコード読取作業</span></div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/fabric-detail.jpg" alt="縫製検査" style="width:100%;height:260px;object-fit:cover;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">仕上げ・縫製状態チェック</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 設備・体制 -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.6);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">FACILITY</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">専門設備による<br>クリーニング・管理体制</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px;">
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/cleaning-facility.jpg" alt="UNILEASE専門工場" style="width:100%;height:280px;object-fit:cover;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">UNILEASE 専門工場 — 洗濯・乾燥ライン</span></div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/rental-rack.jpg" alt="保管設備" style="width:100%;height:280px;object-fit:cover;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">クリーニング後保管ラック</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+      <div style="padding:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 防火服専用洗濯機</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">防火服の素材・構造に合わせた適正洗浄プログラムを設定。家庭用では不可能な業務洗浄を実現します。</p>
+      </div>
+      <div style="padding:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 適温管理乾燥設備</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">防火・撥水加工を傷めない温度管理で乾燥。過乾燥による機能劣化を防ぎます。</p>
+      </div>
+      <div style="padding:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 専用保管・仕分けエリア</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">クリーニング後は消防署別・隊員別に仕分け保管。返却ミスゼロを実現します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- バーコード管理 -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">MANAGEMENT</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">バーコードによる<br>隊員別・個人管理</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <img src="images/management-tag.jpg" alt="バーコード管理タグ" style="width:100%;border-radius:12px;display:block;max-height:380px;object-fit:cover;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="padding:28px;background:rgba(23,48,125,.25);border:1px solid rgba(159,192,255,.2);border-radius:14px;">
+          <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 個別バーコードタグで一元管理</div>
+          <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">防火服1点ごとにバーコードを付与し、隊員名・サイズ・状態・クリーニング回数を記録。誰の何枚目かをいつでも確認できます。</p>
+        </div>
+        <div style="padding:28px;background:rgba(23,48,125,.25);border:1px solid rgba(159,192,255,.2);border-radius:14px;">
+          <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● Webシステムで状況共有</div>
+          <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">ユニフォーム管理Webシステムで、回収・洗浄・返却状況をリアルタイム確認。担当者間の情報共有を効率化します。</p>
+        </div>
+        <div style="padding:28px;background:rgba(23,48,125,.25);border:1px solid rgba(159,192,255,.2);border-radius:14px;">
+          <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 修理・交換の継続サポート</div>
+          <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">クリーニング時に破損・反射テープの劣化を検品。修理・交換が必要な場合はその場でご報告・手配します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 導入の流れ -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.7);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">HOW TO START</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">導入までの流れ</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">1</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">お問い合わせ</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">フォームまたは<br>お電話で。<br>資料請求も可</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">2</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">現状ヒアリング</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">枚数・汚れ状況・<br>現在の管理方法・<br>予算感などを確認</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">3</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">ご提案・お見積</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">回収頻度・管理<br>方法を含めた<br>最適プランを提案</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">4</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">バーコード設定</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">隊員別バーコード<br>タグを付与し<br>管理システム登録</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">5</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">定期回収・開始</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">定期回収スタート。<br>修理・交換も<br>継続サポート</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">FAQ</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">よくあるご質問</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
+    <div style="display:flex;flex-direction:column;">
+      <div class="faq-item" onClick="{{ toggleFaq0 }}">
+        <div class="faq-q">防火服のクリーニングは販売品でも対応できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">はい、都ユニリースが販売・貸与した防火服以外でも対応可能です。まずはお問い合わせください。汚れの状態や素材に応じて最適な洗浄方法をご提案します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq1 }}">
+        <div class="faq-q">クリーニングで防火・撥水性能は落ちませんか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">防火服専用の洗剤・水温・乾燥温度を管理した工程で洗浄するため、性能劣化を最小限に抑えます。ただし素材の経年劣化は避けられないため、定期的な機能検査と交換をご提案しています。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq2 }}">
+        <div class="faq-q">回収・返却の頻度はどれくらいですか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">消防署様の運用に合わせて定期回収スケジュールを設定します。月1回から週1回まで、必要枚数・運用規模に応じて柔軟に対応します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq3 }}">
+        <div class="faq-q">バーコード管理システムを導入するには費用がかかりますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">クリーニングサービスと一体でご提供するため、システム利用料は基本的にサービス料金に含まれます。詳細はお見積もりの際にご説明します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq4 }}">
+        <div class="faq-q">反射テープの破損や縫製ほつれも対応できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">クリーニング時に反射テープの劣化・縫製ほつれ・ファスナー破損などを検品します。修理が必要な場合はその都度ご報告し、補修・交換まで対応します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq5 }}">
+        <div class="faq-q">全国どこでも対応できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-a">全国の消防署様を対象にサービスを提供しています。まずはお気軽にお問い合わせください。対応エリアや運送方法についてご案内します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" style="padding:90px 80px;background:linear-gradient(135deg,rgba(23,48,125,.6) 0%,rgba(8,12,30,1) 60%);">
+  <div style="max-width:700px;margin:0 auto;text-align:center;">
+    <div style="font-size:10px;letter-spacing:.38em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:18px;">CONTACT</div>
+    <h2 style="font-size:38px;font-weight:900;line-height:1.5;margin:0 0 18px;">まずはお気軽に<br>ご相談ください</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin:0 auto 28px;"></div>
+    <p style="font-size:14px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 0 42px;">クリーニング枚数・頻度・管理方法など、<br>現状に合わせたプランを無料でご提案します。</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="mailto:info@miyako-unilease.co.jp" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;background:#e0242c;padding:16px 38px;text-decoration:none;animation:glowRed 2.5s 1s infinite;">メールでお問い合わせ →</a>
+      <a href="tel:0120-000-000" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;border:1px solid rgba(255,255,255,.45);padding:16px 38px;text-decoration:none;">お電話でのご相談</a>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,.3);margin-top:28px;">受付時間 平日 9:00〜18:00　／　資料請求・概算お見積りも承ります</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:28px 80px;background:#080c1e;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:24px;height:28px;background:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6L12 2.5z" stroke="#17307d" stroke-width="2"/></svg>
+    </div>
+    <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.55);">都ユニリース — 防火服専門クリーニング</span>
+  </div>
+  <span style="font-size:11px;color:rgba(255,255,255,.25);">© 2026 Miyako Unilease Co., Ltd.</span>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  toggleFaq(i) {
+    const items = document.querySelectorAll('.faq-a');
+    const icons = document.querySelectorAll('.faq-q span:last-child');
+    if (items[i]) {
+      const isOpen = items[i].classList.contains('open');
+      items[i].classList.toggle('open');
+      if (icons[i]) icons[i].style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+    }
+  }
+  renderVals() {
+    return {
+      toggleFaq0: () => this.toggleFaq(0),
+      toggleFaq1: () => this.toggleFaq(1),
+      toggleFaq2: () => this.toggleFaq(2),
+      toggleFaq3: () => this.toggleFaq(3),
+      toggleFaq4: () => this.toggleFaq(4),
+      toggleFaq5: () => this.toggleFaq(5),
+    };
+  }
+}
+</script>
+</body>
+</html>

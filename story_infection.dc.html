@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;background:#0c1126;color:#fff;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
+@keyframes lineGrow{from{width:0;}to{width:44px;}}
+.step-card{transition:transform .25s ease,box-shadow .25s ease;}
+.step-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:15px;font-weight:700;gap:12px;}
+.faq-a{font-size:13.5px;line-height:2;color:rgba(255,255,255,.7);padding:0 0 20px;display:none;}
+.faq-a.open{display:block;}
+.trouble-item{display:flex;align-items:flex-start;gap:11px;padding:13px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;}
+.feature-hover{transition:transform .25s ease,box-shadow .25s ease;}
+.feature-hover:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+</style>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#0c1126"/><rect x="20" y="15" width="60" height="70" rx="4" fill="#17307d" opacity=".5"/><path d="M35 50 L50 35 L65 50 L50 65Z" fill="#9fc0ff" opacity=".8"/><text x="50" y="95" font-family="sans-serif" font-size="5" fill="white" text-anchor="middle">infection wear</text></svg>
+</template>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(8,12,30,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);">
+  <div style="display:flex;align-items:center;gap:11px;">
+    <div style="width:30px;height:34px;background:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6L12 2.5z" stroke="#17307d" stroke-width="1.9"/></svg>
+    </div>
+    <div>
+      <div style="font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;">MIYAKO UNILEASE</div>
+      <div style="font-size:14px;font-weight:900;">都ユニリース</div>
+    </div>
+  </div>
+  <nav style="display:flex;align-items:center;gap:28px;">
+    <a href="HP8_nav.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-decoration:none;">← トップへ戻る</a>
+    <a href="#contact" style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:9px 20px;text-decoration:none;">CONTACT</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section style="position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:80px 80px 60px;">
+  <div style="position:absolute;inset:0;background-image:url(images/hero-kyukyu-blue.jpg);background-size:cover;background-position:center 25%;opacity:.2;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(8,12,30,.98) 0%,rgba(8,12,30,.84) 52%,rgba(8,12,30,.62) 100%);"></div>
+  <div style="position:relative;z-index:2;max-width:780px;">
+    <div style="font-size:10px;letter-spacing:.38em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:20px;">INFECTION PREVENTION WEAR — RENTAL &amp; MANAGEMENT SERVICE</div>
+    <h1 style="font-size:48px;line-height:1.5;font-weight:900;margin:0 0 10px;animation:fadeUp .7s .1s both;">感染防止衣<br>レンタル・管理サービス</h1>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.4);margin-bottom:28px;animation:lineGrow .8s .2s both;"></div>
+    <p style="font-size:15px;line-height:2.1;color:rgba(255,255,255,.72);margin:0 0 40px;">隊員一人ひとりの感染リスクを守りながら、<br>着用負担・管理負担をまとめて解決します。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px;">
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">感染防止衣が暑く、着用が隊員の負担になっている</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">洗濯・乾燥を個人任せにしており、衛生管理に不安</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">誰に何枚貸与しているか管理しづらい</span></div>
+      <div class="trouble-item"><span style="color:#f87171;font-size:16px;flex:none;">!</span><span style="font-size:13px;line-height:1.7;color:rgba(255,255,255,.78);">追加購入・修理のたびに手配が発生している</span></div>
+    </div>
+    <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;background:#e0242c;padding:15px 32px;text-decoration:none;animation:glowRed 2.5s 1s infinite;">無料相談する →</a>
+  </div>
+</section>
+
+<!-- 製品紹介 -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.6);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">PRODUCT</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">ハイブリッド感染防止衣</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <img src="images/product-hybrid.jpg" alt="ハイブリッド感染防止衣 前面・背面" style="width:100%;border-radius:12px;display:block;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div style="padding:28px;background:rgba(23,48,125,.25);border:1px solid rgba(159,192,255,.2);border-radius:14px;">
+          <div style="display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;padding:6px 14px;border-radius:30px;background:rgba(159,192,255,.15);color:#9fc0ff;border:1px solid rgba(159,192,255,.3);margin-bottom:14px;">前面 — バリア性</div>
+          <p style="font-size:14px;line-height:1.95;color:rgba(255,255,255,.78);margin:0;">救急活動時に対面となる前面には、バリア性のある生地を使用。血液・体液への接触リスクが想定される現場に配慮した仕様です。</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+            <span style="font-size:11px;font-weight:700;background:rgba(159,192,255,.1);color:#9fc0ff;padding:4px 10px;border-radius:20px;">人工血液バリア クラス6</span>
+            <span style="font-size:11px;font-weight:700;background:rgba(159,192,255,.1);color:#9fc0ff;padding:4px 10px;border-radius:20px;">ウイルスバリア クラス6</span>
+          </div>
+        </div>
+        <div style="padding:28px;background:rgba(92,224,160,.1);border:1px solid rgba(92,224,160,.2);border-radius:14px;">
+          <div style="display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;padding:6px 14px;border-radius:30px;background:rgba(92,224,160,.15);color:#5ce0a0;border:1px solid rgba(92,224,160,.3);margin-bottom:14px;">背面 — 通気性</div>
+          <p style="font-size:14px;line-height:1.95;color:rgba(255,255,255,.78);margin:0;">背面には通気性の良い生地を使用。暑さやムレによる着用負担に配慮し、夏場でも着用しやすい設計です。</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+            <span style="font-size:11px;font-weight:700;background:rgba(92,224,160,.1);color:#5ce0a0;padding:4px 10px;border-radius:20px;">高透湿・防水性</span>
+            <span style="font-size:11px;font-weight:700;background:rgba(92,224,160,.1);color:#5ce0a0;padding:4px 10px;border-radius:20px;">制菌加工</span>
+            <span style="font-size:11px;font-weight:700;background:rgba(92,224,160,.1);color:#5ce0a0;padding:4px 10px;border-radius:20px;">高撥水性能</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 素材技術 -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">MATERIAL TECHNOLOGY</div>
+      <h2 style="font-size:30px;font-weight:900;margin:0 0 10px;">高透湿防水<br>フィルムラミネート素材</h2>
+      <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:28px;"></div>
+      <p style="font-size:14px;line-height:2.1;color:rgba(255,255,255,.72);margin:0 0 28px;">外からの風雨・血液・体液を遮断しながら、体内の汗蒸気を外へ逃す特殊構造。高い防護性能と快適な着用感を両立します。</p>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;flex:none;font-size:16px;color:#9fc0ff;font-weight:900;">↑</div>
+          <div>
+            <div style="font-size:13.5px;font-weight:900;margin-bottom:3px;">外側から風・水・血液をブロック</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);">WIND / SHED — バリア機能</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(92,224,160,.15);border:1px solid rgba(92,224,160,.3);display:flex;align-items:center;justify-content:center;flex:none;font-size:16px;color:#5ce0a0;font-weight:900;">↑</div>
+          <div>
+            <div style="font-size:13.5px;font-weight:900;margin-bottom:3px;">体内の汗蒸気を外へ放出</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);">VAPOR — 透湿・放熱機能</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(248,180,100,.15);border:1px solid rgba(248,180,100,.3);display:flex;align-items:center;justify-content:center;flex:none;font-size:16px;color:#f8b464;font-weight:900;">✓</div>
+          <div>
+            <div style="font-size:13.5px;font-weight:900;margin-bottom:3px;">特許取得の独自素材構造</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);">特許 第3041335号</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="images/fabric-tech.jpg" alt="高透湿防水フィルムラミネート構造図" style="width:100%;border-radius:12px;display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- 管理システム -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.6);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">MANAGEMENT</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">バーコードによる<br>隊員別・個人管理</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:36px;">
+      <div class="feature-hover" style="border-radius:12px;overflow:hidden;">
+        <img src="images/management-tag.jpg" alt="バーコードタグ" style="width:100%;height:220px;object-fit:cover;display:block;">
+      </div>
+      <div class="feature-hover" style="border-radius:12px;overflow:hidden;">
+        <img src="images/cleaning-work.jpg" alt="検品作業" style="width:100%;height:220px;object-fit:cover;display:block;">
+      </div>
+      <div class="feature-hover" style="border-radius:12px;overflow:hidden;">
+        <img src="images/rental-rack.jpg" alt="管理ラック" style="width:100%;height:220px;object-fit:cover;display:block;">
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="padding:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 貸与状況の一元管理</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">隊員ごとの貸与枚数・状態をバーコードで一元管理。誰に何枚渡っているか、いつでも確認できます。</p>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● Webシステムで状況共有</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">ユニフォーム管理Webシステムで追加・交換・修理の状況を確認。担当者間の情報共有を効率化します。</p>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 洗濯・乾燥作業の負担軽減</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">洗濯・交換まで都ユニリースが一括対応。現場での個人管理の手間をまるごとサポートします。</p>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;">
+        <div style="font-size:13px;font-weight:900;color:#9fc0ff;margin-bottom:10px;">● 追加・修理・メンテナンス対応</div>
+        <p style="font-size:13px;line-height:1.95;color:rgba(255,255,255,.7);margin:0;">追加発注・修理・メンテナンスも継続サポート。運用開始後も現場に寄り添った対応を続けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工場設備 -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">FACILITY</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">専門設備による<br>クリーニング・管理体制</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:36px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/cleaning-facility.jpg" alt="UNILEASE工場外観" style="width:100%;height:260px;object-fit:cover;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">UNILEASE 専門工場 — 洗濯・乾燥ライン</span></div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;">
+        <img src="images/cleaning-bouka.png" alt="洗濯・保管設備" style="width:100%;height:260px;object-fit:cover;display:block;object-position:center 20%;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(transparent,rgba(8,12,30,.9));"><span style="font-size:13px;font-weight:700;">業務用専門洗濯設備</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 導入の流れ -->
+<section style="padding:80px 80px;background:rgba(13,20,48,.7);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">HOW TO START</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">導入までの流れ</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">1</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">お問い合わせ</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">フォームまたはお電話で。資料請求・概算見積もご相談可</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">2</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">現状ヒアリング</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">人数・貸与枚数・洗濯方法・予算状況などを確認</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">3</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">ご提案・お見積</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">現場に合わせた内容で提案。販売・レンタルの組み合わせも可</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">4</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">サンプル確認</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">必要に応じてサンプル確認・お試しをご案内</p>
+      </div>
+      <div class="step-card" style="padding:26px 20px;background:rgba(23,48,125,.3);border:1px solid rgba(159,192,255,.2);border-radius:14px;text-align:center;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(159,192,255,.15);border:1px solid rgba(159,192,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:16px;font-weight:900;color:#9fc0ff;">5</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:8px;">契約・運用開始</div>
+        <p style="font-size:11.5px;line-height:1.8;color:rgba(255,255,255,.6);margin:0;">納品後も追加・修理・管理を継続サポート</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:80px 80px;background:#0c1126;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;">FAQ</div>
+    <h2 style="font-size:34px;font-weight:900;margin:0 0 10px;">よくあるご質問</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
+    <div style="display:flex;flex-direction:column;">
+      <div class="faq-item" onClick="{{ toggleFaq0 }}">
+        <div class="faq-q">感染防止衣は販売のみですか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">販売とレンタルの両方に対応しています。予算や運用スタイルに合わせて最適なプランをご提案します。レンタルの場合は洗濯・管理も一括で対応します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq1 }}">
+        <div class="faq-q">既存の感染防止衣をそのまま使いながら管理だけ委託できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">はい、現在お使いの感染防止衣にバーコードタグを取り付け、管理システムに登録するかたちで管理のみをご依頼いただくことも可能です。詳細はお問い合わせください。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq2 }}">
+        <div class="faq-q">洗濯はどのくらいの頻度で対応できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">消防署様の運用に合わせて定期回収スケジュールを設定します。週1回から月1回まで、必要枚数・運用規模に応じて柔軟に対応します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq3 }}">
+        <div class="faq-q">バリア性能は洗濯を繰り返しても維持されますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">専用洗剤・適切な水温・乾燥工程の管理により、性能劣化を最小限に抑えます。一定の洗濯回数を超えた際は機能検査を実施し、必要に応じて交換をご提案します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq4 }}">
+        <div class="faq-q">サイズや枚数の変更は途中でできますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">はい、人員の増減・サイズ変更・追加注文に随時対応します。Webシステム上で在庫状況を確認しながら柔軟に対応します。</div>
+      </div>
+      <div class="faq-item" onClick="{{ toggleFaq5 }}">
+        <div class="faq-q">全国どこでも対応できますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;">+</span></div>
+        <div class="faq-a">全国の消防署様を対象にサービスを提供しています。まずはお気軽にお問い合わせください。対応エリアや運送方法についてご案内します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" style="padding:90px 80px;background:linear-gradient(135deg,rgba(23,48,125,.6) 0%,rgba(8,12,30,1) 60%);">
+  <div style="max-width:700px;margin:0 auto;text-align:center;">
+    <div style="font-size:10px;letter-spacing:.38em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:18px;">CONTACT</div>
+    <h2 style="font-size:38px;font-weight:900;line-height:1.5;margin:0 0 18px;">まずはお気軽に<br>ご相談ください</h2>
+    <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin:0 auto 28px;"></div>
+    <p style="font-size:14px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 0 42px;">貸与枚数・洗濯頻度・予算など、<br>現状に合わせたプランを無料でご提案します。</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="mailto:info@miyako-unilease.co.jp" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;background:#e0242c;padding:16px 38px;text-decoration:none;animation:glowRed 2.5s 1s infinite;">メールでお問い合わせ →</a>
+      <a href="tel:0120-000-000" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;border:1px solid rgba(255,255,255,.45);padding:16px 38px;text-decoration:none;">お電話でのご相談</a>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,.3);margin-top:28px;">受付時間 平日 9:00〜18:00　／　資料請求・概算お見積りも承ります</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:28px 80px;background:#080c1e;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:24px;height:28px;background:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6L12 2.5z" stroke="#17307d" stroke-width="2"/></svg>
+    </div>
+    <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.55);">都ユニリース — 感染防止衣レンタル・管理サービス</span>
+  </div>
+  <span style="font-size:11px;color:rgba(255,255,255,.25);">© 2026 Miyako Unilease Co., Ltd.</span>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  toggleFaq(i) {
+    const items = document.querySelectorAll('.faq-a');
+    const icons = document.querySelectorAll('.faq-q span:last-child');
+    if (items[i]) {
+      const isOpen = items[i].classList.contains('open');
+      items[i].classList.toggle('open');
+      if (icons[i]) icons[i].style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+    }
+  }
+  renderVals() {
+    return {
+      toggleFaq0: () => this.toggleFaq(0),
+      toggleFaq1: () => this.toggleFaq(1),
+      toggleFaq2: () => this.toggleFaq(2),
+      toggleFaq3: () => this.toggleFaq(3),
+      toggleFaq4: () => this.toggleFaq(4),
+      toggleFaq5: () => this.toggleFaq(5),
+    };
+  }
+}
+</script>
+</body>
+</html>
