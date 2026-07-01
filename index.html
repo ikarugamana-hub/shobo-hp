@@ -161,9 +161,9 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
       <!-- LEFT: 感染防止衣 -->
       <div id="p1L" class="panel-card" onclick="window.location.href='uploads/UNILEASE 感染防止衣 LP ダーク (standalone).html'"
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;cursor:pointer;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
-        onmouseenter="hoverS1(0);document.getElementById('infect-video').pause()" onmouseleave="hoverS1(-1);document.getElementById('infect-video').play()">
+        onmouseenter="hoverS1(0)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-infect" style="position:absolute;inset:0;"></div>
-        <video id="infect-video" class="img-bg" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <video class="img-bg" autoplay muted playsinline onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <source src="uploads/infection-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(23,48,125,.62),rgba(33,74,156,.28));"></div>
@@ -187,9 +187,9 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
       <!-- RIGHT: 防火服クリーニング -->
       <div id="p1R" class="panel-card" onclick="goCleaning()"
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;cursor:pointer;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
-        onmouseenter="hoverS1(1);document.getElementById('clean-video').pause()" onmouseleave="hoverS1(-1);document.getElementById('clean-video').play()">
+        onmouseenter="hoverS1(1)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-clean" style="position:absolute;inset:0;"></div>
-        <video id="clean-video" class="img-bg" autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <video class="img-bg" autoplay muted playsinline onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <source src="uploads/cleaning-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(122,20,24,.52),rgba(12,18,42,.38));"></div>
