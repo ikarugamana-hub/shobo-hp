@@ -159,7 +159,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 
     <div style="position:relative;z-index:10;display:flex;padding:0 20px 16px;height:calc(100vh - 158px);">
       <!-- LEFT: 感染防止衣 -->
-      <div id="p1L" class="panel-card" onclick="goInfection()"
+      <div id="p1L" class="panel-card" onclick="window.location.href='uploads/UNILEASE 感染防止衣 LP ダーク (standalone).html#breathable'"
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;cursor:pointer;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
         onmouseenter="hoverS1(0)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-infect" style="position:absolute;inset:0;"></div>
@@ -209,113 +209,13 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
     </div>
   </div>
 
-  <!-- ===== SCREEN 2: 感染防止衣タイプ選択 ===== -->
-  <div id="screen-2" class="screen hidden">
-    <header style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 32px;background:rgba(8,12,30,.72);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <button onclick="goBack()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;">← 戻る</button>
-        <div style="display:flex;align-items:center;gap:9px;">
-          <div style="width:30px;height:34px;background:#fff;display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6L12 2.5z" stroke="#17307d" stroke-width="1.8"/></svg>
-          </div>
-          <span style="font-size:15px;font-weight:900;">都ユニリース</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#8fa3d6;">
-          <span style="cursor:pointer;" onclick="goTop()">トップ</span>
-          <span>›</span>
-          <span style="cursor:pointer;" onclick="goBack()">感染防止衣</span>
-          <span>›</span>
-          <span style="color:#fff;font-weight:700;">タイプ選択</span>
-        </div>
-      </div>
-      <a href="#" style="font-size:12px;font-weight:700;color:#fff;background:#e0242c;padding:9px 16px;border-radius:8px;text-decoration:none;">お問い合わせ</a>
-    </header>
-
-    <div style="position:relative;z-index:20;text-align:center;padding:22px 24px 16px;">
-      <h2 style="font-size:25px;font-weight:900;margin:0 0 7px;">感染防止衣 — タイプをお選びください</h2>
-      <p style="font-size:13px;color:#aebcde;margin:0;">現場の優先事項に合わせて最適なタイプを。詳しくはお問い合わせください。</p>
-    </div>
-
-    <div style="position:relative;z-index:10;display:flex;padding:0 20px 16px;height:calc(100vh - 158px);">
-      <!-- LEFT: 通気性型 -->
-      <div id="p2L" class="panel-card"
-        style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;cursor:pointer;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
-        onmouseenter="hoverS2(0)" onmouseleave="hoverS2(-1)">
-        <div class="img-bg img-vent" style="position:absolute;inset:0;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,36,100,.58),rgba(23,70,155,.26));"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,30,.05) 0%,rgba(8,12,30,.2) 45%,rgba(8,12,30,.88) 100%);"></div>
-        <div style="position:absolute;top:26px;left:34px;display:inline-flex;align-items:center;gap:7px;background:rgba(92,224,160,.18);border:1px solid rgba(92,224,160,.45);font-size:11px;font-weight:700;letter-spacing:.04em;padding:7px 14px;border-radius:30px;backdrop-filter:blur(4px);color:#5ce0a0;">通気性重視</div>
-        <div style="position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:34px 36px;">
-          <div style="font-size:10px;letter-spacing:.28em;color:#9fc0ff;font-weight:700;margin-bottom:9px;">VENTILATION TYPE</div>
-          <h3 style="font-size:28px;line-height:1.4;font-weight:900;margin:0 0 11px;text-shadow:0 2px 14px rgba(0,0,0,.4);">通気性型<br>感染防止衣</h3>
-          <p style="font-size:13px;line-height:1.9;color:#dde4f2;margin:0 0 16px;max-width:420px;">高通気素材を全身に採用し、夏季の熱中症リスクを大幅に低減。血液・飛沫バリア性能を確保しながら、着用負担を最小化します。</p>
-          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:14px;">
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(92,224,160,.18);color:#5ce0a0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>高通気素材で熱中症リスクを低減
-            </div>
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(92,224,160,.18);color:#5ce0a0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>血液・飛沫バリア性能を搭載
-            </div>
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(92,224,160,.18);color:#5ce0a0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>長時間着用でも疲労しにくい設計
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:10px 15px;margin-bottom:18px;">
-            <span style="color:#aebcde;font-size:11px;font-weight:700;white-space:nowrap;">導入方法</span>
-            <span style="width:1px;height:13px;background:rgba(255,255,255,.2);display:inline-block;"></span>
-            <span style="color:#fff;font-size:13px;font-weight:700;">レンタル／販売 <span style="font-size:11px;font-weight:500;color:#aebcde;">（条件はご相談）</span></span>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <a href="uploads/UNILEASE 感染防止衣 LP ダーク (standalone).html#breathable" class="enter-btn" style="display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);text-decoration:none;">お問い合わせ <span style="font-size:16px;">→</span></a>
-            <span style="font-size:11px;color:#8fa3d6;">詳しくはお問い合わせください</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: ハイブリッド型 -->
-      <div id="p2R" class="panel-card"
-        style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;cursor:pointer;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
-        onmouseenter="hoverS2(1)" onmouseleave="hoverS2(-1)">
-        <div class="img-bg img-hybrid" style="position:absolute;inset:0;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(60,15,100,.58),rgba(23,48,125,.32));"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,30,.15) 0%,rgba(8,12,30,.32) 40%,rgba(8,12,30,.88) 100%);"></div>
-        <div style="position:absolute;top:26px;left:34px;display:inline-flex;align-items:center;gap:7px;background:rgba(200,130,255,.18);border:1px solid rgba(200,130,255,.45);font-size:11px;font-weight:700;letter-spacing:.04em;padding:7px 14px;border-radius:30px;backdrop-filter:blur(4px);color:#dba8ff;">バリア性重視</div>
-        <div style="position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:34px 36px;">
-          <div style="font-size:10px;letter-spacing:.28em;color:#dba8ff;font-weight:700;margin-bottom:9px;">HYBRID TYPE</div>
-          <h3 style="font-size:28px;line-height:1.4;font-weight:900;margin:0 0 11px;text-shadow:0 2px 14px rgba(0,0,0,.4);">ハイブリッド型<br>感染防止衣</h3>
-          <p style="font-size:13px;line-height:1.9;color:#dde4f2;margin:0 0 16px;max-width:420px;">救急活動時に対面となる前面にはバリア性のある生地、背面には通気性の良い生地を使用。衛生面と着用感の両立を目指したハイブリッド構造の感染防止衣です。</p>
-          <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:14px;">
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(200,130,255,.18);color:#dba8ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>人工血液バリア性・ウイルスバリア性 クラス6
-            </div>
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(200,130,255,.18);color:#dba8ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>背面は通気性生地で暑さ・ムレを軽減
-            </div>
-            <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:12.5px;font-weight:700;color:#eef2fb;">
-              <span style="width:19px;height:19px;border-radius:50%;background:rgba(200,130,255,.18);color:#dba8ff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex:none;">✓</span>制菌加工・高透湿防水・高撥水性能
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:10px 15px;margin-bottom:18px;">
-            <span style="color:#aebcde;font-size:11px;font-weight:700;white-space:nowrap;">導入方法</span>
-            <span style="width:1px;height:13px;background:rgba(255,255,255,.2);display:inline-block;"></span>
-            <span style="color:#fff;font-size:13px;font-weight:700;">レンタル／販売 <span style="font-size:11px;font-weight:500;color:#aebcde;">（条件はご相談）</span></span>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <a href="uploads/UNILEASE 感染防止衣 LP ダーク (standalone).html#hybrid" class="enter-btn" style="display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:900;color:#fff;background:#5a3d9e;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);text-decoration:none;">お問い合わせ <span style="font-size:16px;">→</span></a>
-            <span style="font-size:11px;color:#8fa3d6;">詳しくはお問い合わせください</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <script>
-var state = { screen: 0, h1: -1, h2: -1 };
+var state = { screen: 0, h1: -1 };
 
 function showScreen(n) {
-  for (var i = 0; i <= 2; i++) {
+  for (var i = 0; i <= 1; i++) {
     var el = document.getElementById('screen-' + i);
     if (i === n) {
       el.classList.remove('hidden');
@@ -334,27 +234,18 @@ function goToGate() {
   updatePanels();
 }
 
-function goInfection() {
-  state.h1 = -1;
-  state.h2 = -1;
-  showScreen(2);
-  updatePanels();
-}
-
 function goCleaning() {
   window.location.href = 'story_cleaning.dc.html';
 }
 
 function goBack() {
   state.h1 = -1;
-  state.h2 = -1;
   showScreen(Math.max(0, state.screen - 1));
   updatePanels();
 }
 
 function goTop() {
   state.h1 = -1;
-  state.h2 = -1;
   showScreen(0);
   updatePanels();
   // Re-play video
@@ -367,11 +258,6 @@ function hoverS1(i) {
   updatePanels();
 }
 
-function hoverS2(i) {
-  state.h2 = i;
-  updatePanels();
-}
-
 function grow(h, i) {
   return h === -1 ? 1 : h === i ? 1.55 : 0.82;
 }
@@ -379,12 +265,8 @@ function grow(h, i) {
 function updatePanels() {
   var p1L = document.getElementById('p1L');
   var p1R = document.getElementById('p1R');
-  var p2L = document.getElementById('p2L');
-  var p2R = document.getElementById('p2R');
   if (p1L) p1L.style.flex = grow(state.h1, 0);
   if (p1R) p1R.style.flex = grow(state.h1, 1);
-  if (p2L) p2L.style.flex = grow(state.h2, 0);
-  if (p2R) p2R.style.flex = grow(state.h2, 1);
 }
 
 function initVideo() {
