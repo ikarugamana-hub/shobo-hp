@@ -91,7 +91,6 @@ html,body{margin:0;background:var(--navy);color:#fff;font-family:'Noto Sans JP',
       <div style="width:44px;height:2px;background:rgba(255,255,255,.4);margin-bottom:26px;animation:lineGrow .8s .2s both;"></div>
       <p style="font-size:14.5px;line-height:2.05;color:rgba(255,255,255,.75);margin:0 0 32px;max-width:520px;">防火服を熟練スタッフが丁寧に洗濯・検品し、必要に応じて撥水加工まで実施。消防隊員の皆さまが気持ちよく活動できる装備環境を支えます。</p>
       <div class="cta-row" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;">
-        <a href="tel:0120-630-080" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:900;color:#fff;background:var(--red);padding:15px 30px;text-decoration:none;border-radius:6px;animation:glowRed 2.5s 1s infinite;">0120-630-080へ電話 →</a>
         <a href="#trial" style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.4);padding:15px 28px;text-decoration:none;border-radius:6px;">初回お試しを見る</a>
       </div>
       <p style="font-size:11.5px;color:rgba(255,255,255,.45);margin:0;">受付対応時間：10時〜17時（土日祝、年末年始、お盆除く）</p>
@@ -164,7 +163,7 @@ html,body{margin:0;background:var(--navy);color:#fff;font-family:'Noto Sans JP',
     <h2 style="font-size:30px;font-weight:900;margin:0 0 10px;">洗うだけでなく、<br>状態確認・撥水加工・返却資料まで対応</h2>
     <div style="width:44px;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
 
-    <div class="service-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+    <div class="service-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div class="service-card">
         <div style="font-size:14px;font-weight:900;color:#9fc0ff;margin-bottom:8px;">素材に応じた専門クリーニング</div>
         <p style="font-size:12.5px;line-height:1.85;color:rgba(255,255,255,.65);margin:0;">生地・部位に合わせた洗浄方法で丁寧に洗います。</p>
@@ -174,12 +173,8 @@ html,body{margin:0;background:var(--navy);color:#fff;font-family:'Noto Sans JP',
         <p style="font-size:12.5px;line-height:1.85;color:rgba(255,255,255,.65);margin:0;">クリーニングと合わせて撥水加工を施します。</p>
       </div>
       <div class="service-card">
-        <div style="font-size:14px;font-weight:900;color:#9fc0ff;margin-bottom:8px;">ビフォーアフター資料作成</div>
+        <div style="font-size:14px;font-weight:900;color:#9fc0ff;margin-bottom:8px;">ビフォーアフター資料作成（初回のみ）</div>
         <p style="font-size:12.5px;line-height:1.85;color:rgba(255,255,255,.65);margin:0;">クリーニング前後の状態が分かる資料をお渡しします。</p>
-      </div>
-      <div class="service-card">
-        <div style="font-size:14px;font-weight:900;color:#9fc0ff;margin-bottom:8px;">個体管理・履歴管理（オプション）</div>
-        <p style="font-size:12.5px;line-height:1.85;color:rgba(255,255,255,.65);margin:0;">管理バーコードによる防火服の個体管理・クリーニング履歴管理に対応できます。</p>
       </div>
     </div>
   </div>
@@ -308,10 +303,6 @@ html,body{margin:0;background:var(--navy);color:#fff;font-family:'Noto Sans JP',
         <div class="faq-a">対応できます。クリーニング後に撥水加工を施し、撥水性能の回復を目指します。</div>
       </div>
       <div class="faq-item" onClick="{{ toggleFaq2 }}">
-        <div class="faq-q">個体管理はできますか？<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
-        <div class="faq-a">オプションとして管理バーコードを用いた防火服の個体管理、クリーニング履歴管理に対応できます。</div>
-      </div>
-      <div class="faq-item" onClick="{{ toggleFaq3 }}">
         <div class="faq-q">問い合わせ方法を教えてください。<span style="font-size:20px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">電話または問い合わせフォームからご相談ください。受付対応時間は10時〜17時です。</div>
       </div>
@@ -363,7 +354,6 @@ class Component extends DCLogic {
       toggleFaq0: () => this.toggleFaq(0),
       toggleFaq1: () => this.toggleFaq(1),
       toggleFaq2: () => this.toggleFaq(2),
-      toggleFaq3: () => this.toggleFaq(3),
     };
   }
 }
