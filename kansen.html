@@ -22,7 +22,12 @@
   ::selection { background: #5aa6ec; color: #fff; }
   @keyframes riseIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
   a[href^="#"], header a { transition: color .25s ease, background-color .25s ease, transform .3s ease; }
-  @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } }
+  @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } [data-line]{width:44px!important;transition:none!important;} }
+  [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
+  .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
+  .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,.4);}
+  header{transition:box-shadow .35s ease;}
+  header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
   .wind { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
   .wind-line { position:absolute; left:0; height:2px; border-radius:99px; background:linear-gradient(90deg, transparent, rgba(200,230,255,.9), transparent); filter:blur(.6px); opacity:0; transform:translateX(-30vw); animation:windDrift linear infinite; }
   @keyframes windDrift { 0%{transform:translateX(-30vw); opacity:0} 12%{opacity:var(--o,.5)} 78%{opacity:var(--o,.5)} 100%{transform:translateX(132vw); opacity:0} }
@@ -39,7 +44,7 @@
     });
   }
   function init(){
-    if(!document.body){ requestAnimationFrame(init); return; }
+    if(!document.body){ setTimeout(init, 40); return; }
     function reveal(){
       var h=window.innerHeight||document.documentElement.clientHeight||800;
       document.querySelectorAll('[data-reveal],[data-reveal-group]').forEach(function(el){
@@ -47,8 +52,16 @@
         var r=el.getBoundingClientRect();
         if(r.top < h*0.9 && r.bottom > 0){ trigger(el); }
       });
+      document.querySelectorAll('[data-line]').forEach(function(el){
+        if(el.dataset.drawn) return;
+        var r=el.getBoundingClientRect();
+        if(r.top < h*0.9 && r.bottom > -20){ el.dataset.drawn='1'; el.style.width='44px'; }
+      });
     }
     reveal();
+    function hdrFx(){ var hd=document.querySelector('header'); if(!hd) return; var y=window.scrollY||document.documentElement.scrollTop||0; if(y>10){hd.classList.add('scrolled');}else{hd.classList.remove('scrolled');} }
+    hdrFx();
+    window.addEventListener('scroll', hdrFx, {passive:true});
     window.addEventListener('scroll', reveal, {passive:true});
     window.addEventListener('resize', reveal);
     setInterval(reveal, 250);
@@ -120,6 +133,7 @@
     <div data-reveal-group="" style="max-width:880px; margin:0 auto; text-align:center;">
       <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">THE CHALLENGE</div>
       <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:43px; font-weight:900; line-height:1.5; margin-top:16px; color:#eef2f7; text-wrap:balance;">「守る」と「動ける」を、現場ごとに</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
       <p style="font-size:23px; line-height:2.1; color:#9aa7b6; margin-top:24px; text-wrap:pretty;">感染防止と通気性、優先すべきバランスは現場ごとに違います<br>UNILEASEは、<strong style="color:#eef2f7;">防護と快適のバランスが異なる2つの型</strong>をご用意し、撥水・制菌などの機能を備えました</p>
     </div>
   </section>
@@ -130,8 +144,9 @@
       <div data-reveal="" style="text-align:center; margin-bottom:50px;">
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">LINEUP</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">2つの型から選ぶ</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
       </div>
-      <div data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
         <!-- Hybrid card -->
         <div style="background:#161a21; border:1px solid #232a33; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,0.45);">
           <div style="position:relative; height:400px; overflow:hidden;">
@@ -177,6 +192,7 @@
       <div data-reveal="" style="margin-bottom:48px;">
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">HYBRID TYPE</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:47px; font-weight:900; margin-top:14px; color:#eef2f7; line-height:1.35;">前面バリア性 × 背面通気性<br>一着で、二つの機能</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
       </div>
 
       <!-- 前面/中央/背面 -->
@@ -217,7 +233,7 @@
       <div data-reveal="" style="margin-top:56px; margin-bottom:26px;">
         <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#eef2f7;">ハイブリッド型の特長</h3>
       </div>
-      <div data-reveal-group="" style="display:grid; grid-template-columns:repeat(2,1fr); gap:28px;">
+      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:28px;">
         <div style="display:flex; gap:22px; padding:30px; background:#161a21; border:1px solid #232a33; border-radius:6px;">
           <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#0d3b73; display:flex; align-items:center; justify-content:center;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"></path></svg>
@@ -264,6 +280,7 @@
       <div data-reveal="" style="margin-bottom:48px;">
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">BREATHABLE TYPE</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:47px; font-weight:900; margin-top:14px; color:#eef2f7; line-height:1.35;">断然涼しい　そして、常に清潔</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
         <p style="font-size:23px; line-height:2; color:#9aa7b6; margin-top:18px; max-width:720px; text-wrap:pretty;">全身に高通気素材を採用した、暑さ対策に特化したモデル　夏場や長時間の活動でも涼しく、軽い着用感を実現します</p>
       </div>
 
@@ -310,11 +327,12 @@
       <div data-reveal="" style="margin-bottom:50px;">
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#7fc3ff;">RENTAL SYSTEM</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#fff;">ユニフォームレンタルという選択肢</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
         <p style="font-size:23px; line-height:2; color:#bcd2ea; margin-top:18px; max-width:720px; text-wrap:pretty;">在庫管理・洗濯・商品の新規手配・商品のメンテナンス、一括して都ユニリースが引き受けます</p>
       </div>
 
       <!-- 4 equal service point cards -->
-      <div data-reveal-group="" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
         <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:28px 24px;">
           <h3 style="font-size:24px; font-weight:700; color:#fff;">ユニフォーム管理Webシステム</h3>
           <p style="font-size:20px; line-height:1.9; color:#bcd2ea; margin-top:10px;">新規注文からサイズ変更などの申請が簡単にできます　使用者リストや履歴確認もできます</p>
@@ -339,6 +357,7 @@
   <section id="contact" style="background:linear-gradient(120deg,#0a2d5c,#1f5fa8); padding:90px 32px; scroll-margin-top:90px;">
     <div data-reveal-group="" style="max-width:860px; margin:0 auto; text-align:center;">
       <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; color:#fff; line-height:1.5; text-wrap:balance;">感染防止衣をご検討の担当者さまへ</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
       <p style="font-size:23px; line-height:2; color:#cfe0f2; margin-top:20px;">どちらの型が現場に合うかのご相談から、お見積り・製品サンプルのご案内まで承ります<br>まずはお気軽にお問い合わせください</p>
       <div style="display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap;">
         <a href="tel:0120-630-080" style="display:inline-flex; align-items:center; height:56px; padding:0 38px; background:#fff; color:#0d3b73; font-size:23px; font-weight:700; text-decoration:none; border-radius:4px;">電話で問い合わせる</a>

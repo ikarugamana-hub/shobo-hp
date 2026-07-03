@@ -15,6 +15,9 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 @keyframes fadeIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
 @keyframes pulseDot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.55;}}
 @keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
+@keyframes lineGrow{from{width:0;}to{width:44px;}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;}}
 
 .screen{
   position:absolute;
@@ -102,7 +105,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         <h1 style="font-size:72px;line-height:1.5;font-weight:900;margin:0 0 26px;text-shadow:0 2px 32px rgba(0,0,0,.5);letter-spacing:.02em;">消防・救急の隊員を、<br>現場の最前線で支える</h1>
       </div>
       <div id="s0c2" style="opacity:0;transform:translateY(18px);transition:opacity .75s .2s ease,transform .75s .2s ease;">
-        <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;"></div>
+        <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;animation:lineGrow 1s .8s both;"></div>
       </div>
       <div id="s0c3" style="opacity:0;transform:translateY(14px);transition:opacity .75s .3s ease,transform .75s .3s ease;">
         <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:500px;">感染防止衣の貸与・個人管理から、防火衣の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
@@ -117,7 +120,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
       </div>
     </div>
 
-    <div style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <div style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;animation:floatY 3s ease-in-out infinite;">
       <div style="font-size:14px;letter-spacing:.28em;color:rgba(255,255,255,.38);writing-mode:vertical-rl;text-orientation:mixed;">SCROLL</div>
       <div style="width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);"></div>
     </div>
@@ -226,6 +229,19 @@ function goToGate() {
   state.h1 = -1;
   showScreen(1);
   updatePanels();
+  animateGate();
+}
+
+function animateGate() {
+  var h2 = document.querySelector('#screen-1 h2');
+  var els = [h2 ? h2.parentElement : null, document.getElementById('p1L'), document.getElementById('p1R')];
+  els.forEach(function(el, i) {
+    if (!el) return;
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'fadeIn .6s ease ' + (i * 0.13) + 's both';
+    setTimeout(function() { el.style.animation = ''; }, 1500 + i * 130);
+  });
 }
 
 function goCleaning() {
