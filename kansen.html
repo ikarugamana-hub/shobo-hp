@@ -66,6 +66,22 @@
         var r=el.getBoundingClientRect();
         if(r.top < h*0.9 && r.bottom > -20){ el.dataset.drawn='1'; el.style.width='44px'; }
       });
+      document.querySelectorAll('.stat-num[data-n]').forEach(function(el){
+        if(el.dataset.counted) return;
+        var r=el.getBoundingClientRect();
+        if(r.top < h*0.85 && r.bottom > 0){
+          el.dataset.counted='1';
+          var target=parseInt(el.dataset.n,10), t0=null;
+          var tick=function(ts){
+            if(t0===null) t0=ts;
+            var p=Math.min((ts-t0)/1300,1);
+            var e=1-Math.pow(1-p,3);
+            el.textContent=Math.round(target*e).toLocaleString('ja-JP');
+            if(p<1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      });
     }
     reveal();
     function hdrFx(){
@@ -426,8 +442,50 @@
       <p style="font-size:23px; line-height:2; color:#cfe0f2; margin-top:20px;">どちらの型が現場に合うかのご相談から、お見積り・製品サンプルのご案内まで承ります<br>まずはお気軽にお問い合わせください</p>
       <div style="display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap;">
         <a href="tel:0120-630-080" style="display:inline-flex; align-items:center; height:56px; padding:0 38px; background:#fff; color:#0d3b73; font-size:23px; font-weight:700; text-decoration:none; border-radius:4px;">電話で問い合わせる</a>
+        <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; height:56px; padding:0 34px; background:transparent; color:#fff; font-size:23px; font-weight:700; text-decoration:none; border:1px solid rgba(255,255,255,0.5); border-radius:4px;">問い合わせフォーム →</a>
+      </div>
+      <div style="margin-top:26px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+        <a href="https://unilease.co.jp/cms/footerPDF/CompanyProfile.pdf" target="_blank" rel="noopener" style="font-size:19px; color:#bcd2ea; text-decoration:underline;">会社概要PDF</a>
+        <a href="https://unilease.co.jp/cms/footerPDF/ServiceGuide.pdf" target="_blank" rel="noopener" style="font-size:19px; color:#bcd2ea; text-decoration:underline;">サービスガイドPDF</a>
       </div>
       <div style="margin-top:34px; font-size:22px; color:#bcd2ea;">お電話でのお問い合わせ：<a href="tel:0120-630-080" style="color:#fff; font-size:30px; font-weight:700; font-family:'Noto Sans JP',sans-serif; letter-spacing:0.5px; text-decoration:none;">0120-630-080</a>（平日 10:00〜17:00）</div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section style="background:#0d1117; padding:96px 32px;">
+    <div style="max-width:1000px; margin:0 auto;">
+      <div data-reveal="" style="margin-bottom:36px;">
+        <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">NUMBERS</div>
+        <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">数字で見る都ユニリース</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
+      </div>
+      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約社数</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="2815">0</span><span style="font-size:21px;font-weight:900;">社</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約店舗数</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="21094">0</span><span style="font-size:21px;font-weight:900;">店舗</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約従業員数</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="351009">0</span><span style="font-size:21px;font-weight:900;">人</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">1日のクリーニング処理</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">万点</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">自社工場</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">工場</span></div>
+<div style="font-size:17px;color:#8197b5;margin-top:6px;">ほかパートナー工場70</div>        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
+          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">事業歴</div>
+          <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="30">0</span><span style="font-size:21px;font-weight:900;">余年</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -445,6 +503,10 @@
           <div style="font-size:21px; color:#eef2f7;">都ユニリース株式会社</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">代表者</div>
+          <div style="font-size:21px; color:#eef2f7;">代表取締役社長 髙杉 彰</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#8197b5; font-weight:700;">所在地</div>
           <div style="font-size:21px; color:#eef2f7;">〒712-8011 岡山県倉敷市連島町連島142-289</div>
         </div>
@@ -455,6 +517,18 @@
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#8197b5; font-weight:700;">事業内容</div>
           <div style="font-size:21px; color:#eef2f7;">レンタルユニフォームシステム／感染防止衣レンタル／防火服専門クリーニング</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">認証</div>
+          <div style="font-size:21px; color:#eef2f7;">ISO27001:2022 認証取得（認証番号 MSA-IS-130）／EcoVadis社 CSR審査 ブロンズメダル</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">特許</div>
+          <div style="font-size:21px; color:#eef2f7;">特許第3041335号「クリーニング作業付き、繰返しユニフォーム管理方法」</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">コーポレートサイト</div>
+          <div style="font-size:21px; color:#eef2f7;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#6db3ee; text-decoration:underline;">unilease.co.jp</a></div>
         </div>
       </div>
     </div>
@@ -469,7 +543,11 @@
         <div style="font-size:18px; color:#8197b5; margin-top:4px;">〒712-8011 岡山県倉敷市連島町連島142-289 ／ レンタルユニフォームシステム</div>
         <div style="font-size:18px; color:#8197b5; margin-top:4px;">ハイブリッド型・通気性特化型 感染防止衣</div>
       </div>
-      <div style="font-size:18px; color:#6a82a3;">© 都ユニリース株式会社 All Rights Reserved.</div>
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="font-size:17px; color:#8197b5; text-decoration:none;">プライバシーポリシー</a>
+        <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="font-size:17px; color:#8197b5; text-decoration:none;">コーポレートサイト</a>
+        <div style="font-size:18px; color:#6a82a3;">© 都ユニリース株式会社 All Rights Reserved.</div>
+      </div>
     </div>
   </footer>
 
