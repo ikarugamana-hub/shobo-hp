@@ -23,6 +23,15 @@
   @keyframes riseIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
   a[href^="#"], header a { transition: color .25s ease, background-color .25s ease, transform .3s ease; }
   @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } [data-line]{width:44px!important;transition:none!important;} }
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.12);cursor:pointer;outline-offset:4px;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;font-size:23px;font-weight:700;color:#eef2f7;}
+  .faq-ic{font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .25s;}
+  .faq-item.open .faq-ic{transform:rotate(45deg);}
+  .faq-a{font-size:21px;line-height:2;color:#9aa7b6;max-height:0;overflow:hidden;padding:0;transition:max-height .4s ease,padding .4s ease;}
+  .faq-item.open .faq-a{max-height:340px;padding:0 0 22px;}
+  header nav a.nav-now{color:#fff!important;box-shadow:inset 0 -2px 0 #5aa6ec;}
+  #toTop{position:fixed;right:24px;bottom:24px;z-index:200;width:52px;height:52px;border-radius:50%;background:rgba(13,59,115,.92);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;transform:translateY(8px);}
+  #toTop.show{opacity:1;pointer-events:auto;transform:none;}
   [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
   .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,.4);}
@@ -59,7 +68,34 @@
       });
     }
     reveal();
-    function hdrFx(){ var hd=document.querySelector('header'); if(!hd) return; var y=window.scrollY||document.documentElement.scrollTop||0; if(y>10){hd.classList.add('scrolled');}else{hd.classList.remove('scrolled');} }
+    function hdrFx(){
+      var y=window.scrollY||document.documentElement.scrollTop||0;
+      var hd=document.querySelector('header');
+      if(hd){ if(y>10){hd.classList.add('scrolled');}else{hd.classList.remove('scrolled');} }
+      var tt=document.getElementById('toTop');
+      if(tt){ if(y>600){tt.classList.add('show');}else{tt.classList.remove('show');} }
+      var cur=null;
+      ['lineup','hybrid','breathable','system','faq','contact'].forEach(function(id){
+        var s=document.getElementById(id);
+        if(s && s.getBoundingClientRect().top < 150) cur=id;
+      });
+      document.querySelectorAll('header nav a[href^="#"]').forEach(function(a){
+        if(a.getAttribute('href')==='#'+cur){a.classList.add('nav-now');}else{a.classList.remove('nav-now');}
+      });
+    }
+    function faqToggle(item){
+      var open=item.classList.toggle('open');
+      item.setAttribute('aria-expanded', open?'true':'false');
+    }
+    document.addEventListener('click', function(e){
+      var item=e.target.closest ? e.target.closest('.faq-item') : null;
+      if(item) faqToggle(item);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key!=='Enter' && e.key!==' ') return;
+      var item=e.target.closest ? e.target.closest('.faq-item') : null;
+      if(item){ e.preventDefault(); faqToggle(item); }
+    });
     hdrFx();
     window.addEventListener('scroll', hdrFx, {passive:true});
     window.addEventListener('scroll', reveal, {passive:true});
@@ -353,6 +389,35 @@
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="background:#0d1117; padding:96px 32px; scroll-margin-top:90px;">
+    <div style="max-width:860px; margin:0 auto;">
+      <div data-reveal="" style="margin-bottom:36px;">
+        <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">FAQ</div>
+        <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">よくあるご質問</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
+      </div>
+      <div data-reveal="" style="display:flex; flex-direction:column;">
+        <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
+          <div class="faq-q">サンプルの確認はできますか？<span class="faq-ic">+</span></div>
+          <div class="faq-a">製品サンプルのご案内が可能です　実物を確認のうえご検討いただけますので、お気軽にお問い合わせください</div>
+        </div>
+        <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
+          <div class="faq-q">少人数の部署でも導入できますか？<span class="faq-ic">+</span></div>
+          <div class="faq-a">隊員1名ごとの貸与・個人管理の仕組みのため、人数規模を問わずご相談いただけます</div>
+        </div>
+        <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
+          <div class="faq-q">汚れや破損があった場合はどうなりますか？<span class="faq-ic">+</span></div>
+          <div class="faq-a">クリーニングのほか、ほつれや破けの修理・交換、体型変化によるサイズ変更まで無償サービスの範囲で対応します</div>
+        </div>
+        <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
+          <div class="faq-q">2つの型のどちらが合うか分かりません<span class="faq-ic">+</span></div>
+          <div class="faq-a">現場環境やご要望を伺ったうえで、最適な型をご提案します　2タイプの比較検討もサポートしますので、お気軽にご相談ください</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CONTACT CTA ===== -->
   <section id="contact" style="background:linear-gradient(120deg,#0a2d5c,#1f5fa8); padding:90px 32px; scroll-margin-top:90px;">
     <div data-reveal-group="" style="max-width:860px; margin:0 auto; text-align:center;">
@@ -363,6 +428,35 @@
         <a href="tel:0120-630-080" style="display:inline-flex; align-items:center; height:56px; padding:0 38px; background:#fff; color:#0d3b73; font-size:23px; font-weight:700; text-decoration:none; border-radius:4px;">電話で問い合わせる</a>
       </div>
       <div style="margin-top:34px; font-size:22px; color:#bcd2ea;">お電話でのお問い合わせ：<a href="tel:0120-630-080" style="color:#fff; font-size:30px; font-weight:700; font-family:'Noto Sans JP',sans-serif; letter-spacing:0.5px; text-decoration:none;">0120-630-080</a>（平日 10:00〜17:00）</div>
+    </div>
+  </section>
+
+  <!-- ===== COMPANY ===== -->
+  <section id="company" style="background:#0b0e14; padding:88px 32px; scroll-margin-top:90px;">
+    <div style="max-width:860px; margin:0 auto;">
+      <div data-reveal="" style="margin-bottom:36px;">
+        <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">COMPANY</div>
+        <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">会社概要</h2>
+        <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
+      </div>
+      <div data-reveal="">
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">社名</div>
+          <div style="font-size:21px; color:#eef2f7;">都ユニリース株式会社</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">所在地</div>
+          <div style="font-size:21px; color:#eef2f7;">〒712-8011 岡山県倉敷市連島町連島142-289</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">電話</div>
+          <div style="font-size:21px; color:#eef2f7;"><a href="tel:0120-630-080" style="color:#eef2f7; text-decoration:none;">0120-630-080</a>（受付時間 10:00〜17:00　土日祝・年末年始・お盆を除く）</div>
+        </div>
+        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+          <div style="font-size:20px; color:#8197b5; font-weight:700;">事業内容</div>
+          <div style="font-size:21px; color:#eef2f7;">レンタルユニフォームシステム／感染防止衣レンタル／防火服専門クリーニング</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -380,5 +474,6 @@
   </footer>
 
 </div>
+<button id="toTop" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </body>
 </html>

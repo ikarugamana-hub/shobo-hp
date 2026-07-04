@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ikarugamana-hub.github.io/shobo-hp/sitemap.xml
