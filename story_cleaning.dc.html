@@ -12,6 +12,93 @@
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/assets/hero_operations.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business",
+   "name": "都ユニリース株式会社",
+   "url": "https://unilease.co.jp/",
+   "logo": "https://ikarugamana-hub.github.io/shobo-hp/images/logo.webp",
+   "telephone": "0120-630-080",
+   "address": {
+    "@type": "PostalAddress",
+    "postalCode": "712-8011",
+    "addressRegion": "岡山県",
+    "addressLocality": "倉敷市",
+    "streetAddress": "連島町連島142-289",
+    "addressCountry": "JP"
+   },
+   "openingHours": "Mo-Fr 10:00-17:00"
+  },
+  {
+   "@type": "Service",
+   "name": "防火服専門クリーニング",
+   "description": "防火服のニオイ・汚れ・撥水性の低下を専門クリーニングで解消。撥水加工仕上げ、初回お試し無償クリーニング実施中",
+   "provider": {
+    "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business"
+   },
+   "areaServed": "JP"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "初回お試しはできますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "初回はお試しとして無償クリーニングを実施しています　ビフォーアフター資料を付けて返却します"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "撥水加工はできますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "対応できます　クリーニング後に撥水加工を施し、撥水性能の回復を目指します"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "問い合わせ方法を教えてください",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "お電話（0120-630-080）または問い合わせフォームからご相談ください　電話の受付対応時間は10時〜17時です"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "納期はどれくらいかかりますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "お預かりする数量や時期により異なります　ご希望の返却時期がある場合は、お気軽にお電話でご相談ください"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "何着から依頼できますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "着数を問わずご相談いただけます　まとまった数量の場合も対応可能です"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "防火服の発送はどうすればいいですか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "発送でのお預かりを基本としています　梱包や発送方法の詳細は、お申し込み時にご案内します"
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -74,6 +161,11 @@ html,body{margin:0;background:var(--navy);color:#fff;font-family:'Noto Sans JP',
 header nav a.nav-now{color:#fff!important;box-shadow:inset 0 -2px 0 var(--yellow);}
 #toTop{position:fixed;right:24px;bottom:24px;z-index:200;width:52px;height:52px;border-radius:50%;background:rgba(23,48,125,.92);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;transform:translateY(8px);}
 #toTop.show{opacity:1;pointer-events:auto;transform:none;}
+#mobileCall{display:none;}
+@media (max-width:768px){
+  #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+  #toTop{bottom:84px!important;}
+}
 header{transition:box-shadow .35s ease;}
 header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 @media (max-width:860px){
@@ -218,14 +310,14 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
   <div style="position:absolute;inset:0;background:linear-gradient(160deg,var(--navy-3) 0%,var(--navy-2) 55%,var(--navy) 100%);opacity:.9;"></div>
   <div class="hero-grid" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 560px;gap:60px;align-items:center;max-width:1360px;margin:0 auto;">
     <div>
-      <div style="font-size:17px;letter-spacing:.32em;color:rgba(255,255,255,.5);font-weight:700;margin-bottom:20px;">FIREFIGHTER GEAR CLEANING SERVICE</div>
+      <div style="font-size:17px;letter-spacing:.32em;color:rgba(255,255,255,.68);font-weight:700;margin-bottom:20px;">FIREFIGHTER GEAR CLEANING SERVICE</div>
       <h1 style="font-size:64px;line-height:1.45;font-weight:900;margin:0 0 10px;animation:fadeUp .7s .1s both;">防火服の<br>ニオイ・汚れ・撥水低下に<br>専門対応</h1>
       <div style="width:44px;height:2px;background:rgba(255,255,255,.4);margin-bottom:26px;animation:lineGrow .8s .2s both;"></div>
       <p style="font-size:21px;line-height:2.05;color:rgba(255,255,255,.75);margin:0 0 32px;max-width:520px;">個人防火装備のCIR、クリーニング（Cleaning）、検査（Inspection）、修理（Repair）は、汚染された個人防火装備による消防隊員の健康影響の可能性についての懸念の高まりに対応して定められました。ニオイ、汚れを除去することができます。</p>
       <div class="cta-row" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;">
         <a href="#trial" style="display:inline-flex;align-items:center;gap:10px;font-size:21px;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.4);padding:15px 28px;text-decoration:none;border-radius:6px;">初回お試しを見る</a>
       </div>
-      <p style="font-size:18px;color:rgba(255,255,255,.45);margin:0;">受付対応時間：10時〜17時（土日祝、年末年始、お盆除く）</p>
+      <p style="font-size:18px;color:rgba(255,255,255,.62);margin:0;">受付対応時間：10時〜17時（土日祝、年末年始、お盆除く）</p>
     </div>
     <div style="position:relative;">
       <div style="border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);animation:fadeUp .8s .2s both;">
@@ -238,7 +330,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 2. 課題・アンケート ===== -->
 <section id="risk" style="padding:88px 80px;background:rgba(17,26,56,.7);">
   <div data-reveal style="max-width:900px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;text-align:center;">SURVEY</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;text-align:center;">SURVEY</div>
     <h2 style="font-size:45px;font-weight:900;margin:0 0 10px;text-align:center;">消防隊員のお困りごとは、<br>ニオイ・撥水・汚れに集中</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:0 auto 48px;"></div>
 
@@ -267,7 +359,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 3. 誤った手入れのリスク ===== -->
 <section style="padding:88px 80px;background:var(--navy);">
   <div data-reveal style="max-width:1000px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">CARE RISK</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">CARE RISK</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">自己流のお手入れが、<br>防火服の機能低下につながることがあります</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
 
@@ -291,7 +383,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 4. サービス内容 ===== -->
 <section id="service" style="padding:88px 80px;background:rgba(17,26,56,.7);">
   <div style="max-width:1100px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">SERVICE</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">SERVICE</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">洗うだけでなく、<br>状態確認・撥水加工・返却資料まで対応</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
 
@@ -315,7 +407,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 5. Before / After ===== -->
 <section style="padding:88px 80px;background:var(--navy);">
   <div style="max-width:1100px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">BEFORE / AFTER</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">BEFORE / AFTER</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">目で見てわかる、<br>クリーニング後の変化</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
 
@@ -335,7 +427,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
             <span style="color:rgba(255,255,255,.3);">→</span>
             <span style="font-size:19px;color:rgba(255,255,255,.6);">After <strong style="color:var(--yellow);font-size:23px;">004</strong></span>
           </div>
-          <p style="font-size:18px;line-height:1.7;color:rgba(255,255,255,.5);margin:0;">レベル値200は焼肉後の服のニオイ例です</p>
+          <p style="font-size:18px;line-height:1.7;color:rgba(255,255,255,.68);margin:0;">レベル値200は焼肉後の服のニオイ例です</p>
         </div>
       </div>
 
@@ -386,7 +478,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 6. クリーニングの流れ ===== -->
 <section id="flow" style="padding:88px 80px;background:rgba(17,26,56,.7);">
   <div style="max-width:760px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;text-align:center;">PROCESS</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;text-align:center;">PROCESS</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;text-align:center;">クリーニングの流れ</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:0 auto 48px;"></div>
 
@@ -432,32 +524,32 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 8. FAQ ===== -->
 <section style="padding:88px 80px;background:var(--navy);">
   <div data-reveal style="max-width:800px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">FAQ</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">FAQ</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">よくあるご質問</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
     <div style="display:flex;flex-direction:column;">
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">初回お試しはできますか？<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">初回お試しはできますか？<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">初回はお試しとして無償クリーニングを実施しています　ビフォーアフター資料を付けて返却します</div>
       </div>
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">撥水加工はできますか？<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">撥水加工はできますか？<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">対応できます　クリーニング後に撥水加工を施し、撥水性能の回復を目指します</div>
       </div>
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">問い合わせ方法を教えてください<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">問い合わせ方法を教えてください<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">お電話（0120-630-080）または問い合わせフォームからご相談ください　電話の受付対応時間は10時〜17時です</div>
       </div>
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">納期はどれくらいかかりますか？<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">納期はどれくらいかかりますか？<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">お預かりする数量や時期により異なります　ご希望の返却時期がある場合は、お気軽にお電話でご相談ください</div>
       </div>
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">何着から依頼できますか？<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">何着から依頼できますか？<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">着数を問わずご相談いただけます　まとまった数量の場合も対応可能です</div>
       </div>
       <div class="faq-item" role="button" tabindex="0" aria-expanded="false">
-        <div class="faq-q">防火服の発送はどうすればいいですか？<span style="font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .2s;">+</span></div>
+        <div class="faq-q">防火服の発送はどうすればいいですか？<span style="font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .2s;">+</span></div>
         <div class="faq-a">発送でのお預かりを基本としています　梱包や発送方法の詳細は、お申し込み時にご案内します</div>
       </div>
     </div>
@@ -467,7 +559,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== 9. CONTACT ===== -->
 <section id="contact" style="padding:90px 80px;background:linear-gradient(135deg,rgba(23,48,125,.6) 0%,rgba(8,12,30,1) 60%);">
   <div data-reveal style="max-width:700px;margin:0 auto;text-align:center;">
-    <div style="font-size:17px;letter-spacing:.38em;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:18px;">CONTACT</div>
+    <div style="font-size:17px;letter-spacing:.38em;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:18px;">CONTACT</div>
     <h2 style="font-size:47px;font-weight:900;line-height:1.5;margin:0 0 18px;">防火服クリーニングの<br>ご相談はこちら</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:0 auto 28px;"></div>
     <div style="display:inline-flex;flex-direction:column;gap:14px;align-items:center;margin-bottom:32px;">
@@ -489,7 +581,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <section style="padding:88px 80px;background:var(--navy);">
   <div style="max-width:1000px;margin:0 auto;">
     <div data-reveal>
-      <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">NUMBERS</div>
+      <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">NUMBERS</div>
       <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">数字で見る都ユニリース</h2>
       <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
     </div>
@@ -513,7 +605,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
       <div class="service-card" style="text-align:center;">
         <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:10px;">自社工場</div>
         <div style="font-size:45px;font-weight:900;color:var(--yellow);line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">工場</span></div>
-<div style="font-size:16px;color:rgba(255,255,255,.45);margin-top:6px;">ほかパートナー工場70</div>      </div>
+<div style="font-size:16px;color:rgba(255,255,255,.62);margin-top:6px;">ほかパートナー工場70</div>      </div>
       <div class="service-card" style="text-align:center;">
         <div style="font-size:18px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:10px;">事業歴</div>
         <div style="font-size:45px;font-weight:900;color:var(--yellow);line-height:1;"><span class="stat-num" data-n="30">0</span><span style="font-size:21px;font-weight:900;">余年</span></div>
@@ -525,39 +617,39 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 <!-- ===== COMPANY ===== -->
 <section id="company" style="padding:88px 80px;background:rgba(17,26,56,.7);scroll-margin-top:90px;">
   <div data-reveal style="max-width:800px;margin:0 auto;">
-    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:12px;">COMPANY</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:12px;">COMPANY</div>
     <h2 style="font-size:43px;font-weight:900;margin:0 0 10px;">会社概要</h2>
     <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin-bottom:40px;"></div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">社名</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">社名</div>
       <div style="font-size:20px;color:#fff;">都ユニリース株式会社</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">代表者</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">代表者</div>
       <div style="font-size:20px;color:#fff;">代表取締役社長 髙杉 彰</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">所在地</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">所在地</div>
       <div style="font-size:20px;color:#fff;">〒712-8011 岡山県倉敷市連島町連島142-289</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">電話</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">電話</div>
       <div style="font-size:20px;color:#fff;"><a href="tel:0120-630-080" style="color:#fff;text-decoration:none;">0120-630-080</a>（受付時間 10:00〜17:00　土日祝・年末年始・お盆を除く）</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">事業内容</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">事業内容</div>
       <div style="font-size:20px;color:#fff;">レンタルユニフォームシステム／感染防止衣レンタル／防火服専門クリーニング</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">認証</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">認証</div>
       <div style="font-size:20px;color:#fff;">ISO27001:2022 認証取得（認証番号 MSA-IS-130）／EcoVadis社 CSR審査 ブロンズメダル</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">特許</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">特許</div>
       <div style="font-size:20px;color:#fff;">特許第3041335号「クリーニング作業付き、繰返しユニフォーム管理方法」</div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:0 24px;border-bottom:1px solid rgba(255,255,255,.1);padding:20px 0;">
-      <div style="font-size:19px;color:rgba(255,255,255,.5);font-weight:700;">コーポレートサイト</div>
+      <div style="font-size:19px;color:rgba(255,255,255,.68);font-weight:700;">コーポレートサイト</div>
       <div style="font-size:20px;color:#fff;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#9fc0ff;text-decoration:underline;">unilease.co.jp</a></div>
     </div>
   </div>
@@ -570,12 +662,13 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
     <span style="font-size:19px;font-weight:700;color:rgba(255,255,255,.55);">防火服クリーニング</span>
   </div>
   <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-    <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="font-size:17px;color:rgba(255,255,255,.4);text-decoration:none;">プライバシーポリシー</a>
-    <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="font-size:17px;color:rgba(255,255,255,.4);text-decoration:none;">コーポレートサイト</a>
+    <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="font-size:17px;color:rgba(255,255,255,.6);text-decoration:none;">プライバシーポリシー</a>
+    <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="font-size:17px;color:rgba(255,255,255,.6);text-decoration:none;">コーポレートサイト</a>
     <span style="font-size:18px;color:rgba(255,255,255,.25);">© 2026 Miyako Unilease Co., Ltd.</span>
   </div>
 </footer>
 <button id="toTop" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {

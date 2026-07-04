@@ -12,6 +12,77 @@
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/kansen-assets/hybrid-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business",
+   "name": "都ユニリース株式会社",
+   "url": "https://unilease.co.jp/",
+   "logo": "https://ikarugamana-hub.github.io/shobo-hp/images/logo.webp",
+   "telephone": "0120-630-080",
+   "address": {
+    "@type": "PostalAddress",
+    "postalCode": "712-8011",
+    "addressRegion": "岡山県",
+    "addressLocality": "倉敷市",
+    "streetAddress": "連島町連島142-289",
+    "addressCountry": "JP"
+   },
+   "openingHours": "Mo-Fr 10:00-17:00"
+  },
+  {
+   "@type": "Service",
+   "name": "感染防止衣レンタル",
+   "description": "血液・飛沫から消防・救急隊員を守る感染防止衣を1名単位で貸与・管理するレンタルサービス",
+   "provider": {
+    "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business"
+   },
+   "areaServed": "JP"
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "サンプルの確認はできますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "製品サンプルのご案内が可能です　実物を確認のうえご検討いただけますので、お気軽にお問い合わせください"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "少人数の部署でも導入できますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "隊員1名ごとの貸与・個人管理の仕組みのため、人数規模を問わずご相談いただけます"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "汚れや破損があった場合はどうなりますか？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "クリーニングのほか、ほつれや破けの修理・交換、体型変化によるサイズ変更まで無償サービスの範囲で対応します"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "2つの型のどちらが合うか分かりません",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "現場環境やご要望を伺ったうえで、最適な型をご提案します　2タイプの比較検討もサポートしますので、お気軽にご相談ください"
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -25,13 +96,18 @@
   @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } [data-line]{width:44px!important;transition:none!important;} }
   .faq-item{border-bottom:1px solid rgba(255,255,255,.12);cursor:pointer;outline-offset:4px;}
   .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;font-size:23px;font-weight:700;color:#eef2f7;}
-  .faq-ic{font-size:30px;color:rgba(255,255,255,.4);flex:none;transition:transform .25s;}
+  .faq-ic{font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .25s;}
   .faq-item.open .faq-ic{transform:rotate(45deg);}
-  .faq-a{font-size:21px;line-height:2;color:#9aa7b6;max-height:0;overflow:hidden;padding:0;transition:max-height .4s ease,padding .4s ease;}
+  .faq-a{font-size:21px;line-height:2;color:#b3bfcc;max-height:0;overflow:hidden;padding:0;transition:max-height .4s ease,padding .4s ease;}
   .faq-item.open .faq-a{max-height:340px;padding:0 0 22px;}
   header nav a.nav-now{color:#fff!important;box-shadow:inset 0 -2px 0 #5aa6ec;}
   #toTop{position:fixed;right:24px;bottom:24px;z-index:200;width:52px;height:52px;border-radius:50%;background:rgba(13,59,115,.92);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;transform:translateY(8px);}
   #toTop.show{opacity:1;pointer-events:auto;transform:none;}
+  #mobileCall{display:none;}
+  @media (max-width:768px){
+    #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+    #toTop{bottom:84px!important;}
+  }
   [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
   .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,.4);}
@@ -186,7 +262,7 @@
       <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">THE CHALLENGE</div>
       <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:43px; font-weight:900; line-height:1.5; margin-top:16px; color:#eef2f7; text-wrap:balance;">「守る」と「動ける」を、現場ごとに</h2>
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
-      <p style="font-size:23px; line-height:2.1; color:#9aa7b6; margin-top:24px; text-wrap:pretty;">感染防止と通気性、優先すべきバランスは現場ごとに違います<br>UNILEASEは、<strong style="color:#eef2f7;">防護と快適のバランスが異なる2つの型</strong>をご用意し、撥水・制菌などの機能を備えました</p>
+      <p style="font-size:23px; line-height:2.1; color:#b3bfcc; margin-top:24px; text-wrap:pretty;">感染防止と通気性、優先すべきバランスは現場ごとに違います<br>UNILEASEは、<strong style="color:#eef2f7;">防護と快適のバランスが異なる2つの型</strong>をご用意し、撥水・制菌などの機能を備えました</p>
     </div>
   </section>
 
@@ -208,7 +284,7 @@
           </div>
           <div style="padding:28px 30px 32px;">
             <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#eef2f7;">ハイブリッド型</h3>
-            <p style="font-size:21px; line-height:1.85; color:#9aa7b6; margin-top:10px;">前面はバリア性、背面は通気性　守りと動きやすさを一着で両立する、現場主力モデル</p>
+            <p style="font-size:21px; line-height:1.85; color:#b3bfcc; margin-top:10px;">前面はバリア性、背面は通気性　守りと動きやすさを一着で両立する、現場主力モデル</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span style="font-size:18px; font-weight:700; color:#6db3ee; background:rgba(45,143,212,0.12); border:1px solid rgba(45,143,212,0.35); padding:5px 11px; border-radius:100px;">前面バリア性 クラス6</span>
               <span style="font-size:18px; font-weight:700; color:#6db3ee; background:rgba(45,143,212,0.12); border:1px solid rgba(45,143,212,0.35); padding:5px 11px; border-radius:100px;">背面通気構造</span>
@@ -226,7 +302,7 @@
           </div>
           <div style="padding:28px 30px 32px;">
             <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#eef2f7;">通気性特化型</h3>
-            <p style="font-size:21px; line-height:1.85; color:#9aa7b6; margin-top:10px;">全身に高通気素材を採用　断然涼しく、夏場や長時間の活動でも快適さを保つモデル</p>
+            <p style="font-size:21px; line-height:1.85; color:#b3bfcc; margin-top:10px;">全身に高通気素材を採用　断然涼しく、夏場や長時間の活動でも快適さを保つモデル</p>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span style="font-size:18px; font-weight:700; color:#6db3ee; background:rgba(45,143,212,0.12); border:1px solid rgba(45,143,212,0.35); padding:5px 11px; border-radius:100px;">通気度 100cc/cm²·s以上</span>
               <span style="font-size:18px; font-weight:700; color:#6db3ee; background:rgba(45,143,212,0.12); border:1px solid rgba(45,143,212,0.35); padding:5px 11px; border-radius:100px;">撥水・制菌</span>
@@ -253,7 +329,7 @@
           <div style="background:#161a21; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(0,0,0,0.45); border-top:4px solid #0d3b73;">
             <div style="display:inline-block; background:#0d3b73; color:#fff; font-size:20px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:1px;">前面</div>
             <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#6db3ee; margin-top:16px;">バリア性</h3>
-            <p style="font-size:21px; line-height:1.95; color:#9aa7b6; margin-top:12px;">飛沫やウイルスと接触しやすい前面に、高密度の防護素材を配置　汚染リスクの高い正面からの感染を防ぎます</p>
+            <p style="font-size:21px; line-height:1.95; color:#b3bfcc; margin-top:12px;">飛沫やウイルスと接触しやすい前面に、高密度の防護素材を配置　汚染リスクの高い正面からの感染を防ぎます</p>
           </div>
         </div>
         <div style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(13,59,115,0.18);">
@@ -263,7 +339,7 @@
           <div style="background:#161a21; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(0,0,0,0.45); border-top:4px solid #2b8fd4;">
             <div style="display:inline-block; background:#2b8fd4; color:#fff; font-size:20px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:1px;">背面</div>
             <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#2b8fd4; margin-top:16px;">通気性</h3>
-            <p style="font-size:21px; line-height:1.95; color:#9aa7b6; margin-top:12px;">接触リスクの低い背面には通気性素材を採用　熱や湿気を逃がし、長時間の活動でも快適さを保ちます</p>
+            <p style="font-size:21px; line-height:1.95; color:#b3bfcc; margin-top:12px;">接触リスクの低い背面には通気性素材を採用　熱や湿気を逃がし、長時間の活動でも快適さを保ちます</p>
           </div>
         </div>
       </div>
@@ -292,7 +368,7 @@
           </div>
           <div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7;">クラス6の前面バリア性</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:8px;">最高ランクのバリア素材が、飛沫・体液・ウイルスの浸透を前面で遮断　感染リスクの高い活動で隊員を守ります</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:8px;">最高ランクのバリア素材が、飛沫・体液・ウイルスの浸透を前面で遮断　感染リスクの高い活動で隊員を守ります</p>
           </div>
         </div>
         <div style="display:flex; gap:22px; padding:30px; background:#161a21; border:1px solid #232a33; border-radius:6px;">
@@ -301,7 +377,7 @@
           </div>
           <div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7;">背面の通気構造</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:8px;">熱と湿気を効率よく排出　重ね着や長時間の出動でも蒸れを抑え、集中力を保ちます</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:8px;">熱と湿気を効率よく排出　重ね着や長時間の出動でも蒸れを抑え、集中力を保ちます</p>
           </div>
         </div>
         <div style="display:flex; gap:22px; padding:30px; background:#161a21; border:1px solid #232a33; border-radius:6px;">
@@ -310,7 +386,7 @@
           </div>
           <div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7;">反射材で視認性を確保</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:8px;">前後に反射テープを配置　夜間や悪条件下の現場でも隊員の存在を明確にし、安全を支えます</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:8px;">前後に反射テープを配置　夜間や悪条件下の現場でも隊員の存在を明確にし、安全を支えます</p>
           </div>
         </div>
         <div style="display:flex; gap:22px; padding:30px; background:#161a21; border:1px solid #232a33; border-radius:6px;">
@@ -319,7 +395,7 @@
           </div>
           <div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7;">所属表示・組織対応</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:8px;">胸部・背面に所属名の表示スペースを確保　組織ごとの仕様にも柔軟に対応します</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:8px;">胸部・背面に所属名の表示スペースを確保　組織ごとの仕様にも柔軟に対応します</p>
           </div>
         </div>
       </div>
@@ -333,7 +409,7 @@
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#5aa6ec;">BREATHABLE TYPE</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:47px; font-weight:900; margin-top:14px; color:#eef2f7; line-height:1.35;">断然涼しい　そして、常に清潔</h2>
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
-        <p style="font-size:23px; line-height:2; color:#9aa7b6; margin-top:18px; max-width:720px; text-wrap:pretty;">全身に高通気素材を採用した、暑さ対策に特化したモデル　夏場や長時間の活動でも涼しく、軽い着用感を実現します</p>
+        <p style="font-size:23px; line-height:2; color:#b3bfcc; margin-top:18px; max-width:720px; text-wrap:pretty;">全身に高通気素材を採用した、暑さ対策に特化したモデル　夏場や長時間の活動でも涼しく、軽い着用感を実現します</p>
       </div>
 
       <div data-reveal="" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;">
@@ -343,20 +419,20 @@
         <div style="display:flex; flex-direction:column; gap:18px;">
           <div style="background:#12161d; border:1px solid #232a33; border-radius:8px; padding:26px 28px;">
             <div style="display:flex; align-items:baseline; gap:12px;">
-              <span style="font-family:'Noto Sans JP',sans-serif; font-size:43px; font-weight:700; color:#6db3ee;">100<span style="font-size:22px; color:#9aa7b6;">cc/cm²·s 以上</span></span>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:43px; font-weight:700; color:#6db3ee;">100<span style="font-size:22px; color:#b3bfcc;">cc/cm²·s 以上</span></span>
             </div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7; margin-top:8px;">圧倒的な通気度</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:6px;">一般衣料の通気度は約20cc/cm²·sその<strong style="color:#eef2f7;">5倍以上の通気性</strong>で、夏でも涼しく軽い着用感が抜群です</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:6px;">一般衣料の通気度は約20cc/cm²·sその<strong style="color:#eef2f7;">5倍以上の通気性</strong>で、夏でも涼しく軽い着用感が抜群です</p>
           </div>
           <div style="background:#12161d; border:1px solid #232a33; border-radius:8px; padding:26px 28px;">
             <div style="font-family:'Noto Sans JP',sans-serif; font-size:32px; font-weight:700; color:#6db3ee;">撥水度 50回洗濯後も 4級以上</div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7; margin-top:8px;">繰り返し洗っても弾く</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:6px;">50回の洗濯を繰り返しても撥水度4級以上を維持　クリーニングの度に撥水加工を施します</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:6px;">50回の洗濯を繰り返しても撥水度4級以上を維持　クリーニングの度に撥水加工を施します</p>
           </div>
           <div style="background:#12161d; border:1px solid #232a33; border-radius:8px; padding:26px 28px;">
             <div style="font-family:'Noto Sans JP',sans-serif; font-size:30px; font-weight:900; color:#6db3ee;">制菌加工 SEK赤マーク取得</div>
             <h4 style="font-size:24px; font-weight:700; color:#eef2f7; margin-top:8px;">感染防止衣に必須の制菌</h4>
-            <p style="font-size:21px; line-height:1.9; color:#9aa7b6; margin-top:6px;">繊維評価技術協議会が性能と安全性を認めた制菌加工マーク　医療・介護現場の業務用繊維製品が対象です</p>
+            <p style="font-size:21px; line-height:1.9; color:#b3bfcc; margin-top:6px;">繊維評価技術協議会が性能と安全性を認めた制菌加工マーク　医療・介護現場の業務用繊維製品が対象です</p>
           </div>
         </div>
       </div>
@@ -462,27 +538,27 @@
       </div>
       <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約社数</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">契約社数</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="2815">0</span><span style="font-size:21px;font-weight:900;">社</span></div>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約店舗数</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">契約店舗数</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="21094">0</span><span style="font-size:21px;font-weight:900;">店舗</span></div>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">契約従業員数</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">契約従業員数</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="351009">0</span><span style="font-size:21px;font-weight:900;">人</span></div>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">1日のクリーニング処理</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">1日のクリーニング処理</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">万点</span></div>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">自社工場</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">自社工場</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">工場</span></div>
-<div style="font-size:17px;color:#8197b5;margin-top:6px;">ほかパートナー工場70</div>        </div>
+<div style="font-size:17px;color:#9db1cc;margin-top:6px;">ほかパートナー工場70</div>        </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
-          <div style="font-size:19px;font-weight:700;color:#9aa7b6;margin-bottom:10px;">事業歴</div>
+          <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">事業歴</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="30">0</span><span style="font-size:21px;font-weight:900;">余年</span></div>
         </div>
       </div>
@@ -499,35 +575,35 @@
       </div>
       <div data-reveal="">
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">社名</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">社名</div>
           <div style="font-size:21px; color:#eef2f7;">都ユニリース株式会社</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">代表者</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">代表者</div>
           <div style="font-size:21px; color:#eef2f7;">代表取締役社長 髙杉 彰</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">所在地</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">所在地</div>
           <div style="font-size:21px; color:#eef2f7;">〒712-8011 岡山県倉敷市連島町連島142-289</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">電話</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">電話</div>
           <div style="font-size:21px; color:#eef2f7;"><a href="tel:0120-630-080" style="color:#eef2f7; text-decoration:none;">0120-630-080</a>（受付時間 10:00〜17:00　土日祝・年末年始・お盆を除く）</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">事業内容</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">事業内容</div>
           <div style="font-size:21px; color:#eef2f7;">レンタルユニフォームシステム／感染防止衣レンタル／防火服専門クリーニング</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">認証</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">認証</div>
           <div style="font-size:21px; color:#eef2f7;">ISO27001:2022 認証取得（認証番号 MSA-IS-130）／EcoVadis社 CSR審査 ブロンズメダル</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">特許</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">特許</div>
           <div style="font-size:21px; color:#eef2f7;">特許第3041335号「クリーニング作業付き、繰返しユニフォーム管理方法」</div>
         </div>
         <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
-          <div style="font-size:20px; color:#8197b5; font-weight:700;">コーポレートサイト</div>
+          <div style="font-size:20px; color:#9db1cc; font-weight:700;">コーポレートサイト</div>
           <div style="font-size:21px; color:#eef2f7;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#6db3ee; text-decoration:underline;">unilease.co.jp</a></div>
         </div>
       </div>
@@ -540,12 +616,12 @@
       <div>
         <div style="font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:32px; letter-spacing:1px; color:#fff;">UNILEASE</div>
         <div style="font-size:20px; color:#bcd2ea; margin-top:10px;">都ユニリース株式会社</div>
-        <div style="font-size:18px; color:#8197b5; margin-top:4px;">〒712-8011 岡山県倉敷市連島町連島142-289 ／ レンタルユニフォームシステム</div>
-        <div style="font-size:18px; color:#8197b5; margin-top:4px;">ハイブリッド型・通気性特化型 感染防止衣</div>
+        <div style="font-size:18px; color:#9db1cc; margin-top:4px;">〒712-8011 岡山県倉敷市連島町連島142-289 ／ レンタルユニフォームシステム</div>
+        <div style="font-size:18px; color:#9db1cc; margin-top:4px;">ハイブリッド型・通気性特化型 感染防止衣</div>
       </div>
       <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-        <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="font-size:17px; color:#8197b5; text-decoration:none;">プライバシーポリシー</a>
-        <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="font-size:17px; color:#8197b5; text-decoration:none;">コーポレートサイト</a>
+        <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="font-size:17px; color:#9db1cc; text-decoration:none;">プライバシーポリシー</a>
+        <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="font-size:17px; color:#9db1cc; text-decoration:none;">コーポレートサイト</a>
         <div style="font-size:18px; color:#6a82a3;">© 都ユニリース株式会社 All Rights Reserved.</div>
       </div>
     </div>
@@ -553,5 +629,6 @@
 
 </div>
 <button id="toTop" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
 </body>
 </html>

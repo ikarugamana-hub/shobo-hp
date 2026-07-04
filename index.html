@@ -12,6 +12,26 @@
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/hero-poster.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "LocalBusiness",
+ "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business",
+ "name": "都ユニリース株式会社",
+ "url": "https://unilease.co.jp/",
+ "logo": "https://ikarugamana-hub.github.io/shobo-hp/images/logo.webp",
+ "telephone": "0120-630-080",
+ "address": {
+  "@type": "PostalAddress",
+  "postalCode": "712-8011",
+  "addressRegion": "岡山県",
+  "addressLocality": "倉敷市",
+  "streetAddress": "連島町連島142-289",
+  "addressCountry": "JP"
+ },
+ "openingHours": "Mo-Fr 10:00-17:00"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,6 +46,10 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 @keyframes lineGrow{from{width:0;}to{width:44px;}}
 @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;}}
+#mobileCall{display:none;}
+@media (max-width:768px){
+  #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+}
 
 .screen{
   position:absolute;
@@ -107,7 +131,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 
     <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 120px;">
       <div id="s0c0" style="opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;">
-        <div style="font-size:15px;letter-spacing:.38em;color:rgba(255,255,255,.5);font-weight:700;margin-bottom:22px;text-transform:uppercase;">Infection Control &amp; Firefighter Safety Support</div>
+        <div style="font-size:15px;letter-spacing:.38em;color:rgba(255,255,255,.68);font-weight:700;margin-bottom:22px;text-transform:uppercase;">Infection Control &amp; Firefighter Safety Support</div>
       </div>
       <div id="s0c1" style="opacity:0;transform:translateY(18px);transition:opacity .75s .1s ease,transform .75s .1s ease;">
         <h1 style="font-size:72px;line-height:1.5;font-weight:900;margin:0 0 26px;text-shadow:0 2px 32px rgba(0,0,0,.5);letter-spacing:.02em;">消防・救急の隊員を、<br>現場の最前線で支える</h1>
@@ -216,6 +240,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
   </div>
 
 </div>
+<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
 
 <script>
 var state = { screen: 0, h1: -1 };
