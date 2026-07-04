@@ -9,9 +9,10 @@
 <meta property="og:description" content="感染防止衣の貸与・個人管理から防火服の専門クリーニングまで、消防・救急の現場をトータルサポート。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/">
-<meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/hero-poster.webp">
+<meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/og-top.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -46,6 +47,12 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 @keyframes lineGrow{from{width:0;}to{width:44px;}}
 @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;}}
+@media print{
+  body{background:#fff!important;color:#000!important;overflow:visible!important;}
+  video,#mobileCall{display:none!important;}
+  h1,h3,p,div,span{color:#000!important;text-shadow:none!important;}
+  .screen{position:static!important;opacity:1!important;transform:none!important;}
+}
 #mobileCall{display:none;}
 @media (max-width:768px){
   #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
