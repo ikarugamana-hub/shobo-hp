@@ -147,7 +147,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;animation:lineGrow 1s .8s both;"></div>
       </div>
       <div id="s0c3" style="opacity:0;transform:translateY(14px);transition:opacity .75s .3s ease,transform .75s .3s ease;">
-        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の貸与・個人管理から、防火衣の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の貸与・個人管理から、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
       </div>
       <div id="s0c4" style="opacity:0;transform:translateY(12px);transition:opacity .75s .4s ease,transform .75s .4s ease;display:flex;justify-content:flex-end;">
         <button onclick="goToGate()"
@@ -193,8 +193,8 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
         onmouseenter="hoverS1(0)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-infect" style="position:absolute;inset:0;"></div>
-        <video class="img-bg" autoplay muted playsinline onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <source src="uploads/infection-panel.mp4" type="video/mp4">
+        <video class="img-bg" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <source data-src="uploads/infection-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(23,48,125,.62),rgba(33,74,156,.28));"></div>
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,30,.05) 0%,rgba(8,12,30,.2) 45%,rgba(8,12,30,.87) 100%);"></div>
@@ -219,8 +219,8 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
         onmouseenter="hoverS1(1)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-clean" style="position:absolute;inset:0;"></div>
-        <video class="img-bg" autoplay muted playsinline onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <source src="uploads/cleaning-panel.mp4" type="video/mp4">
+        <video class="img-bg" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <source data-src="uploads/cleaning-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(122,20,24,.52),rgba(12,18,42,.38));"></div>
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,30,.05) 0%,rgba(8,12,30,.2) 45%,rgba(8,12,30,.87) 100%);"></div>
@@ -270,6 +270,19 @@ function goToGate() {
   showScreen(1);
   updatePanels();
   animateGate();
+  loadPanelVideos();
+}
+
+function loadPanelVideos() {
+  document.querySelectorAll('#screen-1 video').forEach(function(v) {
+    if (v.dataset.loaded) return;
+    v.dataset.loaded = '1';
+    var s = v.querySelector('source');
+    if (s && s.dataset.src) { s.src = s.dataset.src; }
+    v.muted = true;
+    v.load();
+    v.play().catch(function(){});
+  });
 }
 
 function animateGate() {
