@@ -13,6 +13,17 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D2YWZNLK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-B1D2YWZNLK');
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+  if (a && window.gtag) { gtag('event', 'tel_click', { link_text: (a.textContent || '').trim().slice(0, 40) }); }
+});
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -202,7 +213,10 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
   .bar-fill{width:100%!important;background:#999!important;}
   .faq-a{max-height:none!important;padding:0 0 20px!important;}
   .compare-card,.service-card,.risk-card,.faq-item{border:1px solid #ccc!important;background:#fff!important;box-shadow:none!important;}
+  .print-footer{display:flex!important;gap:18px;align-items:center;padding:18px 0!important;border-top:2px solid #333;font-size:16px;color:#000!important;}
+  .print-footer img{width:90px;height:90px;}
 }
+.print-footer{display:none;}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:400;background:#e0242c;color:#fff;padding:10px 18px;font-weight:700;text-decoration:none;font-size:16px;}.skip-link:focus{left:0;}
 .ba-wrap:focus{outline:2px solid var(--yellow);outline-offset:2px;}
 @media (max-width:860px){
@@ -251,6 +265,24 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
         if(el.dataset.drawn) return;
         var r=el.getBoundingClientRect();
         if(r.top < h*0.9 && r.bottom > -20){ el.dataset.drawn='1'; el.style.width='44px'; }
+      });
+      document.querySelectorAll('.ba-wrap').forEach(function(el){
+        if(el.dataset.hinted) return;
+        var r=el.getBoundingClientRect();
+        if(r.top < h*0.8 && r.bottom > 0){
+          el.dataset.hinted='1';
+          if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var t0=null;
+          var tick=function(ts){
+            if(t0===null) t0=ts;
+            var p=(ts-t0)/1400;
+            if(p>=1 || el.dataset.touched){ el.style.setProperty('--pos','50%'); return; }
+            var off=Math.sin(p*Math.PI*2)*12;
+            el.style.setProperty('--pos',(50+off)+'%');
+            requestAnimationFrame(tick);
+          };
+          setTimeout(function(){ requestAnimationFrame(tick); }, 600);
+        }
       });
       document.querySelectorAll('.bar-num[data-n],.stat-num[data-n]').forEach(function(el){
         if(el.dataset.counted) return;
@@ -308,7 +340,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
     }
     document.addEventListener('pointerdown', function(e){
       var w=e.target.closest ? e.target.closest('.ba-wrap') : null;
-      if(w){ baActive=w; baSet(w, e.clientX); }
+      if(w){ w.dataset.touched='1'; baActive=w; baSet(w, e.clientX); }
     });
     document.addEventListener('pointermove', function(e){ if(baActive) baSet(baActive, e.clientX); });
     document.addEventListener('pointerup', function(){ baActive=null; });
@@ -631,6 +663,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
     <div style="display:inline-flex;flex-direction:column;gap:14px;align-items:center;margin-bottom:32px;">
       <a href="tel:0120-630-080" style="font-size:43px;font-weight:900;color:#fff;text-decoration:none;">TEL 0120-630-080</a>
       <div style="font-size:20px;color:rgba(255,255,255,.6);">受付対応時間：10時〜17時（土日祝、年末年始、お盆除く）</div>
+      <div id="bizBadge" style="margin-top:6px;"></div>
     </div>
     <div class="cta-row" style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
       <a href="tel:0120-630-080" style="display:inline-flex;align-items:center;gap:10px;font-size:21px;font-weight:900;color:#fff;background:var(--red);padding:16px 38px;text-decoration:none;border-radius:6px;animation:glowRed 2.5s 1s infinite;">電話でお問い合わせ →</a>
@@ -734,6 +767,10 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
     <span style="font-size:18px;color:rgba(255,255,255,.25);">© 2026 Miyako Unilease Co., Ltd.</span>
   </div>
 </footer>
+<div class="print-footer">
+  <img src="images/site-qr.png" alt="サイトQRコード">
+  <div>都ユニリース株式会社　TEL 0120-630-080（受付 平日10:00〜17:00）<br>https://ikarugamana-hub.github.io/shobo-hp/</div>
+</div>
 <button id="toTop" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
 </x-dc>
@@ -756,6 +793,38 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script>
+(function(){
+  function isOpen(){
+    var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+    var day = d.getDay();
+    if (day === 0 || day === 6) return false;
+    var h = d.getHours();
+    return h >= 10 && h < 17;
+  }
+  function apply(){
+    var open = isOpen();
+    var b = document.getElementById('bizBadge');
+    if (b) {
+      b.innerHTML = open
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
+        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+    }
+    var mc = document.getElementById('mobileCall');
+    if (mc) {
+      mc.innerHTML = open
+        ? '&#128222; ただいま受付中｜電話で問い合わせる'
+        : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    }
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
+  window.addEventListener('load', apply);
+  setTimeout(apply, 800);
+  setTimeout(apply, 2000);
+  setTimeout(apply, 4000);
+  setInterval(apply, 60000);
+})();
 </script>
 </body>
 </html>

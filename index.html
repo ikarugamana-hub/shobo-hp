@@ -13,6 +13,17 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D2YWZNLK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-B1D2YWZNLK');
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+  if (a && window.gtag) { gtag('event', 'tel_click', { link_text: (a.textContent || '').trim().slice(0, 40) }); }
+});
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -360,6 +371,38 @@ document.addEventListener('DOMContentLoaded', function() {
   initVideo();
   initHeroAnim();
 });
+</script>
+<script>
+(function(){
+  function isOpen(){
+    var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+    var day = d.getDay();
+    if (day === 0 || day === 6) return false;
+    var h = d.getHours();
+    return h >= 10 && h < 17;
+  }
+  function apply(){
+    var open = isOpen();
+    var b = document.getElementById('bizBadge');
+    if (b) {
+      b.innerHTML = open
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
+        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+    }
+    var mc = document.getElementById('mobileCall');
+    if (mc) {
+      mc.innerHTML = open
+        ? '&#128222; ただいま受付中｜電話で問い合わせる'
+        : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    }
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
+  window.addEventListener('load', apply);
+  setTimeout(apply, 800);
+  setTimeout(apply, 2000);
+  setTimeout(apply, 4000);
+  setInterval(apply, 60000);
+})();
 </script>
 </body>
 </html>
