@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>感染防止衣 | 都ユニリース株式会社</title>
+<title>感染防止衣の販売・レンタル | 都ユニリース株式会社</title>
 <meta name="description" content="血液・飛沫から消防・救急隊員を守る感染防止衣の販売・レンタル。バリア性重視のハイブリッド型と通気性特化型の2タイプから現場に合わせて選べます。レンタルは1名単位で貸与・管理、クリーニング・修理まで対応。">
-<meta property="og:title" content="感染防止衣 | 都ユニリース株式会社">
+<meta property="og:title" content="感染防止衣の販売・レンタル | 都ユニリース株式会社">
 <meta property="og:description" content="血液・飛沫から消防・救急隊員を守る感染防止衣の販売・レンタル。2タイプから現場に合わせて選べます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/kansen.html">
+<link rel="canonical" href="https://ikarugamana-hub.github.io/shobo-hp/kansen.html">
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/og-kansen.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/favicon.png">
@@ -167,6 +168,7 @@ document.addEventListener('click', function(e){
   @keyframes riseIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
   a[href^="#"], header a { transition: color .25s ease, background-color .25s ease, transform .3s ease; }
   @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } [data-line]{width:44px!important;transition:none!important;} }
+  :focus-visible{outline:2px solid #5aa6ec;outline-offset:3px;}
   .faq-item{border-bottom:1px solid rgba(255,255,255,.12);cursor:pointer;outline-offset:4px;}
   .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;font-size:23px;font-weight:700;color:#eef2f7;}
   .faq-ic{font-size:30px;color:rgba(255,255,255,.6);flex:none;transition:transform .25s;}
@@ -856,7 +858,8 @@ document.addEventListener('click', function(e){
 </div>
 <script>
 (function(){
-  var HOLIDAYS = ['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
+  // 2028年以降を追加する場合は、この配列を更新してください（同じ配列が index/kansen/story/sp の4ファイルにあります）
+  var HOLIDAYS =['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
   function isOpen(){
     var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
     var day = d.getDay();
