@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>感染防止衣 | 都ユニリース株式会社</title>
-<meta name="description" content="血液・飛沫から消防・救急隊員を守る感染防止衣を1名単位で貸与・管理。バリア性重視のハイブリッド型と通気性特化型の2タイプから現場に合わせて選べる、都ユニリースのレンタルサービスです。">
+<meta name="description" content="血液・飛沫から消防・救急隊員を守る感染防止衣の販売・レンタル。バリア性重視のハイブリッド型と通気性特化型の2タイプから現場に合わせて選べます。レンタルは1名単位で貸与・管理、クリーニング・修理まで対応。">
 <meta property="og:title" content="感染防止衣 | 都ユニリース株式会社">
-<meta property="og:description" content="血液・飛沫から消防・救急隊員を守る感染防止衣を1名単位で貸与・管理。2タイプから現場に合わせて選べるレンタルサービス。">
+<meta property="og:description" content="血液・飛沫から消防・救急隊員を守る感染防止衣の販売・レンタル。2タイプから現場に合わせて選べます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/kansen.html">
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/og-kansen.png">
@@ -47,8 +47,8 @@ document.addEventListener('click', function(e){
   },
   {
    "@type": "Service",
-   "name": "感染防止衣レンタル",
-   "description": "血液・飛沫から消防・救急隊員を守る感染防止衣を1名単位で貸与・管理するレンタルサービス",
+   "name": "感染防止衣 販売・レンタル",
+   "description": "血液・飛沫から消防・救急隊員を守る感染防止衣の販売・レンタル。レンタルは1名単位で貸与・管理",
    "provider": {
     "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business"
    },
@@ -774,10 +774,18 @@ document.addEventListener('click', function(e){
 <a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
 <script>
 (function(){
+  var HOLIDAYS = ['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
   function isOpen(){
     var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
     var day = d.getDay();
     if (day === 0 || day === 6) return false;
+    var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+    var dd = ('0' + d.getDate()).slice(-2);
+    var ymd = d.getFullYear() + '-' + mm + '-' + dd;
+    if (HOLIDAYS.indexOf(ymd) !== -1) return false;
+    var md = mm + '-' + dd;
+    if (md >= '08-13' && md <= '08-15') return false;   // お盆
+    if (md >= '12-29' || md <= '01-03') return false;   // 年末年始
     var h = d.getHours();
     return h >= 10 && h < 17;
   }
