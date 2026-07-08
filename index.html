@@ -3,6 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){
+  try {
+    if (window.location.search.indexOf('pc=1') !== -1) { sessionStorage.setItem('forcePC', '1'); }
+    if (sessionStorage.getItem('forcePC') === '1') return;
+    if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+      window.location.replace('sp.html');
+    }
+  } catch (e) {}
+})();
+</script>
 <title>都ユニリース | 消防・救急安全支援</title>
 <meta name="description" content="消防・救急の隊員を現場の最前線で支える都ユニリース。感染防止衣の貸与・個人管理と、防火服の専門クリーニング。2つの専門サービスで現場の安全環境をトータルサポートします。">
 <meta property="og:title" content="都ユニリース | 消防・救急安全支援">

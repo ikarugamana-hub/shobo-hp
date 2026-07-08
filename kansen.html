@@ -161,6 +161,25 @@ document.addEventListener('click', function(e){
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,.4);}
   header{transition:box-shadow .35s ease;}
   header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
+  @media (max-width:768px){
+    section{padding-left:20px!important;padding-right:20px!important;}
+    h1{font-size:36px!important;line-height:1.4!important;}
+    h2{font-size:28px!important;}
+    h3{font-size:22px!important;}
+    h4{font-size:20px!important;}
+    p{font-size:17px!important;line-height:1.9!important;}
+    p br{display:none;}
+    .faq-a br{display:none;}
+    .mgrid{grid-template-columns:1fr!important;}
+    header{padding:10px 14px!important;}
+    header img{height:30px!important;}
+    header nav{gap:8px!important;}
+    header nav a{font-size:11px!important;letter-spacing:0!important;}
+    header nav a:not(:first-child):not(:last-child){display:none;}
+    nav[aria-label="パンくずリスト"]{padding:10px 20px 0!important;}
+    .card-grid > div{padding:20px 16px!important;}
+    #toTop{right:14px;}
+  }
   .wind { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
   .wind-line { position:absolute; left:0; height:2px; border-radius:99px; background:linear-gradient(90deg, transparent, rgba(200,230,255,.9), transparent); filter:blur(.6px); opacity:0; transform:translateX(-30vw); animation:windDrift linear infinite; }
   @keyframes windDrift { 0%{transform:translateX(-30vw); opacity:0} 12%{opacity:var(--o,.5)} 78%{opacity:var(--o,.5)} 100%{transform:translateX(132vw); opacity:0} }
@@ -296,7 +315,7 @@ document.addEventListener('click', function(e){
         <p style="font-size:24px; line-height:2; color:#cfe0f2; margin-top:24px; max-width:600px; text-wrap:pretty;">守りを重視した<strong style="color:#fff;">「ハイブリッド型」</strong>と<br>涼しさを極めた<strong style="color:#fff;">「通気性特化型」</strong><br>活動スタイルや季節に合わせて選べる<br>感染防止衣ラインナップです</p>
       </div>
       <!-- type chips -->
-      <div data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:64px; max-width:760px;">
+      <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:64px; max-width:760px;">
         <a href="#hybrid" style="display:flex; flex-direction:column; gap:4px; padding:20px 24px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:6px; text-decoration:none;">
           <span style="font-family:'Noto Sans JP',sans-serif; font-size:21px; font-weight:600; letter-spacing:2px; color:#7fc3ff;">HYBRID</span>
           <span style="font-size:25px; font-weight:700; color:#fff;">ハイブリッド型 →</span>
@@ -329,7 +348,7 @@ document.addEventListener('click', function(e){
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">2つの型から選ぶ</h2>
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
       </div>
-      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+      <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
         <!-- Hybrid card -->
         <div style="background:#161a21; border:1px solid #232a33; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,0.45);">
           <div style="position:relative; height:400px; overflow:hidden;">
@@ -382,7 +401,7 @@ document.addEventListener('click', function(e){
       <div data-reveal="" style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(13,59,115,0.18); margin-bottom:30px;">
         <img src="kansen-assets/hybrid-front-back.webp?v=3" alt="前面バリア性・背面通気性" loading="lazy" style="width:100%; display:block;">
       </div>
-      <div data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+      <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
         <div style="background:#161a21; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(0,0,0,0.45); border-top:4px solid #0d3b73;">
           <div style="display:inline-block; background:#0d3b73; color:#fff; font-size:20px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:1px;">前面</div>
           <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#6db3ee; margin-top:16px;">バリア性</h3>
@@ -396,7 +415,7 @@ document.addEventListener('click', function(e){
       </div>
 
       <!-- クラス6 highlight -->
-      <div data-reveal="" style="margin-top:40px; background:linear-gradient(120deg,#0d3b73,#1f5fa8); border-radius:10px; padding:44px 48px; display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; box-shadow:0 16px 40px rgba(13,59,115,0.35);">
+      <div class="mgrid" data-reveal="" style="margin-top:40px; background:linear-gradient(120deg,#0d3b73,#1f5fa8); border-radius:10px; padding:44px 48px; display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; box-shadow:0 16px 40px rgba(13,59,115,0.35);">
         <div style="text-align:center; flex-shrink:0;">
           <div style="font-size:20px; font-weight:700; letter-spacing:2px; color:#bcdcf5;">前面バリア性</div>
           <div style="font-family:'Noto Sans JP',sans-serif; font-size:92px; font-weight:700; line-height:0.9; color:#fff;">6</div>
@@ -413,7 +432,7 @@ document.addEventListener('click', function(e){
       <div data-reveal="" style="margin-top:56px; margin-bottom:26px;">
         <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#eef2f7;">ハイブリッド型の特長</h3>
       </div>
-      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
+      <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
         <div style="display:flex; gap:22px; padding:30px; background:#161a21; border:1px solid #232a33; border-radius:6px;">
           <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#0d3b73; display:flex; align-items:center; justify-content:center;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"></path></svg>
@@ -464,7 +483,7 @@ document.addEventListener('click', function(e){
         <p style="font-size:23px; line-height:2; color:#b3bfcc; margin-top:18px; max-width:720px; text-wrap:pretty;">全身に高通気素材を採用した<br>暑さ対策に特化したモデル<br>夏場や長時間の活動でも涼しく<br>軽い着用感を実現します</p>
       </div>
 
-      <div data-reveal="" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;">
+      <div class="mgrid" data-reveal="" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;">
         <div style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(45,143,212,0.18);">
           <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; display:block;">
         </div>
@@ -562,7 +581,7 @@ document.addEventListener('click', function(e){
       </div>
 
       <!-- 4 equal service point cards -->
-      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:1fr; gap:16px;">
+      <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr; gap:16px;">
         <div style="display:flex; gap:22px; align-items:flex-start; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:28px 24px;">
           <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#0a2d5c; display:flex; align-items:center; justify-content:center;">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg>
@@ -634,7 +653,7 @@ document.addEventListener('click', function(e){
 
   <!-- ===== CROSS SERVICE ===== -->
   <section style="background:#0b0e14; padding:72px 32px;">
-    <div data-reveal="" style="max-width:1000px; margin:0 auto; display:grid; grid-template-columns:2fr 3fr; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04);">
+    <div class="mgrid" data-reveal="" style="max-width:1000px; margin:0 auto; display:grid; grid-template-columns:2fr 3fr; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04);">
       <div style="min-height:250px; background:url('assets/hero_operations.webp') center/cover;"></div>
       <div style="padding:36px 40px;">
         <div style="font-size:18px; letter-spacing:2px; color:#ffb3b8; font-weight:700;">OTHER SERVICE</div>
@@ -673,7 +692,7 @@ document.addEventListener('click', function(e){
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#eef2f7;">数字で見る都ユニリース</h2>
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
       </div>
-      <div data-reveal-group="" class="card-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px 24px; text-align:center;">
           <div style="font-size:19px;font-weight:700;color:#b3bfcc;margin-bottom:10px;">契約社数</div>
           <div style="font-size:45px;font-weight:900;color:#5aa6ec;line-height:1;"><span class="stat-num" data-n="2815">0</span><span style="font-size:21px;font-weight:900;">社</span></div>
@@ -711,35 +730,35 @@ document.addEventListener('click', function(e){
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
       </div>
       <div data-reveal="">
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">社名</div>
           <div style="font-size:21px; color:#eef2f7;">都ユニリース株式会社</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">代表者</div>
           <div style="font-size:21px; color:#eef2f7;">代表取締役社長 髙杉 彰</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">所在地</div>
           <div style="font-size:21px; color:#eef2f7;">〒712-8011 岡山県倉敷市連島町連島142-289</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">電話</div>
           <div style="font-size:21px; color:#eef2f7;"><a href="tel:0120-630-080" style="color:#eef2f7; text-decoration:none;">0120-630-080</a><br>（受付時間 10:00〜17:00　土日祝・年末年始・お盆を除く）</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">事業内容</div>
           <div style="font-size:21px; color:#eef2f7;">レンタルユニフォームシステム<br>感染防止衣　販売・レンタル・防火服専門クリーニング</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">認証</div>
           <div style="font-size:21px; color:#eef2f7;">ISO27001:2022 認証取得（認証番号 MSA-IS-130）<br>EcoVadis社 CSR審査 ブロンズメダル</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">特許</div>
           <div style="font-size:21px; color:#eef2f7;">特許第3041335号<br>「クリーニング作業付き、繰返しユニフォーム管理方法」</div>
         </div>
-        <div style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
+        <div class="mgrid" style="display:grid; grid-template-columns:180px 1fr; gap:0 24px; border-bottom:1px solid rgba(255,255,255,.08); padding:20px 0;">
           <div style="font-size:20px; color:#9db1cc; font-weight:700;">コーポレートサイト</div>
           <div style="font-size:21px; color:#eef2f7;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#6db3ee; text-decoration:underline;">unilease.co.jp</a></div>
         </div>

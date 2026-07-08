@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){
+  try {
+    if (sessionStorage.getItem('forcePC') !== '1' && window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
+      window.location.replace('index.html?pc=1');
+    }
+  } catch (e) {}
+})();
+</script>
+<title>都ユニリース | 消防・救急安全支援</title>
+<meta name="description" content="消防・救急の隊員を現場の最前線で支える都ユニリース。感染防止衣の販売・レンタルと、防火服の専門クリーニング。2つの専門サービスで現場の安全環境をトータルサポートします。">
+<link rel="canonical" href="https://ikarugamana-hub.github.io/shobo-hp/">
+<meta property="og:title" content="都ユニリース | 消防・救急安全支援">
+<meta property="og:description" content="感染防止衣の販売・レンタルから防火服の専門クリーニングまで、消防・救急の現場をトータルサポート。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/">
+<meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/og-top.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D2YWZNLK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-B1D2YWZNLK');
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+  if (a && window.gtag) { gtag('event', 'tel_click', { link_text: (a.textContent || '').trim().slice(0, 40) }); }
+});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;}
+body{background:#0c1126;color:#fff;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:64px;}
+@keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+[data-reveal]{opacity:0;}
+[data-reveal].shown{animation:riseIn .8s cubic-bezier(.16,.7,.3,1) forwards;}
+@media (prefers-reduced-motion: reduce){[data-reveal]{opacity:1;animation:none!important;}}
+header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(7,26,54,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);}
+.hero{position:relative;overflow:hidden;}
+.hero img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,8,26,.85) 0%,rgba(4,8,26,.25) 60%);}
+.hero .tx{position:absolute;left:18px;right:18px;bottom:16px;}
+.card{margin:0 16px 20px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);}
+.card img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+.card .body{padding:20px 18px;}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:900;color:#fff;background:#e0242c;padding:14px;border-radius:8px;text-decoration:none;margin-top:14px;}
+.btn.blue{background:#17307d;}
+#mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:16px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+footer{padding:26px 16px;background:#080c1e;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:rgba(255,255,255,.45);line-height:2;}
+footer a{color:rgba(255,255,255,.45);}
+@media print{body{background:#fff!important;color:#000!important;}#mobileCall{display:none!important;}h1,h2,h3,p,div,span{color:#000!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:30px;width:auto;display:block;">
+  <a href="tel:0120-630-080" style="font-size:12px;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,.38);padding:8px 12px;text-decoration:none;">問い合わせ</a>
+</header>
+
+<div class="hero">
+  <img src="images/hero-poster.webp" alt="消防・救急の活動風景" fetchpriority="high">
+  <div class="ov"></div>
+  <div class="tx">
+    <div style="font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.7);font-weight:700;margin-bottom:8px;">INFECTION CONTROL &amp; FIREFIGHTER SAFETY SUPPORT</div>
+    <h1 style="font-size:26px;line-height:1.5;font-weight:900;margin:0;text-shadow:0 2px 18px rgba(0,0,0,.6);">消防・救急の隊員を、<br>現場の最前線で支える</h1>
+  </div>
+</div>
+
+<p style="font-size:15px;line-height:2;color:rgba(255,255,255,.75);margin:20px 16px 26px;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで　2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+
+<h2 style="font-size:21px;font-weight:900;margin:0 16px 14px;">ご検討中のサービスをお選びください</h2>
+
+<div class="card" data-reveal>
+  <img src="images/hero-kyukyu-stretcher.webp" alt="感染防止衣" loading="lazy">
+  <div class="body">
+    <div style="font-size:10px;letter-spacing:.2em;color:#9fc0ff;font-weight:700;margin-bottom:6px;">INFECTION PREVENTION WEAR</div>
+    <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">感染防止衣　販売・レンタル</h3>
+    <p style="font-size:15px;line-height:1.9;color:#dde4f2;margin:0;">血液・飛沫から隊員を守る専用衣服　通気性重視・バリア性重視の2タイプから選べます</p>
+    <a class="btn blue" href="kansen.html">詳しく見る →</a>
+  </div>
+</div>
+
+<div class="card" data-reveal>
+  <img src="images/hero-firefighter-gear.webp" alt="防火服専門クリーニング" loading="lazy">
+  <div class="body">
+    <div style="font-size:10px;letter-spacing:.2em;color:#ffb3b8;font-weight:700;margin-bottom:6px;">TURNOUT GEAR CLEANSING</div>
+    <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">防火服専門クリーニング</h3>
+    <p style="font-size:15px;line-height:1.9;color:#dde4f2;margin:0;">防火服のニオイ・汚れ・撥水性の低下を解消　初回はお試しとして無償クリーニングを実施中です</p>
+    <a class="btn" href="story_cleaning.dc.html">詳しく見る →</a>
+  </div>
+</div>
+
+<div style="margin:28px 16px;text-align:center;" data-reveal>
+  <div style="font-size:14px;color:rgba(255,255,255,.6);margin-bottom:8px;">お電話でのお問い合わせ</div>
+  <a href="tel:0120-630-080" style="font-size:28px;font-weight:900;color:#fff;text-decoration:none;">0120-630-080</a>
+  <div style="font-size:13px;color:rgba(255,255,255,.55);margin-top:6px;">受付時間 10:00〜17:00（土日祝・年末年始・お盆を除く）</div>
+  <div id="bizBadge" style="margin-top:10px;"></div>
+</div>
+
+<footer>
+  都ユニリース株式会社　〒712-8011 岡山県倉敷市連島町連島142-289<br>
+  <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>　<a href="https://unilease.co.jp/" target="_blank" rel="noopener">コーポレートサイト</a><br>
+  本サイトはアクセス解析のため Google Analytics を使用しています<br>
+  <a href="index.html?pc=1" style="font-weight:700;">PC版サイトを表示</a><br>
+  © 2026 Miyako Unilease Co., Ltd.
+</footer>
+
+<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
+
+<script>
+(function(){
+  var HOLIDAYS = ['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
+  function isOpen(){
+    var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+    var day = d.getDay();
+    if (day === 0 || day === 6) return false;
+    var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+    var dd = ('0' + d.getDate()).slice(-2);
+    var ymd = d.getFullYear() + '-' + mm + '-' + dd;
+    if (HOLIDAYS.indexOf(ymd) !== -1) return false;
+    var md = mm + '-' + dd;
+    if (md >= '08-13' && md <= '08-15') return false;
+    if (md >= '12-29' || md <= '01-03') return false;
+    var h = d.getHours();
+    return h >= 10 && h < 17;
+  }
+  function apply(){
+    var open = isOpen();
+    var b = document.getElementById('bizBadge');
+    if (b) {
+      b.innerHTML = open
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 16px;border-radius:20px;">&#9679; ただいま電話受付中です</span>'
+        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 16px;border-radius:20px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+    }
+    var mc = document.getElementById('mobileCall');
+    if (mc) {
+      mc.innerHTML = open
+        ? '&#128222; ただいま受付中｜電話で問い合わせる'
+        : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    }
+  }
+  apply();
+  setInterval(apply, 60000);
+
+  function reveal(){
+    var h = window.innerHeight || 800;
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      if (el.classList.contains('shown')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < h * 0.92 && r.bottom > 0) el.classList.add('shown');
+    });
+  }
+  reveal();
+  window.addEventListener('scroll', reveal, {passive:true});
+  setInterval(reveal, 300);
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('shown'); });
+  }, 3000);
+})();
+</script>
+</body>
+</html>
