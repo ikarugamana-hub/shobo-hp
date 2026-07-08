@@ -20,8 +20,21 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
-  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
-  if (a && window.gtag) { gtag('event', 'tel_click', { link_text: (a.textContent || '').trim().slice(0, 40) }); }
+  var a = e.target.closest ? e.target.closest('a') : null;
+  if (!a || !window.gtag) return;
+  var href = a.getAttribute('href') || '';
+  var text = (a.textContent || '').trim().slice(0, 40);
+  if (href.indexOf('tel:') === 0) {
+    gtag('event', 'tel_click', { link_text: text });
+  } else if (href.indexOf('unilease.co.jp/contact') !== -1) {
+    gtag('event', 'form_click', { link_text: text, page_path: location.pathname });
+  } else if (href.indexOf('service-guide-fire.pdf') !== -1) {
+    gtag('event', 'sample_request_click', { link_text: text, page_path: location.pathname });
+  } else if (href.indexOf('kansen.html') !== -1 || href.indexOf('story_cleaning.dc.html') !== -1) {
+    gtag('event', 'service_select', { service: href.indexOf('kansen.html') !== -1 ? 'kansen' : 'cleaning', page_path: location.pathname });
+  } else if (href.indexOf('pc=1') !== -1) {
+    gtag('event', 'sp_to_pc_click', { link_text: text });
+  }
 });
 </script>
 <script type="application/ld+json">
@@ -181,7 +194,10 @@ document.addEventListener('click', function(e){
   #toTop.show{opacity:1;pointer-events:auto;transform:none;}
   #mobileCall{display:none;}
   @media (max-width:768px){
-    #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+    #mobileCall{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:300;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+    #mobileCall a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 6px;font-size:16px;font-weight:900;text-decoration:none;color:#fff;}
+    #mobileCall #mcTel{background:#e0242c;}
+    #mobileCall #mcForm{background:#0d3b73;border-left:1px solid rgba(255,255,255,.25);}
     #toTop{bottom:84px!important;}
   }
   [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
@@ -273,6 +289,10 @@ document.addEventListener('click', function(e){
     function faqToggle(item){
       var open=item.classList.toggle('open');
       item.setAttribute('aria-expanded', open?'true':'false');
+      if (open && window.gtag) {
+        var q = item.querySelector('.faq-q');
+        gtag('event', 'faq_open', { question: (q ? q.textContent : '').trim().slice(0, 60), page_path: location.pathname });
+      }
     }
     document.addEventListener('click', function(e){
       var item=e.target.closest ? e.target.closest('.faq-item') : null;
@@ -830,7 +850,10 @@ document.addEventListener('click', function(e){
 
 </div>
 <button id="toTop" aria-label="ページ上部へ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
+<div id="mobileCall">
+  <a href="tel:0120-630-080" id="mcTel">&#128222; 電話</a>
+  <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" id="mcForm">&#9993; フォーム</a>
+</div>
 <script>
 (function(){
   var HOLIDAYS = ['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
@@ -856,11 +879,15 @@ document.addEventListener('click', function(e){
         ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
         : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
     }
-    var mc = document.getElementById('mobileCall');
-    if (mc) {
-      mc.innerHTML = open
-        ? '&#128222; ただいま受付中｜電話で問い合わせる'
-        : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    var mcTel = document.getElementById('mcTel');
+    var mcForm = document.getElementById('mcForm');
+    if (mcTel) {
+      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
+      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+    }
+    if (mcForm) {
+      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
+      mcForm.style.background = open ? '#0d3b73' : '#e0242c';
     }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }

@@ -4,11 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script>
 (function(){
   try {
     if (window.location.search.indexOf('pc=1') !== -1) { sessionStorage.setItem('forcePC', '1'); }
     if (sessionStorage.getItem('forcePC') === '1') return;
     if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+      gtag('event', 'pc_to_sp_redirect');
       window.location.replace('sp.html');
     }
   } catch (e) {}
@@ -31,8 +36,30 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
-  var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
-  if (a && window.gtag) { gtag('event', 'tel_click', { link_text: (a.textContent || '').trim().slice(0, 40) }); }
+  if (!window.gtag) return;
+  var a = e.target.closest ? e.target.closest('a') : null;
+  if (a) {
+    var href = a.getAttribute('href') || '';
+    var text = (a.textContent || '').trim().slice(0, 40);
+    if (href.indexOf('tel:') === 0) {
+      gtag('event', 'tel_click', { link_text: text });
+    } else if (href.indexOf('unilease.co.jp/contact') !== -1) {
+      gtag('event', 'form_click', { link_text: text, page_path: location.pathname });
+    } else if (href.indexOf('service-guide-fire.pdf') !== -1) {
+      gtag('event', 'sample_request_click', { link_text: text, page_path: location.pathname });
+    } else if (href.indexOf('kansen.html') !== -1 || href.indexOf('story_cleaning.dc.html') !== -1) {
+      gtag('event', 'service_select', { service: href.indexOf('kansen.html') !== -1 ? 'kansen' : 'cleaning', page_path: location.pathname });
+    } else if (href.indexOf('pc=1') !== -1) {
+      gtag('event', 'sp_to_pc_click', { link_text: text });
+    }
+    return;
+  }
+  var eb = e.target.closest ? e.target.closest('.enter-btn') : null;
+  if (eb) {
+    var onclickAttr = eb.getAttribute('onclick') || '';
+    var service = onclickAttr.indexOf('kansen') !== -1 ? 'kansen' : (onclickAttr.indexOf('Cleaning') !== -1 ? 'cleaning' : '');
+    if (service) gtag('event', 'service_select', { service: service, page_path: location.pathname });
+  }
 });
 </script>
 <script type="application/ld+json">
@@ -113,7 +140,10 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 }
 #mobileCall{display:none;}
 @media (max-width:768px){
-  #mobileCall{display:block;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#e0242c;color:#fff;text-align:center;padding:15px 10px;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+  #mobileCall{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:300;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
+  #mobileCall a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 6px;font-size:16px;font-weight:900;text-decoration:none;color:#fff;}
+  #mobileCall #mcTel{background:#e0242c;}
+  #mobileCall #mcForm{background:#0d3b73;border-left:1px solid rgba(255,255,255,.25);}
 }
 
 .screen{
@@ -424,7 +454,10 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
   </div>
 
 </div>
-<a href="tel:0120-630-080" id="mobileCall">&#128222; 電話で問い合わせる 0120-630-080</a>
+<div id="mobileCall">
+  <a href="tel:0120-630-080" id="mcTel">&#128222; 電話</a>
+  <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" id="mcForm">&#9993; フォーム</a>
+</div>
 
 <script>
 var state = { screen: 0, h1: -1 };
@@ -580,11 +613,15 @@ document.addEventListener('keydown', function(e) {
         ? '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 14px;border-radius:20px;white-space:nowrap;">&#9679; 受付中</span>'
         : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>';
     }
-    var mc = document.getElementById('mobileCall');
-    if (mc) {
-      mc.innerHTML = open
-        ? '&#128222; ただいま受付中｜電話で問い合わせる'
-        : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    var mcTel = document.getElementById('mcTel');
+    var mcForm = document.getElementById('mcForm');
+    if (mcTel) {
+      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
+      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+    }
+    if (mcForm) {
+      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
+      mcForm.style.background = open ? '#0d3b73' : '#e0242c';
     }
     var fc = document.getElementById('formCta');
     if (fc) {
