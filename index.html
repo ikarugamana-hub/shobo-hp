@@ -15,9 +15,9 @@
 })();
 </script>
 <title>都ユニリース | 消防・救急安全支援</title>
-<meta name="description" content="消防・救急の隊員を現場の最前線で支える都ユニリース。感染防止衣の貸与・個人管理と、防火服の専門クリーニング。2つの専門サービスで現場の安全環境をトータルサポートします。">
+<meta name="description" content="消防・救急の隊員を現場の最前線で支える都ユニリース。感染防止衣の販売・レンタルと、防火服の専門クリーニング。2つの専門サービスで現場の安全環境をトータルサポートします。">
 <meta property="og:title" content="都ユニリース | 消防・救急安全支援">
-<meta property="og:description" content="感染防止衣の貸与・個人管理から防火服の専門クリーニングまで、消防・救急の現場をトータルサポート。">
+<meta property="og:description" content="感染防止衣の販売・レンタルから防火服の専門クリーニングまで、消防・救急の現場をトータルサポート。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/">
 <meta property="og:image" content="https://ikarugamana-hub.github.io/shobo-hp/images/og-top.png">
@@ -158,7 +158,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:58px;width:auto;display:block;">
       </div>
       <nav style="display:flex;align-items:center;gap:36px;">
-        <a href="tel:0120-630-080" title="0120-630-080（平日 10:00〜17:00）" style="font-size:16px;font-weight:700;letter-spacing:.12em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:10px 22px;text-decoration:none;display:inline-block;">問い合わせ</a>
+        <a href="tel:0120-630-080" title="0120-630-080（平日 10:00〜17:00）" style="font-size:16px;font-weight:700;letter-spacing:.12em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:10px 22px;text-decoration:none;display:inline-block;">電話で相談</a>
       </nav>
     </header>
 
@@ -173,27 +173,27 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
         <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;animation:lineGrow 1s .8s both;"></div>
       </div>
       <div id="s0c3" style="opacity:0;transform:translateY(14px);transition:opacity .75s .3s ease,transform .75s .3s ease;">
-        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の貸与・個人管理から、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
       </div>
       <div id="s0c4" style="opacity:0;transform:translateY(12px);transition:opacity .75s .4s ease,transform .75s .4s ease;display:flex;justify-content:flex-end;">
         <button onclick="goToGate()"
-          style="font-size:30px;font-weight:900;letter-spacing:.1em;color:#fff;background:#e0242c;border:1px solid rgba(255,255,255,.55);cursor:pointer;padding:26px 58px;display:inline-flex;align-items:center;gap:16px;border-radius:8px;transition:transform .25s,box-shadow .25s;animation:glowRed 1.8s ease-in-out infinite;"
-          onmouseenter="this.style.transform='translateY(-3px)'"
+          style="font-size:32px;font-weight:900;letter-spacing:.1em;color:#fff;background:#e0242c;border:2px solid rgba(255,255,255,.7);cursor:pointer;padding:28px 62px;display:inline-flex;align-items:center;gap:16px;border-radius:8px;transition:transform .25s,box-shadow .25s;animation:glowRed 1.8s ease-in-out infinite;"
+          onmouseenter="this.style.transform='translateY(-3px) scale(1.02)'"
           onmouseleave="this.style.transform='none'">
           サービスを選ぶ <span style="font-size:34px;">→</span>
         </button>
       </div>
     </div>
 
-    <div style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;animation:floatY 3s ease-in-out infinite;">
-      <div style="font-size:14px;letter-spacing:.28em;color:rgba(255,255,255,.38);writing-mode:vertical-rl;text-orientation:mixed;">SCROLL</div>
+    <div id="scrollHint" onclick="goToGate()" style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;animation:floatY 3s ease-in-out infinite;cursor:pointer;">
+      <div style="font-size:14px;letter-spacing:.28em;color:rgba(255,255,255,.5);writing-mode:vertical-rl;text-orientation:mixed;">SERVICE</div>
       <div style="width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);"></div>
     </div>
   </div>
 
   <!-- ===== SCREEN 1: SERVICE GATE ===== -->
-  <div id="screen-1" class="screen hidden">
-    <header style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 32px;background:rgba(8,12,30,.72);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);">
+  <div id="screen-1" class="screen hidden" style="display:flex;flex-direction:column;">
+    <header style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;padding:14px 32px;background:rgba(8,12,30,.72);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);flex:none;">
       <div style="display:flex;align-items:center;gap:14px;">
         <button onclick="goBack()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:18px;font-weight:700;display:flex;align-items:center;gap:5px;">← 戻る</button>
         <div style="display:flex;align-items:center;">
@@ -205,15 +205,27 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
           <span style="color:#fff;font-weight:700;">サービス選択</span>
         </div>
       </div>
-      <a href="tel:0120-630-080" title="0120-630-080（平日 10:00〜17:00）" style="font-size:16px;font-weight:700;letter-spacing:.12em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:9px 20px;text-decoration:none;display:inline-block;">問い合わせ</a>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span id="bizBadge"></span>
+        <a href="tel:0120-630-080" title="0120-630-080（平日 10:00〜17:00）" style="font-size:15px;font-weight:700;letter-spacing:.08em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:8px 16px;text-decoration:none;display:inline-block;white-space:nowrap;">電話で相談</a>
+        <a id="formCta" href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:8px 16px;border-radius:6px;text-decoration:none;display:inline-block;white-space:nowrap;transition:background .25s,border-color .25s;">フォームで問い合わせる</a>
+        <a href="assets/service-guide-fire.pdf" target="_blank" rel="noopener" style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#fff;border:1px solid rgba(255,255,255,.38);padding:8px 16px;text-decoration:none;display:inline-block;white-space:nowrap;">資料請求・サンプル相談</a>
+      </div>
     </header>
 
-    <div style="position:relative;z-index:20;text-align:center;padding:22px 24px 16px;">
-      <h2 style="font-size:35px;font-weight:900;margin:0 0 7px;">ご検討中のサービスをお選びください</h2>
-      <p style="font-size:19px;color:#aebcde;margin:0;">各入口から詳しい内容・導入の流れをご覧いただけます</p>
+    <div style="position:relative;z-index:20;text-align:center;padding:16px 24px 10px;flex:none;">
+      <h2 style="font-size:33px;font-weight:900;margin:0 0 6px;">ご検討中のサービスをお選びください</h2>
+      <p style="font-size:18px;color:#aebcde;margin:0 0 10px;">各入口から詳しい内容・導入の流れをご覧いただけます</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:13px;font-weight:700;color:#cdd8f2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;">特許第3041335号</span>
+        <span style="font-size:13px;font-weight:700;color:#cdd8f2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;">レンタルユニフォームシステム</span>
+        <span style="font-size:13px;font-weight:700;color:#cdd8f2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;">消防・救急向け対応</span>
+        <span style="font-size:13px;font-weight:700;color:#cdd8f2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;">全国対応</span>
+        <span style="font-size:13px;font-weight:700;color:#cdd8f2;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;">サンプル相談可</span>
+      </div>
     </div>
 
-    <div style="position:relative;z-index:10;display:flex;padding:0 20px 16px;height:calc(100vh - 158px);">
+    <div style="position:relative;z-index:10;display:flex;padding:0 20px 16px;flex:1;min-height:0;">
       <!-- LEFT: 感染防止衣 -->
       <div id="p1L" class="panel-card"
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
@@ -386,6 +398,20 @@ document.addEventListener('DOMContentLoaded', function() {
   initVideo();
   initHeroAnim();
 });
+
+var gateNavLock = false;
+function tryGoToGate() {
+  if (gateNavLock || state.screen !== 0) return;
+  gateNavLock = true;
+  goToGate();
+  setTimeout(function(){ gateNavLock = false; }, 900);
+}
+document.addEventListener('wheel', function(e) {
+  if (state.screen === 0 && e.deltaY > 8) tryGoToGate();
+}, { passive: true });
+document.addEventListener('keydown', function(e) {
+  if (state.screen === 0 && (e.key === 'ArrowDown' || e.key === 'PageDown')) tryGoToGate();
+});
 </script>
 <script>
 (function(){
@@ -409,14 +435,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var b = document.getElementById('bizBadge');
     if (b) {
       b.innerHTML = open
-        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+        ? '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 14px;border-radius:20px;white-space:nowrap;">&#9679; 受付中</span>'
+        : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>';
     }
     var mc = document.getElementById('mobileCall');
     if (mc) {
       mc.innerHTML = open
         ? '&#128222; ただいま受付中｜電話で問い合わせる'
         : '&#128222; 電話で問い合わせる（受付 平日10:00〜17:00）';
+    }
+    var fc = document.getElementById('formCta');
+    if (fc) {
+      if (open) {
+        fc.style.background = 'transparent';
+        fc.style.borderColor = 'rgba(255,255,255,.38)';
+      } else {
+        fc.style.background = '#e0242c';
+        fc.style.borderColor = 'rgba(255,255,255,.55)';
+      }
     }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
