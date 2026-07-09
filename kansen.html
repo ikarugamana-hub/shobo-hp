@@ -437,7 +437,7 @@ document.addEventListener('click', function(e){
         <div style="background:#f5f7fb; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(20,30,50,0.08); border-top:4px solid #0d3b73;">
           <div style="display:inline-block; background:#0d3b73; color:#fff; font-size:20px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:1px;">前面</div>
           <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#0d3b73; margin-top:16px;">バリア性</h3>
-          <p style="font-size:21px; line-height:1.95; color:#55627e; margin-top:12px;">飛沫やウイルスと接触しやすい前面に、高密度の防護素材を配置<br>汚染リスクの高い正面からの感染を防ぎます</p>
+          <p style="font-size:21px; line-height:1.95; color:#55627e; margin-top:12px;">飛沫やウイルスと接触しやすい前面に<br>高密度の防護素材を配置<br>汚染リスクの高い正面からの感染を防ぎます</p>
         </div>
         <div style="background:#f5f7fb; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(20,30,50,0.08); border-top:4px solid #2b8fd4;">
           <div style="display:inline-block; background:#2b8fd4; color:#fff; font-size:20px; font-weight:700; padding:5px 14px; border-radius:3px; letter-spacing:1px;">背面</div>
@@ -512,39 +512,47 @@ document.addEventListener('click', function(e){
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#1f6fb0;">BREATHABLE TYPE</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:47px; font-weight:900; margin-top:14px; color:#1c2438; line-height:1.35;">断然涼しい　そして、常に清潔</h2>
         <div data-line style="width:0;height:2px;background:rgba(20,30,50,.2);margin:18px 0 0;"></div>
-        <p style="font-size:23px; line-height:2; color:#55627e; margin-top:18px; max-width:720px; text-wrap:pretty;">高通気素材を採用した熱中症対策に適したモデル　夏場や長時間の活動でも涼しく軽い着用感を実現します</p>
+        <p style="font-size:23px; line-height:2; color:#55627e; margin-top:18px; max-width:none; white-space:nowrap; text-wrap:pretty;">高通気素材を採用した熱中症対策に適したモデル　夏場や長時間の活動でも涼しく軽い着用感を実現します</p>
       </div>
 
-      <div class="mgrid" data-reveal="" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:center;">
-        <div style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(45,143,212,0.12);">
-          <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; display:block;">
+      <div data-reveal="" style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(45,143,212,0.12); margin-bottom:30px;">
+        <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; display:block;">
+      </div>
+      <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
+        <div style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
+          <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#1568a8; display:flex; align-items:center; justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h12a3 3 0 1 0-3-3"></path><path d="M3 12h16a3 3 0 1 1-3 3"></path><path d="M3 16h9a3 3 0 1 1-3 3"></path></svg>
+          </div>
+          <div>
+            <h4 style="font-size:24px; font-weight:700; color:#1c2438;">圧倒的な通気度　<span style="color:#1568a8;">100cc/cm²·s 以上</span></h4>
+            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">一般衣料の通気度は約20cc/cm²·s<br>その<strong style="color:#1c2438;">5倍以上の通気性</strong>で<br>夏でも涼しく軽い着用感が抜群です</p>
+          </div>
         </div>
-        <div style="display:flex; flex-direction:column; gap:18px;">
-          <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:8px; padding:26px 28px;">
-            <div style="display:flex; align-items:baseline; gap:12px;">
-              <span style="font-family:'Noto Sans JP',sans-serif; font-size:43px; font-weight:700; color:#1568a8;">100<span style="font-size:22px; color:#55627e;">cc/cm²·s 以上</span></span>
-            </div>
-            <h4 style="font-size:24px; font-weight:700; color:#1c2438; margin-top:8px;">圧倒的な通気度</h4>
-            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:6px;">一般衣料の通気度は約20cc/cm²·s<br>その<strong style="color:#1c2438;">5倍以上の通気性</strong>で<br>夏でも涼しく軽い着用感が抜群です</p>
+        <div style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
+          <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#1568a8; display:flex; align-items:center; justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7C7.7 8.4 5.5 11.8 5.5 15a6.5 6.5 0 0 0 13 0c0-3.2-2.2-6.6-6.5-12.3z"></path></svg>
           </div>
-          <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:8px; padding:26px 28px;">
-            <div style="font-family:'Noto Sans JP',sans-serif; font-size:32px; font-weight:700; color:#1568a8;">撥水度 50回洗濯後も 4級以上</div>
-            <h4 style="font-size:24px; font-weight:700; color:#1c2438; margin-top:8px;">繰り返し洗っても弾く</h4>
-            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:6px;">50回の洗濯を繰り返しても、撥水度4級以上を維持<br>クリーニングの度に、撥水加工を施します</p>
+          <div>
+            <h4 style="font-size:24px; font-weight:700; color:#1c2438;">繰り返し洗っても弾く　<span style="color:#1568a8;">撥水度 50回洗濯後も 4級以上</span></h4>
+            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">50回の洗濯を繰り返しても、撥水度4級以上を維持<br>クリーニングの度に、撥水加工を施します</p>
           </div>
-          <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:8px; padding:26px 28px;">
-            <div style="font-family:'Noto Sans JP',sans-serif; font-size:30px; font-weight:900; color:#1568a8;">制菌加工 SEK赤マーク取得</div>
-            <h4 style="font-size:24px; font-weight:700; color:#1c2438; margin-top:8px;">感染防止衣に必須の制菌</h4>
-            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:6px;">繊維評価技術協議会が<br>性能と安全性を認めた制菌加工マーク<br>医療・介護現場の業務用繊維製品が対象です</p>
+        </div>
+        <div style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
+          <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#1568a8; display:flex; align-items:center; justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5z"></path></svg>
           </div>
-          <div style="display:flex; gap:22px; padding:26px 28px; background:#ffffff; border:1px solid #e3e7ee; border-radius:8px;">
-            <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#0d3b73; display:flex; align-items:center; justify-content:center;">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
-            </div>
-            <div>
-              <h4 style="font-size:24px; font-weight:700; color:#1c2438;">反射材で視認性を確保</h4>
-              <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">前後に反射テープを配置　夜間や悪条件下の現場でも隊員の存在を明確にし、安全を支えます</p>
-            </div>
+          <div>
+            <h4 style="font-size:24px; font-weight:700; color:#1c2438;">感染防止衣に必須の制菌　<span style="color:#1568a8;">制菌加工 SEK赤マーク取得</span></h4>
+            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">繊維評価技術協議会が性能と安全性を認めた制菌加工マーク<br>医療・介護現場の業務用繊維製品が対象です</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
+          <div style="flex-shrink:0; width:64px; height:64px; border-radius:6px; background:#1568a8; display:flex; align-items:center; justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          </div>
+          <div>
+            <h4 style="font-size:24px; font-weight:700; color:#1c2438;">反射材で視認性を確保</h4>
+            <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">前後に反射テープを配置　夜間や悪条件下の現場でも隊員の存在を明確にし、安全を支えます</p>
           </div>
         </div>
       </div>
