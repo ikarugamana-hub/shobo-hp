@@ -178,11 +178,6 @@ button{-webkit-appearance:none;appearance:none;}
 .pt-row{transition:background .2s ease;}
 .pt-row:hover{background:rgba(255,255,255,.07);}
 
-.img-hero{
-  background-image:url('images/hero-kyukyu-blue.webp');
-  background-size:cover;
-  background-position:center;
-}
 .img-infect{
   background-image:url('images/hero-kyukyu-stretcher.webp');
   background-size:cover;
@@ -190,16 +185,6 @@ button{-webkit-appearance:none;appearance:none;}
 }
 .img-clean{
   background-image:url('images/hero-firefighter-gear.webp');
-  background-size:cover;
-  background-position:center;
-}
-.img-vent{
-  background-image:url('images/wear-kyukyu-blue.webp');
-  background-size:cover;
-  background-position:center;
-}
-.img-hybrid{
-  background-image:url('images/product-hybrid.webp');
   background-size:cover;
   background-position:center;
 }
@@ -569,8 +554,8 @@ document.addEventListener('keydown', function(e) {
     var b = document.getElementById('bizBadge');
     if (b) {
       b.innerHTML = open
-        ? '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 14px;border-radius:20px;white-space:nowrap;">&#9679; 受付中</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>';
+        ? '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.4);color:#1a7a4c;padding:6px 14px;border-radius:20px;white-space:nowrap;">&#9679; 受付中</span>'
+        : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(13,59,115,.08);border:1px solid rgba(13,59,115,.25);color:#5a6b85;padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>';
     }
     var mcTel = document.getElementById('mcTel');
     var mcForm = document.getElementById('mcForm');

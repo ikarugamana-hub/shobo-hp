@@ -153,12 +153,6 @@ document.addEventListener('click', function(e){
   a[href^="#"], header a { transition: color .25s ease, background-color .25s ease, transform .3s ease; }
   @media (prefers-reduced-motion: reduce){ [data-reveal], [data-reveal-group] > *{ animation:none!important; } [data-line]{width:44px!important;transition:none!important;} }
   :focus-visible{outline:2px solid #1f6fb0;outline-offset:3px;}
-  .faq-item{border-bottom:1px solid rgba(20,30,50,.12);cursor:pointer;outline-offset:4px;}
-  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;font-size:23px;font-weight:700;color:#1c2438;}
-  .faq-ic{font-size:30px;color:rgba(20,30,50,.45);flex:none;transition:transform .25s;}
-  .faq-item.open .faq-ic{transform:rotate(45deg);}
-  .faq-a{font-size:21px;line-height:2;color:#55627e;max-height:0;overflow:hidden;padding:0;transition:max-height .4s ease,padding .4s ease;}
-  .faq-item.open .faq-a{max-height:340px;padding:0 0 22px;}
   @media print{
     html,body{background:#fff!important;color:#000!important;}
     section,footer{background:#fff!important;color:#000!important;padding:24px 0!important;}
@@ -168,8 +162,6 @@ document.addEventListener('click', function(e){
     [data-reveal],[data-reveal-group] > *{opacity:1!important;transform:none!important;animation:none!important;}
     [data-line]{width:44px!important;background:#333!important;}
     .bar-fill{width:100%!important;background:#999!important;}
-    .faq-a{max-height:none!important;padding:0 0 20px!important;}
-    .compare-card,.service-card,.risk-card,.faq-item{border:1px solid #ccc!important;background:#fff!important;box-shadow:none!important;}
         .print-footer{display:flex!important;gap:18px;align-items:center;padding:18px 0!important;border-top:2px solid #333;font-size:16px;color:#000!important;}
         .print-footer img{width:90px;height:90px;}
   }
@@ -199,7 +191,6 @@ document.addEventListener('click', function(e){
     h4{font-size:20px!important;}
     p{font-size:17px!important;line-height:1.9!important;}
     p br{display:none;}
-    .faq-a br{display:none;}
     .mgrid{grid-template-columns:1fr!important;}
     header{padding:10px 14px!important;}
     header img{height:30px!important;}
@@ -264,7 +255,7 @@ document.addEventListener('click', function(e){
       var tt=document.getElementById('toTop');
       if(tt){ if(y>600){tt.classList.add('show');}else{tt.classList.remove('show');} }
       var cur=null;
-      ['lineup','hybrid','breathable','system','faq','contact'].forEach(function(id){
+      ['lineup','hybrid','breathable','system','contact'].forEach(function(id){
         var s=document.getElementById(id);
         if(s && s.getBoundingClientRect().top < 150) cur=id;
       });
@@ -272,23 +263,6 @@ document.addEventListener('click', function(e){
         if(a.getAttribute('href')==='#'+cur){a.classList.add('nav-now');}else{a.classList.remove('nav-now');}
       });
     }
-    function faqToggle(item){
-      var open=item.classList.toggle('open');
-      item.setAttribute('aria-expanded', open?'true':'false');
-      if (open && window.gtag) {
-        var q = item.querySelector('.faq-q');
-        gtag('event', 'faq_open', { question: (q ? q.textContent : '').trim().slice(0, 60), page_path: location.pathname });
-      }
-    }
-    document.addEventListener('click', function(e){
-      var item=e.target.closest ? e.target.closest('.faq-item') : null;
-      if(item) faqToggle(item);
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key!=='Enter' && e.key!==' ') return;
-      var item=e.target.closest ? e.target.closest('.faq-item') : null;
-      if(item){ e.preventDefault(); faqToggle(item); }
-    });
     hdrFx();
     window.addEventListener('scroll', hdrFx, {passive:true});
     window.addEventListener('scroll', reveal, {passive:true});
