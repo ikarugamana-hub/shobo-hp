@@ -582,16 +582,6 @@ document.addEventListener('keydown', function(e) {
       mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
       mcForm.style.background = open ? '#0d3b73' : '#e0242c';
     }
-    var fc = document.getElementById('formCta');
-    if (fc) {
-      if (open) {
-        fc.style.background = 'transparent';
-        fc.style.borderColor = 'rgba(255,255,255,.38)';
-      } else {
-        fc.style.background = '#e0242c';
-        fc.style.borderColor = 'rgba(255,255,255,.55)';
-      }
-    }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
   window.addEventListener('load', apply);
