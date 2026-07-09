@@ -52,6 +52,38 @@ document.addEventListener('click', function(e){
   }
 });
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "どのサービスを選べばよいですか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "血液・飛沫対策なら感染防止衣、防火服のニオイ・汚れ・撥水性の低下なら防火服専門クリーニングをご案内しています。迷う場合はお電話・フォームからご相談ください。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "電話以外で問い合わせできますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "お問い合わせフォームからもご相談いただけます。受付時間外でもフォームからのご相談は随時受け付けています。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "サンプルやお試しはありますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "感染防止衣は製品サンプルのご案内、防火服専門クリーニングは初回お試し（無償クリーニング）をご案内しています。"
+   }
+  }
+ ]
+}
+</script>
 <link rel="preload" href="fonts/NotoSansJP-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/NotoSansJP-900.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -96,7 +128,7 @@ footer a{color:rgba(255,255,255,.45);}
 </header>
 
 <div class="hero">
-  <img src="images/hero-poster.webp" alt="消防・救急の活動風景" fetchpriority="high">
+  <img src="images/hero-poster.webp" srcset="images/hero-poster-sm.webp 640w, images/hero-poster.webp 1280w" sizes="100vw" alt="消防・救急の活動風景" fetchpriority="high">
   <div class="ov"></div>
   <div class="tx">
     <div style="font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.7);font-weight:700;margin-bottom:8px;">INFECTION CONTROL &amp; FIREFIGHTER SAFETY SUPPORT</div>
@@ -112,7 +144,7 @@ footer a{color:rgba(255,255,255,.45);}
 <h2 style="font-size:21px;font-weight:900;margin:0 16px 14px;">ご検討中のサービスをお選びください</h2>
 
 <div class="card" data-reveal>
-  <img src="images/hero-kyukyu-stretcher.webp" alt="感染防止衣を着用した救急隊員のイメージ" loading="lazy">
+  <img src="images/hero-kyukyu-stretcher.webp" srcset="images/hero-kyukyu-stretcher-sm.webp 640w, images/hero-kyukyu-stretcher.webp 1200w" sizes="100vw" alt="感染防止衣を着用した救急隊員のイメージ" loading="lazy">
   <div class="body">
     <div style="font-size:10px;letter-spacing:.2em;color:#9fc0ff;font-weight:700;margin-bottom:6px;">INFECTION PREVENTION WEAR</div>
     <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">感染防止衣　販売・レンタル</h3>
@@ -122,7 +154,7 @@ footer a{color:rgba(255,255,255,.45);}
 </div>
 
 <div class="card" data-reveal>
-  <img src="images/hero-firefighter-gear.webp" alt="クリーニング前の防火服のイメージ" loading="lazy">
+  <img src="images/hero-firefighter-gear.webp" srcset="images/hero-firefighter-gear-sm.webp 640w, images/hero-firefighter-gear.webp 1200w" sizes="100vw" alt="クリーニング前の防火服のイメージ" loading="lazy">
   <div class="body">
     <div style="font-size:10px;letter-spacing:.2em;color:#ffb3b8;font-weight:700;margin-bottom:6px;">TURNOUT GEAR CLEANSING</div>
     <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">防火服専門クリーニング</h3>
@@ -130,6 +162,103 @@ footer a{color:rgba(255,255,255,.45);}
     <a class="btn" href="story_cleaning.dc.html">詳しく見る →</a>
   </div>
 </div>
+
+<section style="margin:34px 16px 0;" data-reveal>
+  <h2 style="font-size:20px;font-weight:900;text-align:center;margin:0 0 16px;">2つのサービスの違い</h2>
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:520px;">
+      <thead>
+        <tr style="border-bottom:2px solid rgba(255,255,255,.2);">
+          <th style="text-align:left;padding:10px 10px;color:#aebcde;font-weight:700;white-space:nowrap;">項目</th>
+          <th style="text-align:left;padding:10px 10px;color:#9fc0ff;font-weight:900;">感染防止衣</th>
+          <th style="text-align:left;padding:10px 10px;color:#ffb3b8;font-weight:900;">防火服専門クリーニング</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1);">
+          <td style="padding:10px;color:#aebcde;font-weight:700;">対象</td>
+          <td style="padding:10px;color:#dde4f2;">救急隊・感染対策担当・ユニフォーム管理担当</td>
+          <td style="padding:10px;color:#dde4f2;">消防隊・装備管理担当</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1);">
+          <td style="padding:10px;color:#aebcde;font-weight:700;">目的</td>
+          <td style="padding:10px;color:#dde4f2;">血液・飛沫からの感染防止</td>
+          <td style="padding:10px;color:#dde4f2;">ニオイ・汚れ・撥水性低下の解消</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1);">
+          <td style="padding:10px;color:#aebcde;font-weight:700;">主な相談内容</td>
+          <td style="padding:10px;color:#dde4f2;">タイプ選定・サンプル確認・お見積り</td>
+          <td style="padding:10px;color:#dde4f2;">初回お試し・撥水加工・納期</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1);">
+          <td style="padding:10px;color:#aebcde;font-weight:700;">導入・依頼の単位</td>
+          <td style="padding:10px;color:#dde4f2;">隊員1名から、販売・レンタルどちらも相談可</td>
+          <td style="padding:10px;color:#dde4f2;">1着から依頼可能</td>
+        </tr>
+        <tr>
+          <td style="padding:10px;color:#aebcde;font-weight:700;">お問い合わせ</td>
+          <td style="padding:10px;"><a href="kansen.html" style="color:#9fc0ff;font-weight:700;text-decoration:none;">感染防止衣について →</a></td>
+          <td style="padding:10px;"><a href="story_cleaning.dc.html" style="color:#ffb3b8;font-weight:700;text-decoration:none;">防火服クリーニングについて →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,.4);text-align:center;margin-top:6px;">※ 表は横にスクロールできます</div>
+</section>
+
+<section style="margin:34px 16px 0;" data-reveal>
+  <h2 style="font-size:20px;font-weight:900;text-align:center;margin:0 0 16px;">導入までの流れ</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+      <div style="width:30px;height:30px;line-height:30px;border-radius:50%;background:#e0242c;font-weight:900;text-align:center;flex:none;">1</div>
+      <div style="font-size:15px;font-weight:700;">ご相談</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+      <div style="width:30px;height:30px;line-height:30px;border-radius:50%;background:#e0242c;font-weight:900;text-align:center;flex:none;">2</div>
+      <div style="font-size:15px;font-weight:700;">サンプル・現状確認</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+      <div style="width:30px;height:30px;line-height:30px;border-radius:50%;background:#e0242c;font-weight:900;text-align:center;flex:none;">3</div>
+      <div style="font-size:15px;font-weight:700;">お見積り</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+      <div style="width:30px;height:30px;line-height:30px;border-radius:50%;background:#e0242c;font-weight:900;text-align:center;flex:none;">4</div>
+      <div style="font-size:15px;font-weight:700;">導入・回収</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;">
+      <div style="width:30px;height:30px;line-height:30px;border-radius:50%;background:#e0242c;font-weight:900;text-align:center;flex:none;">5</div>
+      <div style="font-size:15px;font-weight:700;">クリーニング・管理</div>
+    </div>
+  </div>
+  <p style="font-size:13px;line-height:1.9;color:#8fa3d6;text-align:center;margin:14px 0 0;">人数・枚数・運用方法により個別にお見積りします。少人数の部署からもご相談いただけます。</p>
+</section>
+
+<section style="margin:34px 16px 0;padding:26px 18px;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);border-radius:12px;text-align:center;" data-reveal>
+  <h2 style="font-size:19px;font-weight:900;margin:0 0 12px;">自治体・消防本部の<br>担当者さまへ</h2>
+  <p style="font-size:14px;line-height:2;color:#cfe0f2;margin:0;">全国の消防本部・自治体からご相談いただけます<br>見積書や内部共有用の資料のご相談も承ります<br>まずは確認だけでも結構です<br>お気軽にお問い合わせください</p>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;">
+    <a href="tel:0120-630-080" style="display:flex;align-items:center;justify-content:center;height:46px;background:#fff;color:#0d3b73;font-size:15px;font-weight:700;text-decoration:none;border-radius:8px;">電話で相談</a>
+    <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:46px;background:transparent;color:#fff;font-size:15px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:8px;">フォームで問い合わせる</a>
+  </div>
+</section>
+
+<section style="margin:34px 16px 0;" data-reveal>
+  <h2 style="font-size:20px;font-weight:900;text-align:center;margin:0 0 16px;">よくあるご質問</h2>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;">Q. どのサービスを選べばよいですか？</div>
+      <div style="font-size:14px;line-height:1.9;color:#b3bfcc;">血液・飛沫対策なら感染防止衣、防火服のニオイ・汚れ・撥水性の低下なら防火服専門クリーニングをご案内しています。迷う場合はお電話・フォームからご相談ください。</div>
+    </div>
+    <div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;">Q. 電話以外で問い合わせできますか？</div>
+      <div style="font-size:14px;line-height:1.9;color:#b3bfcc;">お問い合わせフォームからもご相談いただけます。受付時間外でもフォームからのご相談は随時受け付けています。</div>
+    </div>
+    <div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;">Q. サンプルやお試しはありますか？</div>
+      <div style="font-size:14px;line-height:1.9;color:#b3bfcc;">感染防止衣は製品サンプルのご案内、防火服専門クリーニングは初回お試し（無償クリーニング）をご案内しています。</div>
+    </div>
+  </div>
+</section>
 
 <div style="margin:28px 16px;text-align:center;" data-reveal>
   <div style="font-size:14px;color:rgba(255,255,255,.6);margin-bottom:8px;">お電話でのお問い合わせ</div>
