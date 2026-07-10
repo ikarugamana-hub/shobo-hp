@@ -182,6 +182,10 @@ document.addEventListener('click', function(e){
   .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(20,30,50,.16);}
   .type-chip:hover{transform:translateY(-4px) scale(1.03);background:rgba(255,255,255,.22)!important;box-shadow:0 16px 38px rgba(0,0,0,.32);}
+  @keyframes chipPulse{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,255,255,.35);}50%{box-shadow:0 12px 30px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0);}}
+  .type-chip{animation:chipPulse 2.6s ease-in-out infinite;}
+  .type-chip:hover{animation:none;}
+  @media (prefers-reduced-motion: reduce){.type-chip{animation:none;}}
   header{transition:box-shadow .35s ease;}
   header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.35);}
   @media (max-width:768px){
@@ -361,7 +365,7 @@ document.addEventListener('click', function(e){
         <!-- Hybrid card -->
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(20,30,50,0.1);">
           <div style="position:relative; height:400px; overflow:hidden;">
-            <img src="kansen-assets/hybrid-hero.webp" alt="ハイブリッド型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+            <img src="kansen-assets/hybrid-hero.webp?v=2" alt="ハイブリッド型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
             <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.6) 100%);"></div>
             <div style="position:absolute; top:18px; left:18px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#fff; background:#0d3b73; padding:6px 13px; border-radius:3px;">HYBRID</div>
           </div>
