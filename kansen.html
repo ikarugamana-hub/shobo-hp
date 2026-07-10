@@ -181,6 +181,7 @@ document.addEventListener('click', function(e){
   [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
   .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(20,30,50,.16);}
+  .type-chip:hover{transform:translateY(-4px) scale(1.03);background:rgba(255,255,255,.22)!important;box-shadow:0 16px 38px rgba(0,0,0,.32);}
   header{transition:box-shadow .35s ease;}
   header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.35);}
   @media (max-width:768px){
@@ -324,12 +325,12 @@ document.addEventListener('click', function(e){
       </div>
       <!-- type chips -->
       <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:64px; max-width:920px; margin:0 auto;">
-        <a href="#hybrid" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:linear-gradient(160deg, rgba(127,195,255,0.28), rgba(127,195,255,0.1)); border:2px solid #7fc3ff; border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+        <a href="#hybrid" class="type-chip" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
           <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">HYBRID</span>
           <span style="font-size:32px; font-weight:900; color:#fff;">ハイブリッド型 →</span>
           <span style="font-size:22px; font-weight:700; color:#dceaf8;">前面バリア性 × 背面通気性</span>
         </a>
-        <a href="#breathable" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:linear-gradient(160deg, rgba(127,195,255,0.28), rgba(127,195,255,0.1)); border:2px solid #7fc3ff; border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+        <a href="#breathable" class="type-chip" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
           <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">BREATHABLE</span>
           <span style="font-size:32px; font-weight:900; color:#fff;">通気性特化型 →</span>
           <span style="font-size:22px; font-weight:700; color:#dceaf8;">高通気　×　熱中症対策</span>
@@ -361,7 +362,7 @@ document.addEventListener('click', function(e){
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(20,30,50,0.1);">
           <div style="position:relative; height:400px; overflow:hidden;">
             <img src="kansen-assets/hybrid-hero.webp" alt="ハイブリッド型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(13,59,115,0.1) 40%, rgba(22,26,33,0.95) 100%);"></div>
+            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.6) 100%);"></div>
             <div style="position:absolute; top:18px; left:18px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#fff; background:#0d3b73; padding:6px 13px; border-radius:3px;">HYBRID</div>
           </div>
           <div style="padding:28px 30px 32px;">
@@ -378,7 +379,7 @@ document.addEventListener('click', function(e){
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(20,30,50,0.1);">
           <div style="position:relative; height:400px; overflow:hidden;">
             <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.95) 100%);"></div>
+            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.6) 100%);"></div>
             <div style="position:absolute; top:18px; left:18px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#fff; background:#2b8fd4; padding:6px 13px; border-radius:3px;">BREATHABLE</div>
           </div>
           <div style="padding:28px 30px 32px;">
@@ -715,7 +716,7 @@ document.addEventListener('click', function(e){
     <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px;">
       <div>
         <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:40px; width:auto; display:block;">
-        <div style="font-size:20px; color:#1c2438; margin-top:10px;">都ユニリース株式会社</div>
+        <div style="font-size:20px; color:#5a6b85; margin-top:10px;">都ユニリース株式会社</div>
         <div style="font-size:18px; color:#5a6b85; margin-top:4px;">〒712-8011 岡山県倉敷市連島町連島142-289 ／ レンタルユニフォームシステム</div>
         <div style="font-size:18px; color:#5a6b85; margin-top:4px;">ハイブリッド型・通気性特化型 感染防止衣</div>
       </div>
