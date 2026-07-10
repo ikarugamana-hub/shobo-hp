@@ -35,6 +35,10 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
+  var cta = e.target.closest ? e.target.closest('[data-cta]') : null;
+  if (cta && window.gtag) {
+    gtag('event', 'cta_click', { cta_id: cta.getAttribute('data-cta'), link_text: (cta.textContent || '').trim().slice(0, 40), page_path: location.pathname });
+  }
   var a = e.target.closest ? e.target.closest('a') : null;
   if (!a || !window.gtag) return;
   var href = a.getAttribute('href') || '';
@@ -128,7 +132,7 @@ footer a{color:#8c98ad;}
 </header>
 
 <div class="hero">
-  <img src="images/hero-poster.webp" srcset="images/hero-poster-sm.webp 640w, images/hero-poster.webp 1280w" sizes="100vw" alt="消防・救急の活動風景" fetchpriority="high">
+  <img src="images/hero-poster.webp" srcset="images/hero-poster-sm.webp 640w, images/hero-poster.webp 1280w" sizes="100vw" alt="消防・救急隊員が現場で活動する様子" fetchpriority="high">
   <div class="ov"></div>
   <div class="tx">
     <div style="font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.7);font-weight:700;margin-bottom:8px;">INFECTION CONTROL &amp; FIREFIGHTER SAFETY SUPPORT</div>
@@ -149,7 +153,7 @@ footer a{color:#8c98ad;}
     <div style="font-size:10px;letter-spacing:.2em;color:#0d3b73;font-weight:700;margin-bottom:6px;">INFECTION PREVENTION WEAR</div>
     <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">感染防止衣　販売・レンタル</h3>
     <p style="font-size:15px;line-height:1.9;color:#55627e;margin:0;">血液・飛沫から隊員を守る専用衣服　通気性重視・バリア性重視の2タイプから選べます</p>
-    <a class="btn blue" href="kansen.html">詳しく見る →</a>
+    <a class="btn blue" href="kansen.html" data-cta="sp_card_kansen_detail">詳しく見る →</a>
   </div>
 </div>
 
@@ -159,7 +163,7 @@ footer a{color:#8c98ad;}
     <div style="font-size:10px;letter-spacing:.2em;color:#c81f27;font-weight:700;margin-bottom:6px;">TURNOUT GEAR CLEANSING</div>
     <h3 style="font-size:22px;font-weight:900;margin:0 0 8px;">防火服専門クリーニング</h3>
     <p style="font-size:15px;line-height:1.9;color:#55627e;margin:0;">防火服のニオイ・汚れ・撥水性の低下を解消　初回はお試しとして無償クリーニングを実施中です</p>
-    <a class="btn" href="story_cleaning.dc.html">詳しく見る →</a>
+    <a class="btn" href="story_cleaning.dc.html" data-cta="sp_card_cleaning_detail">詳しく見る →</a>
   </div>
 </div>
 

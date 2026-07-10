@@ -38,6 +38,10 @@ gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
   if (!window.gtag) return;
+  var cta = e.target.closest ? e.target.closest('[data-cta]') : null;
+  if (cta) {
+    gtag('event', 'cta_click', { cta_id: cta.getAttribute('data-cta'), link_text: (cta.textContent || '').trim().slice(0, 40), page_path: location.pathname });
+  }
   var a = e.target.closest ? e.target.closest('a') : null;
   if (a) {
     var href = a.getAttribute('href') || '';
@@ -234,7 +238,7 @@ button{-webkit-appearance:none;appearance:none;}
         <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
       </div>
       <div id="s0c4" style="opacity:0;transform:translateY(12px);transition:opacity .75s .4s ease,transform .75s .4s ease;display:flex;justify-content:flex-end;">
-        <button onclick="goToGate()"
+        <button onclick="goToGate()" data-cta="hero_service_select"
           style="font-size:32px;font-weight:900;letter-spacing:.1em;color:#fff;background:#e0242c;border:2px solid rgba(255,255,255,.7);cursor:pointer;padding:28px 62px;display:inline-flex;align-items:center;gap:16px;border-radius:8px;transition:transform .25s,box-shadow .25s;animation:glowRed 1.8s ease-in-out infinite;"
           onmouseenter="this.style.transform='translateY(-4px) scale(1.06)';this.style.boxShadow='0 12px 30px rgba(224,36,44,.55)'"
           onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
@@ -243,7 +247,7 @@ button{-webkit-appearance:none;appearance:none;}
       </div>
     </div>
 
-    <button type="button" id="scrollHint" onclick="goToGate()" aria-label="サービス選択画面へ進む" style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;animation:floatY 3s ease-in-out infinite;cursor:pointer;background:none;border:none;padding:0;font:inherit;">
+    <button type="button" id="scrollHint" onclick="goToGate()" data-cta="hero_scroll_hint" aria-label="サービス選択画面へ進む" style="position:absolute;bottom:42px;right:52px;z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;animation:floatY 3s ease-in-out infinite;cursor:pointer;background:none;border:none;padding:0;font:inherit;">
       <div style="font-size:14px;letter-spacing:.28em;color:rgba(255,255,255,.5);writing-mode:vertical-rl;text-orientation:mixed;">SERVICE</div>
       <div style="width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);"></div>
     </button>
@@ -265,7 +269,7 @@ button{-webkit-appearance:none;appearance:none;}
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
         <span id="bizBadge"></span>
-        <a id="formCta" href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#0d3b73;border:1px solid rgba(13,59,115,.35);padding:8px 16px;border-radius:6px;text-decoration:none;display:inline-block;white-space:nowrap;transition:background .25s,border-color .25s;">フォームで問い合わせる</a>
+        <a id="formCta" data-cta="header_form" href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#0d3b73;border:1px solid rgba(13,59,115,.35);padding:8px 16px;border-radius:6px;text-decoration:none;display:inline-block;white-space:nowrap;transition:background .25s,border-color .25s;">フォームで問い合わせる</a>
       </div>
     </header>
 
@@ -297,7 +301,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>2タイプから現場に合わせて選択
             </div>
           </div>
-          <button type="button" class="enter-btn" onclick="window.location.href='kansen.html'" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
         </div>
       </div>
 
@@ -326,7 +330,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>撥水加工仕上げ
             </div>
           </div>
-          <button type="button" class="enter-btn" onclick="goCleaning()" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
         </div>
       </div>
     </div>
@@ -382,7 +386,7 @@ button{-webkit-appearance:none;appearance:none;}
         <h2 style="font-size:28px;font-weight:900;margin:0 0 18px;">消防本部の<br>担当者さまへ</h2>
         <p style="font-size:17px;line-height:2;color:#cfe0f2;margin:0;">全国の消防本部からご相談いただけます<br>見積書や内部共有用の資料のご相談も承ります<br>まずは確認だけでも結構です。お気軽にお問い合わせください</p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;">
-          <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:52px;padding:0 32px;background:transparent;color:#fff;font-size:19px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:6px;">フォームで問い合わせる</a>
+          <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" data-cta="dept_section_form" style="display:inline-flex;align-items:center;height:52px;padding:0 32px;background:transparent;color:#fff;font-size:19px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:6px;">フォームで問い合わせる</a>
         </div>
       </div>
     </section>

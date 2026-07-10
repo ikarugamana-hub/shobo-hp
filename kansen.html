@@ -21,6 +21,10 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
+  var cta = e.target.closest ? e.target.closest('[data-cta]') : null;
+  if (cta && window.gtag) {
+    gtag('event', 'cta_click', { cta_id: cta.getAttribute('data-cta'), link_text: (cta.textContent || '').trim().slice(0, 40), page_path: location.pathname });
+  }
   var a = e.target.closest ? e.target.closest('a') : null;
   if (!a || !window.gtag) return;
   var href = a.getAttribute('href') || '';
@@ -329,12 +333,12 @@ document.addEventListener('click', function(e){
       </div>
       <!-- type chips -->
       <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:64px; max-width:920px; margin:0 auto;">
-        <a href="#hybrid" class="type-chip" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
+        <a href="#hybrid" class="type-chip" data-cta="hero_chip_hybrid" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
           <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">HYBRID</span>
           <span style="font-size:32px; font-weight:900; color:#fff;">ハイブリッド型 →</span>
           <span style="font-size:22px; font-weight:700; color:#dceaf8;">前面バリア性 × 背面通気性</span>
         </a>
-        <a href="#breathable" class="type-chip" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
+        <a href="#breathable" class="type-chip" data-cta="hero_chip_breathable" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
           <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">BREATHABLE</span>
           <span style="font-size:32px; font-weight:900; color:#fff;">通気性特化型 →</span>
           <span style="font-size:22px; font-weight:700; color:#dceaf8;">高通気　×　熱中症対策</span>
@@ -365,8 +369,7 @@ document.addEventListener('click', function(e){
         <!-- Hybrid card -->
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(20,30,50,0.1);">
           <div style="position:relative; height:400px; overflow:hidden;">
-            <img src="kansen-assets/hybrid-hero.webp?v=2" alt="ハイブリッド型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.6) 100%);"></div>
+            <img src="kansen-assets/hybrid-hero.webp?v=2" alt="ハイブリッド型感染防止衣を着用した隊員の全身像" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
             <div style="position:absolute; top:18px; left:18px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#fff; background:#0d3b73; padding:6px 13px; border-radius:3px;">HYBRID</div>
           </div>
           <div style="padding:28px 30px 32px;">
@@ -376,14 +379,13 @@ document.addEventListener('click', function(e){
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">前面バリア性 クラス6</span>
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">背面通気構造</span>
             </div>
-            <a href="#hybrid" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
+            <a href="#hybrid" data-cta="lineup_hybrid_detail" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
           </div>
         </div>
         <!-- Breathable card -->
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; overflow:hidden; box-shadow:0 12px 32px rgba(20,30,50,0.1);">
           <div style="position:relative; height:400px; overflow:hidden;">
-            <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(45,143,212,0.05) 40%, rgba(22,26,33,0.6) 100%);"></div>
+            <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型感染防止衣を着用した隊員の全身像" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
             <div style="position:absolute; top:18px; left:18px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#fff; background:#2b8fd4; padding:6px 13px; border-radius:3px;">BREATHABLE</div>
           </div>
           <div style="padding:28px 30px 32px;">
@@ -392,7 +394,7 @@ document.addEventListener('click', function(e){
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">通気度 100cc/cm²·s以上</span>
             </div>
-            <a href="#breathable" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
+            <a href="#breathable" data-cta="lineup_breathable_detail" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
           </div>
         </div>
       </div>
@@ -410,7 +412,7 @@ document.addEventListener('click', function(e){
 
       <!-- 画像＋前面/背面カード（2段） -->
       <div data-reveal="" style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(13,59,115,0.12); margin-bottom:30px;">
-        <img src="kansen-assets/hybrid-front-back.webp?v=7" alt="前面バリア性・背面通気性" loading="lazy" style="width:100%; display:block;">
+        <img src="kansen-assets/hybrid-front-back.webp?v=7" alt="ハイブリッド型感染防止衣の前面（バリア性素材）と背面（通気性素材）の比較写真" loading="lazy" style="width:100%; display:block;">
       </div>
       <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
         <div style="background:#f5f7fb; border-radius:6px; padding:30px; box-shadow:0 8px 24px rgba(20,30,50,0.08); border-top:4px solid #0d3b73;">
@@ -495,7 +497,7 @@ document.addEventListener('click', function(e){
       </div>
 
       <div data-reveal="" style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(45,143,212,0.12); margin-bottom:30px;">
-        <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型 感染防止衣" loading="lazy" style="width:100%; display:block;">
+        <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型感染防止衣の高通気素材のクローズアップ" loading="lazy" style="width:100%; display:block;">
       </div>
       <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
         <div style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
@@ -610,7 +612,7 @@ document.addEventListener('click', function(e){
         <div style="font-size:18px; letter-spacing:2px; color:#c81f27; font-weight:700;">OTHER SERVICE</div>
         <h3 style="font-size:30px; font-weight:900; color:#1c2438; margin:10px 0 12px; white-space:nowrap;">防火服専門クリーニングも承っています</h3>
         <p style="font-size:19px; line-height:1.9; color:#55627e; margin:0 0 22px; white-space:nowrap;">防火服のニオイ・汚れ・撥水性の低下を専門クリーニングで解消<br>初回はお試しとして無償クリーニングを実施中です</p>
-        <a href="story_cleaning.dc.html" style="display:inline-flex; align-items:center; gap:8px; font-size:19px; font-weight:900; color:#fff; background:#e0242c; padding:13px 28px; border-radius:6px; text-decoration:none;">詳しく見る →</a>
+        <a href="story_cleaning.dc.html" data-cta="cross_service_cleaning" style="display:inline-flex; align-items:center; gap:8px; font-size:19px; font-weight:900; color:#fff; background:#e0242c; padding:13px 28px; border-radius:6px; text-decoration:none;">詳しく見る →</a>
       </div>
     </div>
   </section>
@@ -622,7 +624,7 @@ document.addEventListener('click', function(e){
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px auto 0;"></div>
       <p style="font-size:23px; line-height:2; color:#cfe0f2; margin-top:20px;">どちらの型が現場に合うかのご相談から<br>お見積り・製品サンプルのご案内まで承ります<br>まずはお気軽にお問い合わせください</p>
       <div style="display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap;">
-        <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; height:56px; padding:0 34px; background:transparent; color:#fff; font-size:23px; font-weight:700; text-decoration:none; border:1px solid rgba(255,255,255,0.5); border-radius:4px;">問い合わせフォーム →</a>
+        <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" data-cta="contact_form" style="display:inline-flex; align-items:center; gap:10px; height:56px; padding:0 34px; background:transparent; color:#fff; font-size:23px; font-weight:700; text-decoration:none; border:1px solid rgba(255,255,255,0.5); border-radius:4px;">問い合わせフォーム →</a>
       </div>
       <div style="margin-top:26px; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
         <a href="https://unilease.co.jp/cms/footerPDF/CompanyProfile.pdf" target="_blank" rel="noopener" style="font-size:19px; color:#bcd2ea; text-decoration:underline;">会社概要PDF</a>
