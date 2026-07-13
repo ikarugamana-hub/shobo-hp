@@ -185,8 +185,9 @@ document.addEventListener('click', function(e){
   [data-line]{transition:width .9s cubic-bezier(.25,.7,.3,1);}
   .card-grid > div{transition:transform .3s ease,box-shadow .3s ease;}
   .card-grid > div:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(20,30,50,.16);}
-  .type-chip:hover{transform:translateY(-4px) scale(1.03);background:rgba(255,255,255,.22)!important;box-shadow:0 16px 38px rgba(0,0,0,.32);}
-  @keyframes chipPulse{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,255,255,.35);}50%{box-shadow:0 12px 30px rgba(0,0,0,0.25), 0 0 0 10px rgba(255,255,255,0);}}
+  .type-chip:hover{transform:translateY(-4px) scale(1.03);background:#f5f7fb!important;box-shadow:0 16px 38px rgba(20,30,50,.24);}
+  .type-chip:hover .chip-arrow{transform:scale(1.1);}
+  @keyframes chipPulse{0%,100%{box-shadow:0 12px 30px rgba(20,30,50,0.18), 0 0 0 0 rgba(31,111,176,.35);}50%{box-shadow:0 12px 30px rgba(20,30,50,0.18), 0 0 0 10px rgba(31,111,176,0);}}
   .type-chip{animation:chipPulse 2.6s ease-in-out infinite;}
   .type-chip:hover{animation:none;}
   @media (prefers-reduced-motion: reduce){.type-chip{animation:none;}}
@@ -333,15 +334,21 @@ document.addEventListener('click', function(e){
       </div>
       <!-- type chips -->
       <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:64px; max-width:920px; margin:0 auto;">
-        <a href="#hybrid" class="type-chip" data-cta="hero_chip_hybrid" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
-          <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">HYBRID</span>
-          <span style="font-size:32px; font-weight:900; color:#fff;">ハイブリッド型 →</span>
-          <span style="font-size:22px; font-weight:700; color:#dceaf8;">前面バリア性 × 背面通気性</span>
+        <a href="#hybrid" class="type-chip" data-cta="hero_chip_hybrid" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:#ffffff; border:1px solid #e3e7ee; border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(20,30,50,0.18); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#1f6fb0;">HYBRID</span>
+          <span style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <span style="font-size:32px; font-weight:900; color:#1c2438;">ハイブリッド型</span>
+            <span class="chip-arrow" style="flex-shrink:0; width:38px; height:38px; border-radius:50%; background:#0d3b73; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:900; transition:transform .25s ease;">→</span>
+          </span>
+          <span style="font-size:22px; font-weight:700; color:#55627e;">前面バリア性 × 背面通気性</span>
         </a>
-        <a href="#breathable" class="type-chip" data-cta="hero_chip_breathable" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.55); border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,0.25); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
-          <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#7fc3ff;">BREATHABLE</span>
-          <span style="font-size:32px; font-weight:900; color:#fff;">通気性特化型 →</span>
-          <span style="font-size:22px; font-weight:700; color:#dceaf8;">高通気　×　熱中症対策</span>
+        <a href="#breathable" class="type-chip" data-cta="hero_chip_breathable" style="display:flex; flex-direction:column; gap:8px; padding:30px 32px; background:#ffffff; border:1px solid #e3e7ee; border-radius:12px; text-decoration:none; box-shadow:0 12px 30px rgba(20,30,50,0.18); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;">
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:23px; font-weight:700; letter-spacing:2px; color:#1f6fb0;">BREATHABLE</span>
+          <span style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <span style="font-size:32px; font-weight:900; color:#1c2438;">通気性特化型</span>
+            <span class="chip-arrow" style="flex-shrink:0; width:38px; height:38px; border-radius:50%; background:#0d3b73; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:900; transition:transform .25s ease;">→</span>
+          </span>
+          <span style="font-size:22px; font-weight:700; color:#55627e;">高通気　×　熱中症対策</span>
         </a>
       </div>
     </div>
