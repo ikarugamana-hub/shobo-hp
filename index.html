@@ -19,9 +19,9 @@ function gtag(){dataLayer.push(arguments);}
   } catch (e) {}
 })();
 </script>
-<title>都ユニリース | 消防・救急安全支援</title>
-<meta name="description" content="消防・救急の隊員を現場の最前線で支える都ユニリース。感染防止衣の販売・レンタルと、防火服の専門クリーニング。2つの専門サービスで現場の安全環境をトータルサポートします。">
-<meta property="og:title" content="都ユニリース | 消防・救急安全支援">
+<title>感染防止衣・防火服クリーニング | 都ユニリース株式会社</title>
+<meta name="description" content="感染防止衣の販売・レンタルと防火服専門クリーニングで消防・救急隊員の現場を支える都ユニリース。2つの専門サービスで安全環境をトータルサポートします。">
+<meta property="og:title" content="感染防止衣・防火服クリーニング | 都ユニリース株式会社">
 <meta property="og:description" content="感染防止衣の販売・レンタルから防火服の専門クリーニングまで、消防・救急の現場をトータルサポート。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ikarugamana-hub.github.io/shobo-hp/">
@@ -293,7 +293,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>2タイプから現場に合わせて選択
             </div>
           </div>
-          <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" onfocus="hoverS1(0)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
         </div>
       </div>
 
@@ -322,7 +322,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>撥水加工仕上げ
             </div>
           </div>
-          <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" onfocus="hoverS1(1)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
         </div>
       </div>
     </div>
@@ -567,24 +567,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+<script src="js/business-hours.js"></script>
 <script>
 (function(){
-  // 2028年以降を追加する場合は、この配列を更新してください（同じ配列が index/kansen/story/sp の4ファイルにあります）
-  var HOLIDAYS =['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
-  function isOpen(){
-    var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
-    var day = d.getDay();
-    if (day === 0 || day === 6) return false;
-    var mm = ('0' + (d.getMonth() + 1)).slice(-2);
-    var dd = ('0' + d.getDate()).slice(-2);
-    var ymd = d.getFullYear() + '-' + mm + '-' + dd;
-    if (HOLIDAYS.indexOf(ymd) !== -1) return false;
-    var md = mm + '-' + dd;
-    if (md >= '08-13' && md <= '08-15') return false;   // お盆
-    if (md >= '12-29' || md <= '01-03') return false;   // 年末年始
-    var h = d.getHours();
-    return h >= 10 && h < 17;
-  }
   function apply(){
     var open = isOpen();
     var b = document.getElementById('bizBadge');

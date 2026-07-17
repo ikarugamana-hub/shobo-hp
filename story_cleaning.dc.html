@@ -71,76 +71,6 @@ document.addEventListener('click', function(e){
     "@id": "https://ikarugamana-hub.github.io/shobo-hp/#business"
    },
    "areaServed": "JP"
-  },
-  {
-   "@context": "https://schema.org",
-   "@type": "FAQPage",
-   "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "初回お試しはできますか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "初回はお試しとして無償クリーニングを実施しています　ビフォーアフター資料を付けて返却します"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "撥水加工はできますか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "対応できます　クリーニング後に撥水加工を施し、撥水性能の回復を目指します"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "問い合わせ方法を教えてください",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "お電話（0120-630-080）または問い合わせフォームからご相談ください　電話の受付対応時間は10時〜17時です"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "納期はどれくらいかかりますか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "お預かりする数量や時期により異なります　ご希望の返却時期がある場合は、お気軽にお電話でご相談ください"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "何着から依頼できますか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "着数を問わずご相談いただけます　まとまった数量の場合も対応可能です"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "防火服の発送はどうすればいいですか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "発送でのお預かりを基本としています　梱包や発送方法の詳細は、お申し込み時にご案内します"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "汚れや破損がひどい場合も対応できますか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "状態を確認のうえ、クリーニングで対応可能な範囲をご案内します　破損がひどい場合の修理対応については個別にご相談ください"
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "お見積りに必要な情報は何ですか？",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "着数、対象装備（防火服・アンダーウェアなど）、所在地・地域、ご希望の返却時期がわかりましたら、概算のお見積りが可能です"
-     }
-    }
-   ]
   }
  ]
 }
@@ -198,10 +128,6 @@ html,body{height:auto!important;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
 @keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
 @keyframes lineGrow{from{width:0;}to{width:44px;}}
-.faq-item{border-bottom:1px solid var(--line);cursor:pointer;}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:22px;font-weight:700;gap:12px;}
-.faq-a{font-size:20px;line-height:2;color:var(--muted);max-height:0;overflow:hidden;padding:0;transition:max-height .4s ease,padding .4s ease;}
-.faq-a.open{max-height:320px;padding:0 0 20px;}
 .trouble-item{display:flex;align-items:flex-start;gap:11px;padding:13px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;}
 .flow-step{display:grid;grid-template-columns:64px 1fr;gap:28px;position:relative;}
 .flow-step:not(:last-child)::before{content:'';position:absolute;left:31px;top:64px;bottom:-48px;width:2px;background:linear-gradient(to bottom,rgba(23,48,125,.35),rgba(23,48,125,.08));}
@@ -209,7 +135,7 @@ html,body{height:auto!important;}
 .bar-track{background:var(--line);border-radius:20px;overflow:hidden;height:22px;}
 .bar-fill{height:100%;border-radius:20px;background:var(--navy-3);width:0;transition:width 1.3s cubic-bezier(.25,.7,.3,1);}
 @keyframes riseIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
-@media (prefers-reduced-motion: reduce){[data-reveal],[data-reveal-group] > *{animation:none!important;}.bar-fill{transition:none;}[data-line]{width:44px!important;transition:none!important;}.compare-imgs img:last-child{clip-path:none!important;transition:none!important;}.flow-step:not(:last-child)::before{transform:none!important;transition:none!important;}.faq-a{transition:none!important;}}
+@media (prefers-reduced-motion: reduce){[data-reveal],[data-reveal-group] > *{animation:none!important;}.bar-fill{transition:none;}[data-line]{width:44px!important;transition:none!important;}.compare-imgs img:last-child{clip-path:none!important;transition:none!important;}.flow-step:not(:last-child)::before{transform:none!important;transition:none!important;}}
 :focus-visible{outline:2px solid #e0242c;outline-offset:3px;}
 .risk-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 24px;box-shadow:0 4px 16px rgba(20,30,50,.06);}
 .service-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 24px;box-shadow:0 4px 16px rgba(20,30,50,.06);}
@@ -229,8 +155,6 @@ html,body{height:auto!important;}
 .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0);}
 .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;box-shadow:0 0 10px rgba(0,0,0,.6);}
 .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#17307d;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;box-shadow:0 4px 14px rgba(0,0,0,.4);}
-.faq-item{outline-offset:4px;}
-.faq-item[aria-expanded="true"] .faq-q span:last-child{transform:rotate(45deg);}
 header nav a.nav-now{color:#17307d!important;box-shadow:inset 0 -2px 0 var(--yellow);}
 #toTop{position:fixed;right:24px;bottom:24px;z-index:200;width:52px;height:52px;border-radius:50%;background:rgba(23,48,125,.92);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;transform:translateY(8px);}
 #toTop.show{opacity:1;pointer-events:auto;transform:none;}
@@ -253,8 +177,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
   [data-reveal],[data-reveal-group] > *{opacity:1!important;transform:none!important;animation:none!important;}
   [data-line]{width:44px!important;background:#333!important;}
   .bar-fill{width:100%!important;background:#999!important;}
-  .faq-a{max-height:none!important;padding:0 0 20px!important;}
-  .compare-card,.service-card,.risk-card,.faq-item{border:1px solid #ccc!important;background:#fff!important;box-shadow:none!important;}
+  .compare-card,.service-card,.risk-card{border:1px solid #ccc!important;background:#fff!important;box-shadow:none!important;}
   .print-footer{display:flex!important;gap:18px;align-items:center;padding:18px 0!important;border-top:2px solid #333;font-size:16px;color:#000!important;}
   .print-footer img{width:90px;height:90px;}
 }
@@ -265,7 +188,6 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
   h1{font-size:30px!important;}
   h2{font-size:26px!important;}
   p br{display:none;}
-  .faq-a br{display:none;}
   .mgrid{grid-template-columns:1fr!important;}
   .ba-wrap{height:230px!important;}
   header img{height:30px!important;}
@@ -373,25 +295,6 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
         if(a.getAttribute('href')==='#'+cur){a.classList.add('nav-now');}else{a.classList.remove('nav-now');}
       });
     }
-    function faqToggle(item){
-      var a=item.querySelector('.faq-a');
-      if(!a) return;
-      var open=a.classList.toggle('open');
-      item.setAttribute('aria-expanded', open?'true':'false');
-      if (open && window.gtag) {
-        var q = item.querySelector('.faq-q');
-        gtag('event', 'faq_open', { question: (q ? q.textContent : '').trim().slice(0, 60), page_path: location.pathname });
-      }
-    }
-    document.addEventListener('click', function(e){
-      var item=e.target.closest ? e.target.closest('.faq-item') : null;
-      if(item) faqToggle(item);
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key!=='Enter' && e.key!==' ') return;
-      var item=e.target.closest ? e.target.closest('.faq-item') : null;
-      if(item){ e.preventDefault(); faqToggle(item); }
-    });
     var baActive=null;
     function baSet(w,x){
       var r=w.getBoundingClientRect();
@@ -862,42 +765,11 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  toggleFaq(i) {
-    const items = document.querySelectorAll('.faq-a');
-    const icons = document.querySelectorAll('.faq-q span:last-child');
-    if (items[i]) {
-      const isOpen = items[i].classList.contains('open');
-      items[i].classList.toggle('open');
-      if (icons[i]) icons[i].style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
-    }
-  }
-  renderVals() {
-    return {
-      toggleFaq0: () => this.toggleFaq(0),
-      toggleFaq1: () => this.toggleFaq(1),
-      toggleFaq2: () => this.toggleFaq(2),
-    };
-  }
 }
 </script>
+<script src="js/business-hours.js"></script>
 <script>
 (function(){
-  // 2028年以降を追加する場合は、この配列を更新してください（同じ配列が index/kansen/story/sp の4ファイルにあります）
-  var HOLIDAYS =['2026-01-01','2026-01-12','2026-02-11','2026-02-23','2026-03-20','2026-04-29','2026-05-03','2026-05-04','2026-05-05','2026-05-06','2026-07-20','2026-08-11','2026-09-21','2026-09-22','2026-09-23','2026-10-12','2026-11-03','2026-11-23','2027-01-01','2027-01-11','2027-02-11','2027-02-23','2027-03-21','2027-03-22','2027-04-29','2027-05-03','2027-05-04','2027-05-05','2027-07-19','2027-08-11','2027-09-20','2027-09-23','2027-10-11','2027-11-03','2027-11-23'];
-  function isOpen(){
-    var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
-    var day = d.getDay();
-    if (day === 0 || day === 6) return false;
-    var mm = ('0' + (d.getMonth() + 1)).slice(-2);
-    var dd = ('0' + d.getDate()).slice(-2);
-    var ymd = d.getFullYear() + '-' + mm + '-' + dd;
-    if (HOLIDAYS.indexOf(ymd) !== -1) return false;
-    var md = mm + '-' + dd;
-    if (md >= '08-13' && md <= '08-15') return false;   // お盆
-    if (md >= '12-29' || md <= '01-03') return false;   // 年末年始
-    var h = d.getHours();
-    return h >= 10 && h < 17;
-  }
   function apply(){
     var open = isOpen();
     var b = document.getElementById('bizBadge');
