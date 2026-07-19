@@ -79,6 +79,7 @@ document.addEventListener('click', function(e){
  "name": "都ユニリース株式会社",
  "url": "https://unilease.co.jp/",
  "logo": "https://ikarugamana-hub.github.io/shobo-hp/images/logo.webp",
+ "sameAs": ["https://unilease.co.jp/"],
  "telephone": "0120-630-080",
  "address": {
   "@type": "PostalAddress",
@@ -117,6 +118,7 @@ document.addEventListener('click', function(e){
 </script>
 <link rel="preload" href="fonts/NotoSansJP-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/NotoSansJP-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="images/hero-poster.webp" as="image">
 <style>
 @font-face{font-family:'Noto Sans JP';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/NotoSansJP-400.woff2') format('woff2');}
 @font-face{font-family:'Noto Sans JP';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/NotoSansJP-700.woff2') format('woff2');}
@@ -135,6 +137,7 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 @media (prefers-reduced-motion: reduce){*{animation:none!important;}}
 button{-webkit-appearance:none;appearance:none;}
 :focus-visible{outline:2px solid #fff;outline-offset:3px;}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:400;background:#e0242c;color:#fff;padding:10px 18px;font-weight:700;text-decoration:none;font-size:16px;}.skip-link:focus{left:0;}
 @media print{
   body{background:#fff!important;color:#000!important;overflow:visible!important;}
   video,#mobileCall{display:none!important;}
@@ -200,7 +203,7 @@ button{-webkit-appearance:none;appearance:none;}
 </style>
 </head>
 <body>
-
+<a class="skip-link" href="#heroContent">本文へスキップ</a>
 <div style="height:100vh;position:relative;overflow:hidden;">
 
   <!-- ===== SCREEN 0: TOP ===== -->
@@ -220,7 +223,7 @@ button{-webkit-appearance:none;appearance:none;}
       </nav>
     </header>
 
-    <div id="heroContent" style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 120px;">
+    <div id="heroContent" style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 120px;" tabindex="-1">
       <div id="s0c0" style="opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;">
         <div style="font-size:15px;letter-spacing:.38em;color:rgba(255,255,255,.68);font-weight:700;margin-bottom:22px;text-transform:uppercase;">Infection Control &amp; Firefighter Safety Support</div>
       </div>
@@ -483,6 +486,7 @@ function goToGate() {
 }
 
 function loadPanelVideos() {
+  if (prefersReducedMotion()) return;
   document.querySelectorAll('#screen-1 video').forEach(function(v) {
     if (v.dataset.loaded) return;
     v.dataset.loaded = '1';
@@ -541,9 +545,14 @@ function updatePanels() {
   if (p1R) p1R.style.flex = grow(state.h1, 1);
 }
 
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function initVideo() {
   var vid = document.getElementById('hero-video');
   if (!vid) return;
+  if (prefersReducedMotion()) { vid.removeAttribute('autoplay'); vid.pause(); return; }
   vid.muted = true;
   vid.volume = 0;
   function tryPlay() {

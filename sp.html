@@ -115,19 +115,21 @@ header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify
 #mobileCall a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 6px;font-size:15px;font-weight:900;text-decoration:none;color:#fff;}
 #mobileCall #mcTel{background:#e0242c;}
 #mobileCall #mcForm{background:#17307d;border-left:1px solid rgba(255,255,255,.25);}
-footer{padding:26px 16px;background:#ffffff;border-top:1px solid #e3e7ee;font-size:13px;color:#8c98ad;line-height:2;}
-footer a{color:#8c98ad;}
+footer{padding:26px 16px;background:#ffffff;border-top:1px solid #e3e7ee;font-size:13px;color:#5a6b85;line-height:2;}
+footer a{color:#5a6b85;}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:400;background:#e0242c;color:#fff;padding:10px 18px;font-weight:700;text-decoration:none;font-size:16px;}.skip-link:focus{left:0;}
 @media print{body{background:#fff!important;color:#000!important;}#mobileCall{display:none!important;}h1,h2,h3,p,div,span{color:#000!important;}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">本文へスキップ</a>
 
 <header>
   <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:30px;width:auto;display:block;">
   <a href="tel:0120-630-080" style="font-size:12px;font-weight:700;color:#0d3b73;border:1px solid rgba(13,59,115,.35);padding:8px 12px;text-decoration:none;">問い合わせ</a>
 </header>
 
-<div class="hero">
+<div class="hero" id="main">
   <img src="images/hero-poster.webp" srcset="images/hero-poster-sm.webp 640w, images/hero-poster.webp 1280w" sizes="100vw" alt="消防・救急隊員が現場で活動する様子" fetchpriority="high">
   <div class="ov"></div>
   <div class="tx">
