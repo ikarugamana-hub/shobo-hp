@@ -407,6 +407,24 @@ document.addEventListener('click', function(e){
         </div>
       </div>
 
+      <!-- 通気性検証動画 -->
+      <div data-reveal="" style="margin-top:40px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
+        <video id="kansenBreathabilityVideo" autoplay muted loop playsinline controls
+          poster="uploads/kansen-breathability-test-poster.webp"
+          style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000;">
+          <source src="uploads/kansen-breathability-test.mp4" type="video/mp4">
+        </video>
+      </div>
+      <script>
+      (function(){
+        var v = document.getElementById('kansenBreathabilityVideo');
+        if (v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          v.removeAttribute('autoplay');
+          v.pause();
+        }
+      })();
+      </script>
+
       <!-- features -->
       <div data-reveal="" style="margin-top:56px; margin-bottom:26px;">
         <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#1c2438;">ハイブリッド型の特長</h3>
