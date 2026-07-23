@@ -496,12 +496,16 @@ document.addEventListener('click', function(e){
           </button>
         </div>
 
-        <div id="breathability-video" hidden style="scroll-margin-top:90px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
+        <div id="breathability-video" hidden style="position:relative; scroll-margin-top:90px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
           <video id="kansenBreathabilityVideo" muted loop playsinline controls
             poster="uploads/kansen-breathability-test-poster.webp"
             style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000;">
             <source src="uploads/kansen-breathability-test.mp4" type="video/mp4">
           </video>
+          <button type="button" onclick="window.collapseBreathabilityVideo()" aria-label="動画を閉じる" style="position:absolute; top:12px; right:12px; z-index:2; display:inline-flex; align-items:center; gap:6px; height:38px; padding:0 15px; background:rgba(20,30,50,0.72); color:#fff; font-size:15px; font-weight:700; border:0; border-radius:100px; cursor:pointer; backdrop-filter:blur(4px);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            閉じる
+          </button>
         </div>
         <script>
         (function(){
@@ -516,6 +520,17 @@ document.addEventListener('click', function(e){
               if (!reduce) v.play().catch(function(){});
             }
             if (stage && stage.scrollIntoView) stage.scrollIntoView({behavior:'smooth', block:'center'});
+          };
+          window.collapseBreathabilityVideo = function(){
+            var stage = document.getElementById('breathability-video');
+            var v = document.getElementById('kansenBreathabilityVideo');
+            var thumb = document.getElementById('breathabilityVideoThumb');
+            if (v) { v.pause(); v.currentTime = 0; }
+            if (stage) stage.setAttribute('hidden', '');
+            if (thumb) {
+              thumb.style.display = '';
+              if (thumb.scrollIntoView) thumb.scrollIntoView({behavior:'smooth', block:'center'});
+            }
           };
         })();
         </script>
