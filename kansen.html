@@ -101,6 +101,7 @@ document.addEventListener('click', function(e){
 }
 </script>
 <link rel="preload" href="fonts/NotoSansJP-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/NotoSansJP-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/NotoSansJP-900.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'Noto Sans JP';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/NotoSansJP-400.woff2') format('woff2');}
@@ -225,6 +226,7 @@ document.addEventListener('click', function(e){
           requestAnimationFrame(tick);
         }
       });
+      if (typeof revealTimer !== 'undefined' && revealTimer && !document.querySelector('[data-reveal]:not([data-shown]),[data-reveal-group]:not([data-shown]),[data-line]:not([data-drawn]),.stat-num[data-n]:not([data-counted])')) { clearInterval(revealTimer); revealTimer = null; }
     }
     reveal();
     function hdrFx(){
@@ -246,7 +248,7 @@ document.addEventListener('click', function(e){
     window.addEventListener('scroll', hdrFx, {passive:true});
     window.addEventListener('scroll', reveal, {passive:true});
     window.addEventListener('resize', reveal);
-    setInterval(reveal, 250);
+    var revealTimer = setInterval(reveal, 250);
     window.addEventListener('load', reveal);
   }
   init();
@@ -298,8 +300,8 @@ document.addEventListener('click', function(e){
           <span style="width:7px; height:7px; border-radius:50%; background:#7fc3ff; box-shadow:0 0 10px #7fc3ff;"></span>
           <span style="font-size:18px; font-weight:500; color:#bcdcf5; letter-spacing:1px;">消防・救急・医療現場のための感染対策ウェア</span>
         </div>
-        <h1 style="font-family:'Noto Sans JP',sans-serif; font-size:68px; font-weight:900; line-height:1.25; color:#fff; letter-spacing:0.5px; white-space:nowrap;">現場で選べる、2つの感染防止衣</h1>
-        <p style="font-size:24px; line-height:2; color:#cfe0f2; margin-top:24px; max-width:none; white-space:nowrap;">守りを重視した<strong style="color:#fff;">「ハイブリッド型」</strong>と涼しさを極めた<strong style="color:#fff;">「通気性特化型」</strong><br>活動スタイルや季節に合わせて選べる感染防止衣ラインナップです</p>
+        <h1 style="font-family:'Noto Sans JP',sans-serif; font-size:68px; font-weight:900; line-height:1.25; color:#fff; letter-spacing:0.5px;">現場で選べる、2つの感染防止衣</h1>
+        <p style="font-size:24px; line-height:2; color:#cfe0f2; margin-top:24px; max-width:none;">守りを重視した<strong style="color:#fff;">「ハイブリッド型」</strong>と涼しさを極めた<strong style="color:#fff;">「通気性特化型」</strong><br>活動スタイルや季節に合わせて選べる感染防止衣ラインナップです</p>
       </div>
       <!-- type chips -->
       <div class="mgrid" data-reveal-group="" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:64px; max-width:920px; margin:0 auto;">
@@ -317,7 +319,7 @@ document.addEventListener('click', function(e){
             <span style="font-size:32px; font-weight:900; color:#1c2438;">通気性特化型</span>
             <span class="chip-arrow" style="flex-shrink:0; width:38px; height:38px; border-radius:50%; background:#0d3b73; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:900; transition:transform .25s ease;">→</span>
           </span>
-          <span style="font-size:22px; font-weight:700; color:#55627e;">高通気　×　熱中症対策</span>
+          <span style="font-size:22px; font-weight:700; color:#55627e;">高通気 × 熱中症対策</span>
         </a>
       </div>
     </div>
@@ -469,11 +471,14 @@ document.addEventListener('click', function(e){
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#1f6fb0;">BREATHABLE TYPE</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:47px; font-weight:900; margin-top:14px; color:#1c2438; line-height:1.35;">断然涼しい　そして、常に清潔</h2>
         <div data-line style="width:0;height:2px;background:rgba(20,30,50,.2);margin:18px 0 0;"></div>
-        <p style="font-size:23px; line-height:2; color:#55627e; margin-top:18px; max-width:none; white-space:nowrap;">高通気素材を採用した熱中症対策に適したモデル　夏場や長時間の活動でも涼しく軽い着用感を実現します</p>
+        <p style="font-size:23px; line-height:2; color:#55627e; margin-top:18px; max-width:none;">高通気素材を採用した熱中症対策に適したモデル　夏場や長時間の活動でも涼しく軽い着用感を実現します</p>
       </div>
 
       <div data-reveal="" style="border-radius:8px; overflow:hidden; box-shadow:0 20px 50px rgba(45,143,212,0.12); margin-bottom:30px;">
-        <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型感染防止衣の高通気素材のクローズアップ" loading="lazy" width="1607" height="979" style="width:100%; height:auto; display:block;">
+        <img src="kansen-assets/breathable-detail.webp" alt="通気性特化型感染防止衣を着用した隊員の前面と背面" loading="lazy" width="1607" height="979" style="width:100%; height:auto; display:block;">
+      </div>
+      <div data-reveal="" style="margin-top:56px; margin-bottom:26px;">
+        <h3 style="font-family:'Noto Sans JP',sans-serif; font-size:34px; font-weight:900; color:#1c2438;">通気性特化型の特長</h3>
       </div>
       <div data-reveal-group="" class="mgrid card-grid" style="display:grid; grid-template-columns:1fr; gap:20px;">
         <div class="breathable-video-card" style="display:flex; gap:22px; padding:30px; background:#ffffff; border:1px solid #e3e7ee; border-radius:6px;">
@@ -499,7 +504,7 @@ document.addEventListener('click', function(e){
         </div>
 
         <div id="breathability-video" class="breathable-video-stage" hidden style="position:relative; scroll-margin-top:90px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
-          <video id="kansenBreathabilityVideo" muted loop playsinline controls
+          <video id="kansenBreathabilityVideo" muted loop playsinline controls preload="none"
             poster="uploads/kansen-breathability-test-poster.webp"
             style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000;">
             <source src="uploads/kansen-breathability-test.mp4" type="video/mp4">
@@ -521,7 +526,11 @@ document.addEventListener('click', function(e){
               var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
               if (!reduce) v.play().catch(function(){});
             }
-            if (stage && stage.scrollIntoView) stage.scrollIntoView({behavior:'smooth', block:'center'});
+            if (stage) {
+              var closeBtn = stage.querySelector('button');
+              if (closeBtn && closeBtn.focus) { try { closeBtn.focus({preventScroll:true}); } catch(e){ closeBtn.focus(); } }
+              if (stage.scrollIntoView) stage.scrollIntoView({behavior:'smooth', block:'center'});
+            }
           };
           window.collapseBreathabilityVideo = function(){
             var stage = document.getElementById('breathability-video');
@@ -531,6 +540,7 @@ document.addEventListener('click', function(e){
             if (stage) stage.setAttribute('hidden', '');
             if (thumb) {
               thumb.style.display = '';
+              if (thumb.focus) { try { thumb.focus({preventScroll:true}); } catch(e){ thumb.focus(); } }
               if (thumb.scrollIntoView) thumb.scrollIntoView({behavior:'smooth', block:'center'});
             }
           };
@@ -586,7 +596,7 @@ document.addEventListener('click', function(e){
         <div style="font-family:'Noto Sans JP',sans-serif; font-size:20px; font-weight:600; letter-spacing:3px; color:#7fc3ff;">RENTAL SYSTEM</div>
         <h2 style="font-family:'Noto Sans JP',sans-serif; font-size:45px; font-weight:900; margin-top:14px; color:#fff;">ユニフォームレンタルという選択肢</h2>
         <div data-line style="width:0;height:2px;background:rgba(255,255,255,.3);margin:18px 0 0;"></div>
-        <p style="font-size:23px; line-height:2; color:#bcd2ea; margin-top:18px; max-width:none; white-space:nowrap;">在庫管理・洗濯・商品の新規手配・商品のメンテナンス　一括して都ユニリースが引き受けます</p>
+        <p style="font-size:23px; line-height:2; color:#bcd2ea; margin-top:18px; max-width:none;">在庫管理・洗濯・商品の新規手配・商品のメンテナンス　一括して都ユニリースが引き受けます</p>
       </div>
 
       <!-- 4 equal service point cards -->
@@ -637,8 +647,8 @@ document.addEventListener('click', function(e){
       <div style="min-height:250px; background:url('assets/hero_operations.webp') center/cover;"></div>
       <div style="padding:36px 40px;">
         <div style="font-size:18px; letter-spacing:2px; color:#c81f27; font-weight:700;">OTHER SERVICE</div>
-        <h3 style="font-size:30px; font-weight:900; color:#1c2438; margin:10px 0 12px; white-space:nowrap;">防火服専門クリーニングも承っています</h3>
-        <p style="font-size:19px; line-height:1.9; color:#55627e; margin:0 0 22px; white-space:nowrap;">防火服のニオイ・汚れ・撥水性の低下を専門クリーニングで解消<br>初回はお試しとして無償クリーニングを実施中です</p>
+        <h3 style="font-size:30px; font-weight:900; color:#1c2438; margin:10px 0 12px;">防火服専門クリーニングも承っています</h3>
+        <p style="font-size:19px; line-height:1.9; color:#55627e; margin:0 0 22px;">防火服のニオイ・汚れ・撥水性の低下を専門クリーニングで解消<br>初回はお試しとして無償クリーニングを実施中です</p>
         <a href="story_cleaning.dc.html" data-cta="cross_service_cleaning" style="display:inline-flex; align-items:center; gap:8px; font-size:19px; font-weight:900; color:#fff; background:#e0242c; padding:13px 28px; border-radius:6px; text-decoration:none;">詳しく見る →</a>
       </div>
     </div>
@@ -695,7 +705,7 @@ document.addEventListener('click', function(e){
           <div style="width:48px;height:48px;border-radius:50%;background:#0d3b73;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21h20"></path><path d="M4 21V9l6-4v4l6-4v16"></path><path d="M16 9h4v12"></path><path d="M8 12h.01M8 16h.01M13 12h.01M13 16h.01"></path></svg></div>
           <div style="font-size:19px;font-weight:700;color:#55627e;margin-bottom:10px;">自社工場</div>
           <div style="font-size:45px;font-weight:900;color:#0d3b73;line-height:1;"><span class="stat-num" data-n="12">0</span><span style="font-size:21px;font-weight:900;">工場</span></div>
-<div style="font-size:17px;color:#5a6b85;margin-top:6px;">ほかパートナー工場70</div>        </div>
+<div style="font-size:17px;color:#5a6b85;margin-top:6px;">ほかパートナー工場70工場</div>        </div>
         <div style="background:#ffffff; border:1px solid #e3e7ee; border-radius:10px; padding:28px 24px; text-align:center;">
           <div style="width:48px;height:48px;border-radius:50%;background:#2b8fd4;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
           <div style="font-size:19px;font-weight:700;color:#55627e;margin-bottom:10px;">事業歴</div>
@@ -782,6 +792,7 @@ document.addEventListener('click', function(e){
 <script>
 (function(){
   function apply(){
+    if (typeof isOpen !== 'function') return;
     var open = isOpen();
     var b = document.getElementById('bizBadge');
     if (b) {

@@ -208,7 +208,7 @@ button{-webkit-appearance:none;appearance:none;}
 
   <!-- ===== SCREEN 0: TOP ===== -->
   <div id="screen-0" class="screen visible">
-    <video id="hero-video" autoplay loop muted playsinline poster="images/hero-poster.webp"
+    <video id="hero-video" aria-hidden="true" autoplay loop muted playsinline poster="images/hero-poster.webp"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
       <source src="douga0.mp4" type="video/mp4">
     </video>
@@ -219,8 +219,6 @@ button{-webkit-appearance:none;appearance:none;}
       <div style="display:flex;align-items:center;gap:11px;">
         <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:48px;width:auto;display:block;">
       </div>
-      <nav style="display:flex;align-items:center;gap:36px;">
-      </nav>
     </header>
 
     <div id="heroContent" style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 120px;" tabindex="-1">
@@ -234,10 +232,10 @@ button{-webkit-appearance:none;appearance:none;}
         <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;animation:lineGrow 1s .8s both;"></div>
       </div>
       <div id="s0c3" style="opacity:0;transform:translateY(14px);transition:opacity .75s .3s ease,transform .75s .3s ease;">
-        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;white-space:nowrap;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
       </div>
       <div id="s0c4" style="opacity:0;transform:translateY(12px);transition:opacity .75s .4s ease,transform .75s .4s ease;display:flex;justify-content:flex-end;">
-        <button onclick="goToGate()" data-cta="hero_service_select"
+        <button type="button" onclick="goToGate()" data-cta="hero_service_select"
           style="font-size:32px;font-weight:900;letter-spacing:.1em;color:#fff;background:#e0242c;border:2px solid rgba(255,255,255,.7);cursor:pointer;padding:28px 62px;display:inline-flex;align-items:center;gap:16px;border-radius:8px;transition:transform .25s,box-shadow .25s;animation:glowRed 1.8s ease-in-out infinite;"
           onmouseenter="this.style.transform='translateY(-4px) scale(1.06)';this.style.boxShadow='0 12px 30px rgba(224,36,44,.55)'"
           onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
@@ -256,7 +254,7 @@ button{-webkit-appearance:none;appearance:none;}
   <div id="screen-1" class="screen hidden" style="overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;">
     <header style="position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;padding:14px 32px;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(20,30,50,.1);flex:none;">
       <div style="display:flex;align-items:center;gap:14px;">
-        <button onclick="goBack()" style="background:rgba(13,59,115,.08);border:1px solid rgba(13,59,115,.25);color:#0d3b73;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:18px;font-weight:700;display:flex;align-items:center;gap:5px;">← 戻る</button>
+        <button type="button" onclick="goBack()" style="background:rgba(13,59,115,.08);border:1px solid rgba(13,59,115,.25);color:#0d3b73;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:18px;font-weight:700;display:flex;align-items:center;gap:5px;">← 戻る</button>
         <div style="display:flex;align-items:center;">
           <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:48px;width:auto;display:block;">
         </div>
@@ -283,7 +281,7 @@ button{-webkit-appearance:none;appearance:none;}
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
         onmouseenter="hoverS1(0)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-infect" style="position:absolute;inset:0;"></div>
-        <video class="img-bg" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <video class="img-bg" aria-hidden="true" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <source data-src="uploads/infection-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(23,48,125,.62),rgba(33,74,156,.28));"></div>
@@ -294,10 +292,10 @@ button{-webkit-appearance:none;appearance:none;}
           <p style="font-size:19px;line-height:1.9;color:#dde4f2;margin:0 0 16px;max-width:420px;">血液・飛沫から隊員を守る専用衣服を<br>通気性重視・バリア性重視の2タイプから</p>
           <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:20px;">
             <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:19px;font-weight:700;color:#eef2fb;">
-              <span style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>隊員1名ずつの個人管理
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>隊員1名ずつの個人管理
             </div>
             <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:19px;font-weight:700;color:#eef2fb;">
-              <span style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>2タイプから現場に合わせて選択
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>2タイプから現場に合わせて選択
             </div>
           </div>
           <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" onfocus="hoverS1(0)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
@@ -309,7 +307,7 @@ button{-webkit-appearance:none;appearance:none;}
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
         onmouseenter="hoverS1(1)" onmouseleave="hoverS1(-1)">
         <div class="img-bg img-clean" style="position:absolute;inset:0;"></div>
-        <video class="img-bg" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <video class="img-bg" aria-hidden="true" muted playsinline preload="none" onended="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <source data-src="uploads/cleaning-panel.mp4" type="video/mp4">
         </video>
         <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(122,20,24,.52),rgba(12,18,42,.38));"></div>
@@ -320,13 +318,13 @@ button{-webkit-appearance:none;appearance:none;}
           <p style="font-size:19px;line-height:1.9;color:#dde4f2;margin:0 0 12px;max-width:420px;">防火服のニオイ・汚れ・撥水性の低下を解消<br>クリーニングで、消防隊員の皆さまが<br>気持ちよく活動できる環境をサポートします</p>
           <div style="display:flex;flex-direction:column;gap:1px;margin-bottom:20px;">
             <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:19px;font-weight:700;color:#eef2fb;">
-              <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>ブラシを使わず表面を傷めない
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>ブラシを使わず表面を傷めない
             </div>
             <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:19px;font-weight:700;color:#eef2fb;">
-              <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>汚れ、匂いを除去
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>汚れ、匂いを除去
             </div>
             <div class="pt-row" style="display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;font-size:19px;font-weight:700;color:#eef2fb;">
-              <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>撥水加工仕上げ
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>撥水加工仕上げ
             </div>
           </div>
           <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" onfocus="hoverS1(1)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
@@ -448,6 +446,9 @@ button{-webkit-appearance:none;appearance:none;}
             <div style="font-size:18px;line-height:1.7;color:#1c2438;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#1568a8;text-decoration:underline;">unilease.co.jp</a></div>
           </div>
         </div>
+        <div style="margin-top:48px;text-align:center;">
+          <div style="font-size:18px; color:#5a6b85;">© 都ユニリース株式会社 All Rights Reserved.</div>
+        </div>
       </div>
     </section>
   </div>
@@ -520,15 +521,6 @@ function goBack() {
   updatePanels();
 }
 
-function goTop() {
-  state.h1 = -1;
-  showScreen(0);
-  updatePanels();
-  // Re-play video
-  var vid = document.getElementById('hero-video');
-  if (vid && vid.paused) vid.play().catch(function(){});
-}
-
 function hoverS1(i) {
   state.h1 = i;
   updatePanels();
@@ -584,6 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 (function(){
   function apply(){
+    if (typeof isOpen !== 'function') return;
     var open = isOpen();
     var b = document.getElementById('bizBadge');
     if (b) {
