@@ -473,23 +473,42 @@ document.addEventListener('click', function(e){
           <div>
             <h4 style="font-size:24px; font-weight:700; color:#1c2438;">圧倒的な通気度　<span style="color:#1568a8;">100cc/cm²·s 以上</span></h4>
             <p style="font-size:21px; line-height:1.9; color:#55627e; margin-top:8px;">一般衣料の通気度は約20cc/cm²·s<br>その<strong style="color:#1c2438;">5倍以上の通気性</strong>で、夏でも涼しく軽い着用感が抜群です</p>
+            <a href="#breathability-video" data-cta="breathable_video_view" onclick="window.expandBreathabilityVideo && window.expandBreathabilityVideo()" style="display:inline-flex; align-items:center; gap:7px; margin-top:16px; height:42px; padding:0 22px; background:#1568a8; color:#fff; font-size:17px; font-weight:700; text-decoration:none; border-radius:100px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+              通気性検証動画を見る
+            </a>
           </div>
         </div>
 
-        <div data-reveal="" style="border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
-          <video id="kansenBreathabilityVideo" autoplay muted loop playsinline controls
-            poster="uploads/kansen-breathability-test-poster.webp"
-            style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000;">
-            <source src="uploads/kansen-breathability-test.mp4" type="video/mp4">
-          </video>
+        <div id="breathability-video" data-reveal="" style="scroll-margin-top:90px;">
+          <div id="breathabilityVideoBox" onclick="window.expandBreathabilityVideo()" style="max-width:280px; margin:0 auto; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18); cursor:pointer; position:relative; transition:max-width .35s ease;">
+            <video id="kansenBreathabilityVideo" muted loop playsinline
+              poster="uploads/kansen-breathability-test-poster.webp"
+              style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000; pointer-events:none;">
+              <source src="uploads/kansen-breathability-test.mp4" type="video/mp4">
+            </video>
+            <div id="breathabilityVideoOverlay" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(20,30,50,0.28);">
+              <span style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.92); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(0,0,0,0.25);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1568a8"><path d="M8 5v14l11-7z"></path></svg>
+              </span>
+            </div>
+          </div>
         </div>
         <script>
         (function(){
           var v = document.getElementById('kansenBreathabilityVideo');
-          if (v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            v.removeAttribute('autoplay');
-            v.pause();
-          }
+          window.expandBreathabilityVideo = function(){
+            var box = document.getElementById('breathabilityVideoBox');
+            if (!box || box.classList.contains('is-expanded')) return;
+            box.classList.add('is-expanded');
+            box.style.maxWidth = '100%';
+            box.style.cursor = 'default';
+            box.removeAttribute('onclick');
+            var overlay = document.getElementById('breathabilityVideoOverlay');
+            if (overlay) overlay.remove();
+            v.setAttribute('controls', '');
+            v.play().catch(function(){});
+          };
         })();
         </script>
 
