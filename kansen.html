@@ -178,9 +178,11 @@ document.addEventListener('click', function(e){
   .breathable-video-thumb{flex-shrink:0; width:300px; align-self:center;}
   .breathable-video-thumb:hover{transform:translateY(-3px); box-shadow:0 16px 34px rgba(20,30,50,.22);}
   .breathable-video-thumb{transition:transform .25s ease, box-shadow .25s ease;}
+  .breathable-video-stage{max-width:80%; margin-left:auto; margin-right:auto;}
   @media (max-width:768px){
     .breathable-video-card{flex-wrap:wrap;}
     .breathable-video-thumb{width:100%!important; align-self:stretch;}
+    .breathable-video-stage{max-width:100%;}
   }
 </style>
 <script>
@@ -496,7 +498,7 @@ document.addEventListener('click', function(e){
           </button>
         </div>
 
-        <div id="breathability-video" hidden style="position:relative; scroll-margin-top:90px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
+        <div id="breathability-video" class="breathable-video-stage" hidden style="position:relative; scroll-margin-top:90px; border-radius:10px; overflow:hidden; box-shadow:0 16px 40px rgba(20,30,50,0.18);">
           <video id="kansenBreathabilityVideo" muted loop playsinline controls
             poster="uploads/kansen-breathability-test-poster.webp"
             style="width:100%; display:block; aspect-ratio:16/9; object-fit:cover; background:#000;">
