@@ -10,12 +10,25 @@ function gtag(){dataLayer.push(arguments);}
 </script>
 <script>
 (function(){
-  try {
-    if (sessionStorage.getItem('forcePC') !== '1' && window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
+  function isForcedPC(){
+    try { return sessionStorage.getItem('forcePC') === '1'; } catch (e) { return false; }
+  }
+  function check(){
+    if (isForcedPC()) return;
+    if (window.matchMedia && window.matchMedia('(min-width: 769px)').matches) {
       gtag('event', 'sp_to_pc_redirect');
-      window.location.replace('index.html?pc=1');
+      // ?pc=1 を付けない:付けると forcePC が立ち、幅を狭めてもSP版に戻れなくなる。
+      // PC版は769px以上では自動リダイレクトしないため、ここは素のURLでよい
+      window.location.replace('index.html');
     }
-  } catch (e) {}
+  }
+  check();
+  // 読み込み後に画面幅が変わった場合(タブレットの回転・ウィンドウのリサイズ)も再判定する
+  var t;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(check, 400);
+  });
 })();
 </script>
 <title>感染防止衣・防火服クリーニング | 都ユニリース株式会社</title>
@@ -34,8 +47,6 @@ function gtag(){dataLayer.push(arguments);}
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D2YWZNLK"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
@@ -100,7 +111,10 @@ body{background:#f5f7fb;color:#1c2438;font-family:'Noto Sans JP',sans-serif;-web
 [data-reveal]{opacity:0;}
 [data-reveal].shown{animation:riseIn .8s cubic-bezier(.16,.7,.3,1) forwards;}
 @media (prefers-reduced-motion: reduce){[data-reveal]{opacity:1;animation:none!important;}}
-:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+/* 背景が明色(#f5f7fb / #fff)なので、白枠では見えないため濃色にする */
+:focus-visible{outline:3px solid #1f6fb0;outline-offset:3px;}
+/* 暗色の区画内では白枠に切り替える */
+.dark-sec :focus-visible,.hero :focus-visible,#mobileCall :focus-visible{outline-color:#fff;}
 header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,30,50,.1);}
 .hero{position:relative;overflow:hidden;}
 .hero img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;}
@@ -227,7 +241,7 @@ footer a{color:#5a6b85;}
   </div>
 </section>
 
-<section style="margin:34px 16px 0;padding:26px 18px;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);border-radius:12px;text-align:center;" data-reveal>
+<section class="dark-sec" style="margin:34px 16px 0;padding:26px 18px;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);border-radius:12px;text-align:center;" data-reveal>
   <h2 style="font-size:19px;font-weight:900;margin:0 0 12px;">消防本部の<br>担当者さまへ</h2>
   <p style="font-size:14px;line-height:2;color:#cfe0f2;margin:0;">全国の消防本部からご相談いただけます<br>見積書や内部共有用の資料のご相談も承ります<br>まずは確認だけでも結構です<br>お気軽にお問い合わせください</p>
   <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;">
@@ -249,7 +263,7 @@ footer a{color:#5a6b85;}
   </div>
 </section>
 
-<div style="margin:28px 16px;text-align:center;padding:26px 18px;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);border-radius:12px;" data-reveal>
+<div class="dark-sec" style="margin:28px 16px;text-align:center;padding:26px 18px;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);border-radius:12px;" data-reveal>
   <div style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:8px;">お電話でのお問い合わせ</div>
   <a href="tel:0120-630-080" style="font-size:28px;font-weight:900;color:#fff;text-decoration:none;">0120-630-080</a>
   <div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:6px;">受付時間 10:00〜17:00（土日祝・年末年始・お盆を除く）</div>
@@ -269,26 +283,31 @@ footer a{color:#5a6b85;}
   <a href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" id="mcForm">&#9993; フォーム</a>
 </div>
 
-<script src="js/business-hours.js"></script>
+<script src="js/business-hours.js?v=2"></script>
 <script>
 (function(){
   function apply(){
+    if (typeof isOpen !== 'function') return;
+    // 祝日データが今日をカバーしていない場合は、受付状況を断定せず案内のみ表示する
+    var dataOK = (typeof holidayDataCoversToday !== 'function') || holidayDataCoversToday();
     var open = isOpen();
     var b = document.getElementById('bizBadge');
     if (b) {
-      b.innerHTML = open
-        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 16px;border-radius:20px;">&#9679; ただいま電話受付中です</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 16px;border-radius:20px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+      b.innerHTML = !dataOK
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 16px;border-radius:20px;">受付時間 平日 10:00〜17:00</span>'
+        : (open
+          ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:6px 16px;border-radius:20px;">&#9679; ただいま電話受付中です</span>'
+          : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:6px 16px;border-radius:20px;">ただいま受付時間外です（平日 10:00〜17:00）</span>');
     }
     var mcTel = document.getElementById('mcTel');
     var mcForm = document.getElementById('mcForm');
     if (mcTel) {
-      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
-      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+      mcTel.innerHTML = !dataOK ? '&#128222; 電話' : (open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）');
+      mcTel.style.background = (dataOK && !open) ? 'rgba(255,255,255,.15)' : '#e0242c';
     }
     if (mcForm) {
-      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
-      mcForm.style.background = open ? '#17307d' : '#e0242c';
+      mcForm.innerHTML = (dataOK && !open) ? '&#9993; フォームで相談' : '&#9993; フォーム';
+      mcForm.style.background = (dataOK && !open) ? '#e0242c' : '#17307d';
     }
   }
   apply();
@@ -304,9 +323,15 @@ footer a{color:#5a6b85;}
   }
   reveal();
   window.addEventListener('scroll', reveal, {passive:true});
-  setInterval(reveal, 300);
+  window.addEventListener('resize', reveal, {passive:true});
+  // 全要素が表示済みになったら監視を止める(以前は300msごとに永久に動いていた)
+  var revealTimer = setInterval(function(){
+    reveal();
+    if (document.querySelectorAll('[data-reveal]:not(.shown)').length === 0) clearInterval(revealTimer);
+  }, 300);
   setTimeout(function(){
     document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('shown'); });
+    clearInterval(revealTimer);
   }, 3000);
 })();
 </script>

@@ -10,14 +10,26 @@ function gtag(){dataLayer.push(arguments);}
 </script>
 <script>
 (function(){
+  function isForcedPC(){
+    try { return sessionStorage.getItem('forcePC') === '1'; } catch (e) { return false; }
+  }
   try {
     if (window.location.search.indexOf('pc=1') !== -1) { sessionStorage.setItem('forcePC', '1'); }
-    if (sessionStorage.getItem('forcePC') === '1') return;
+  } catch (e) {}
+  function check(){
+    if (isForcedPC()) return;
     if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
       gtag('event', 'pc_to_sp_redirect');
       window.location.replace('sp.html');
     }
-  } catch (e) {}
+  }
+  check();
+  // 読み込み後に画面幅が変わった場合(タブレットの回転・ウィンドウのリサイズ)も再判定する
+  var t;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(check, 400);
+  });
 })();
 </script>
 <title>感染防止衣・防火服クリーニング | 都ユニリース株式会社</title>
@@ -36,8 +48,6 @@ function gtag(){dataLayer.push(arguments);}
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1D2YWZNLK"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B1D2YWZNLK');
 document.addEventListener('click', function(e){
@@ -117,6 +127,7 @@ document.addEventListener('click', function(e){
 }
 </script>
 <link rel="preload" href="fonts/NotoSansJP-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/NotoSansJP-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/NotoSansJP-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="images/hero-poster.webp" as="image">
 <style>
@@ -134,15 +145,21 @@ body{background:#0c1126;overflow:hidden;font-family:'Noto Sans JP',sans-serif;-w
 @keyframes glowRed{0%,100%{box-shadow:0 3px 10px rgba(224,36,44,.28);}50%{box-shadow:0 5px 24px rgba(224,36,44,.6);}}
 @keyframes lineGrow{from{width:0;}to{width:44px;}}
 @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
-@media (prefers-reduced-motion: reduce){*{animation:none!important;}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
 button{-webkit-appearance:none;appearance:none;}
-:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+/* フォーカス枠:明色の区画では濃色、暗色の区画では白にする(白背景に白枠で見えなくなるのを防ぐ) */
+:focus-visible{outline:3px solid #1f6fb0;outline-offset:3px;}
+#screen-0 :focus-visible,
+#p1L :focus-visible,
+#p1R :focus-visible,
+#deptSection :focus-visible{outline-color:#fff;}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:400;background:#e0242c;color:#fff;padding:10px 18px;font-weight:700;text-decoration:none;font-size:16px;}.skip-link:focus{left:0;}
 @media print{
   body{background:#fff!important;color:#000!important;overflow:visible!important;}
   video,#mobileCall{display:none!important;}
   h1,h3,p,div,span{color:#000!important;text-shadow:none!important;}
-  .screen{position:static!important;opacity:1!important;transform:none!important;}
+  /* 非表示画面は visibility:hidden にしているため、印刷時は明示的に戻す */
+  .screen{position:static!important;opacity:1!important;transform:none!important;visibility:visible!important;}
 }
 #mobileCall{display:none;}
 @media (max-height:860px){
@@ -172,6 +189,10 @@ button{-webkit-appearance:none;appearance:none;}
   transform:translateY(24px);
   pointer-events:none;
   z-index:1;
+  /* visibility も切ることで、非表示画面内のボタン・リンクがタブ順に残るのを防ぐ。
+     フェードアウトを見せるため、visibility の変化だけ遅延させる */
+  visibility:hidden;
+  transition:opacity .55s cubic-bezier(.4,.0,.2,1), transform .55s cubic-bezier(.4,.0,.2,1), visibility 0s .55s;
 }
 .screen.visible{
   opacity:1;
@@ -208,7 +229,7 @@ button{-webkit-appearance:none;appearance:none;}
 
   <!-- ===== SCREEN 0: TOP ===== -->
   <div id="screen-0" class="screen visible">
-    <video id="hero-video" aria-hidden="true" autoplay loop muted playsinline poster="images/hero-poster.webp"
+    <video id="hero-video" aria-hidden="true" autoplay loop muted playsinline preload="metadata" poster="images/hero-poster.webp"
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
       <source src="douga0.mp4" type="video/mp4">
     </video>
@@ -218,6 +239,13 @@ button{-webkit-appearance:none;appearance:none;}
     <header style="position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,.15);">
       <div style="display:flex;align-items:center;gap:11px;">
         <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:48px;width:auto;display:block;">
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="text-align:right;">
+          <a href="tel:0120-630-080" data-cta="header_tel" style="display:block;font-size:26px;font-weight:900;color:#0d3b73;text-decoration:none;letter-spacing:.02em;line-height:1.2;">0120-630-080</a>
+          <div style="font-size:13px;color:#5a6b85;margin-top:2px;">受付 平日 10:00〜17:00　<span id="bizBadgeTop"></span></div>
+        </div>
+        <a data-cta="header_form_top" href="https://unilease.co.jp/contact/" target="_blank" rel="noopener" style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#fff;background:#e0242c;padding:12px 20px;border-radius:6px;text-decoration:none;white-space:nowrap;">フォームで問い合わせる</a>
       </div>
     </header>
 
@@ -232,7 +260,10 @@ button{-webkit-appearance:none;appearance:none;}
         <div style="width:44px;height:1px;background:rgba(255,255,255,.55);margin-bottom:24px;animation:lineGrow 1s .8s both;"></div>
       </div>
       <div id="s0c3" style="opacity:0;transform:translateY(14px);transition:opacity .75s .3s ease,transform .75s .3s ease;">
-        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 38px;max-width:760px;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+        <p style="font-size:21px;line-height:2;color:rgba(255,255,255,.72);margin:0 0 22px;max-width:760px;">感染防止衣の販売・レンタルから、防火服の専門クリーニングまで<br>2つの専門サービスで、現場の安全環境をトータルサポートします</p>
+        <div style="margin:0 0 34px;">
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:700;color:#fff;background:rgba(46,204,113,.18);border:1px solid rgba(46,204,113,.55);padding:9px 20px;border-radius:24px;">&#128276; 初回お試し無償クリーニング・サンプル相談 実施中</span>
+        </div>
       </div>
       <div id="s0c4" style="opacity:0;transform:translateY(12px);transition:opacity .75s .4s ease,transform .75s .4s ease;display:flex;justify-content:flex-end;">
         <button type="button" onclick="goToGate()" data-cta="hero_service_select"
@@ -271,7 +302,7 @@ button{-webkit-appearance:none;appearance:none;}
     </header>
 
     <div style="position:relative;z-index:20;text-align:center;padding:16px 24px 10px;flex:none;">
-      <h2 style="font-size:33px;font-weight:900;margin:0 0 6px;">ご検討中のサービスをお選びください</h2>
+      <h2 id="gateHeading" tabindex="-1" style="font-size:33px;font-weight:900;margin:0 0 6px;">ご検討中のサービスをお選びください</h2>
       <p style="font-size:18px;color:#aebcde;margin:0 0 10px;">各入口から詳しい内容・導入の流れをご覧いただけます</p>
     </div>
 
@@ -336,38 +367,39 @@ button{-webkit-appearance:none;appearance:none;}
     <section style="position:relative;z-index:10;background:#ffffff;padding:80px 40px;border-top:1px solid #e3e7ee;color:#1c2438;">
       <div style="max-width:960px;margin:0 auto;">
         <h2 style="font-size:30px;font-weight:900;text-align:center;margin:0 0 36px;">2つのサービス</h2>
-        <div class="compare-scroll" style="overflow-x:auto;">
+        <div class="compare-scroll" style="overflow-x:auto;" tabindex="0" role="group" aria-label="2つのサービスの比較表（横スクロールできます）">
         <table style="width:100%;border-collapse:collapse;font-size:17px;line-height:1.7;min-width:640px;">
+          <caption style="position:absolute;left:-9999px;">感染防止衣と防火服専門クリーニングの比較</caption>
           <thead>
             <tr style="border-bottom:2px solid #e3e7ee;">
-              <th style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;width:20%;">項目</th>
-              <th style="text-align:left;padding:16px 14px;color:#0d3b73;font-weight:900;">感染防止衣</th>
-              <th style="text-align:left;padding:16px 14px;color:#c81f27;font-weight:900;">防火服専門クリーニング</th>
+              <th scope="col" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;width:20%;">項目</th>
+              <th scope="col" style="text-align:left;padding:16px 14px;color:#0d3b73;font-weight:900;">感染防止衣</th>
+              <th scope="col" style="text-align:left;padding:16px 14px;color:#c81f27;font-weight:900;">防火服専門クリーニング</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom:1px solid #e3e7ee;">
-              <td style="padding:16px 14px;color:#5a6b85;font-weight:700;">対象</td>
+              <th scope="row" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;">対象</th>
               <td style="padding:16px 14px;color:#1c2438;">救急隊・感染対策担当・ユニフォーム管理担当</td>
               <td style="padding:16px 14px;color:#1c2438;">消防隊・装備管理担当</td>
             </tr>
             <tr style="border-bottom:1px solid #e3e7ee;">
-              <td style="padding:16px 14px;color:#5a6b85;font-weight:700;">目的</td>
+              <th scope="row" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;">目的</th>
               <td style="padding:16px 14px;color:#1c2438;">血液・飛沫からの感染防止</td>
               <td style="padding:16px 14px;color:#1c2438;">ニオイ・汚れ・撥水性低下の解消</td>
             </tr>
             <tr style="border-bottom:1px solid #e3e7ee;">
-              <td style="padding:16px 14px;color:#5a6b85;font-weight:700;">主な相談内容</td>
+              <th scope="row" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;">主な相談内容</th>
               <td style="padding:16px 14px;color:#1c2438;">タイプ選定・サンプル確認・お見積り</td>
               <td style="padding:16px 14px;color:#1c2438;">初回お試し・撥水加工・納期</td>
             </tr>
             <tr style="border-bottom:1px solid #e3e7ee;">
-              <td style="padding:16px 14px;color:#5a6b85;font-weight:700;">導入・依頼の単位</td>
+              <th scope="row" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;">導入・依頼の単位</th>
               <td style="padding:16px 14px;color:#1c2438;">販売・レンタルどちらも相談可</td>
               <td style="padding:16px 14px;color:#1c2438;">1着から依頼可能</td>
             </tr>
             <tr>
-              <td style="padding:16px 14px;color:#5a6b85;font-weight:700;">お問い合わせ</td>
+              <th scope="row" style="text-align:left;padding:16px 14px;color:#5a6b85;font-weight:700;">お問い合わせ</th>
               <td style="padding:16px 14px;"><a href="kansen.html" style="color:#0d3b73;font-weight:700;text-decoration:none;">感染防止衣について →</a></td>
               <td style="padding:16px 14px;"><a href="story_cleaning.dc.html" style="color:#c81f27;font-weight:700;text-decoration:none;">防火服クリーニングについて →</a></td>
             </tr>
@@ -378,7 +410,7 @@ button{-webkit-appearance:none;appearance:none;}
     </section>
 
     <!-- ===== 担当者向け ===== -->
-    <section style="position:relative;z-index:10;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);padding:64px 40px;">
+    <section id="deptSection" style="position:relative;z-index:10;background:linear-gradient(120deg,#0a2d5c,#1f2f5c);padding:64px 40px;">
       <div style="max-width:820px;margin:0 auto;text-align:center;">
         <h2 style="font-size:28px;font-weight:900;margin:0 0 18px;">消防本部の<br>担当者さまへ</h2>
         <p style="font-size:17px;line-height:2;color:#cfe0f2;margin:0;">全国の消防本部からご相談いただけます<br>見積書や内部共有用の資料のご相談も承ります<br>まずは確認だけでも結構です<br>お気軽にお問い合わせください</p>
@@ -446,8 +478,14 @@ button{-webkit-appearance:none;appearance:none;}
             <div style="font-size:18px;line-height:1.7;color:#1c2438;"><a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#1568a8;text-decoration:underline;">unilease.co.jp</a></div>
           </div>
         </div>
-        <div style="margin-top:48px;text-align:center;">
-          <div style="font-size:18px; color:#5a6b85;">© 都ユニリース株式会社 All Rights Reserved.</div>
+        <div style="margin-top:48px;text-align:center;font-size:15px;line-height:2.1;color:#5a6b85;">
+          <div>
+            <a href="https://unilease.co.jp/privacy/" target="_blank" rel="noopener" style="color:#5a6b85;">プライバシーポリシー</a>
+
+            <a href="https://unilease.co.jp/" target="_blank" rel="noopener" style="color:#5a6b85;">コーポレートサイト</a>
+          </div>
+          <div>本サイトはアクセス解析のため Google Analytics を使用しています</div>
+          <div style="font-size:18px;margin-top:10px;">© 都ユニリース株式会社 All Rights Reserved.</div>
         </div>
       </div>
     </section>
@@ -468,15 +506,28 @@ function showScreen(n) {
     if (i === n) {
       el.classList.remove('hidden');
       el.classList.add('visible');
+      el.removeAttribute('inert');
     } else {
       el.classList.remove('visible');
       el.classList.add('hidden');
+      // inert に対応したブラウザでは、非表示画面をフォーカス・読み上げの対象から完全に外す
+      el.setAttribute('inert', '');
     }
   }
   state.screen = n;
 }
 
-function goToGate() {
+// 画面が切り替わったことをキーボード・スクリーンリーダー利用者にも伝えるため、
+// 遷移先の先頭要素にフォーカスを移す
+function moveFocusTo(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+  try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+}
+
+// ブラウザの戻る・進むボタンに対応させる
+function goToGate(fromHistory) {
   state.h1 = -1;
   showScreen(1);
   updatePanels();
@@ -484,6 +535,10 @@ function goToGate() {
   loadPanelVideos();
   var s1 = document.getElementById('screen-1');
   if (s1) s1.scrollTop = 0;
+  moveFocusTo('gateHeading');
+  if (!fromHistory && window.history && history.pushState) {
+    history.pushState({ screen: 1 }, '', '#service');
+  }
 }
 
 function loadPanelVideos() {
@@ -515,10 +570,18 @@ function goCleaning() {
   window.location.href = 'story_cleaning.dc.html';
 }
 
-function goBack() {
+function goBack(fromHistory) {
   state.h1 = -1;
   showScreen(Math.max(0, state.screen - 1));
   updatePanels();
+  moveFocusTo('heroContent');
+  if (!fromHistory && window.history && history.pushState) {
+    if (history.state && history.state.screen === 1) {
+      history.back();
+    } else {
+      history.replaceState({ screen: 0 }, '', location.pathname + location.search);
+    }
+  }
 }
 
 function hoverS1(i) {
@@ -566,33 +629,99 @@ function initHeroAnim() {
   }, 60);
 }
 
+// ヒーロー画面ではスクロールしても何も起きなかったため、
+// ホイール・スワイプ・キー操作でもサービス選択画面へ進めるようにする
+function initHeroAdvance() {
+  var wheelLock = false;
+  window.addEventListener('wheel', function(e) {
+    if (state.screen !== 0 || wheelLock) return;
+    if (e.deltaY <= 0) return;
+    wheelLock = true;
+    setTimeout(function() { wheelLock = false; }, 800);
+    goToGate();
+  }, { passive: true });
+
+  var touchStartY = null;
+  var screen0 = document.getElementById('screen-0');
+  if (screen0) {
+    screen0.addEventListener('touchstart', function(e) {
+      touchStartY = e.touches && e.touches[0] ? e.touches[0].clientY : null;
+    }, { passive: true });
+    screen0.addEventListener('touchend', function(e) {
+      if (state.screen !== 0 || touchStartY === null) return;
+      var endY = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : null;
+      if (endY !== null && touchStartY - endY > 60) goToGate();
+      touchStartY = null;
+    }, { passive: true });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (state.screen !== 0) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (e.key === 'PageDown' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      goToGate();
+    }
+  });
+}
+
+// 戻る・進むボタンで画面を行き来できるようにする
+function initHistory() {
+  if (!window.history || !history.pushState) return;
+  history.replaceState({ screen: 0 }, '', location.pathname + location.search + location.hash);
+  window.addEventListener('popstate', function(e) {
+    var target = (e.state && e.state.screen) === 1 ? 1 : 0;
+    if (target === state.screen) return;
+    if (target === 1) { goToGate(true); } else { goBack(true); }
+  });
+  // #service 付きで開かれた場合はサービス選択画面から始める
+  if (location.hash === '#service') goToGate(true);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initVideo();
   initHeroAnim();
+  initHeroAdvance();
+  initHistory();
+  // 初期状態では非表示画面をフォーカス対象から外す
+  var s1 = document.getElementById('screen-1');
+  if (s1 && s1.classList.contains('hidden')) s1.setAttribute('inert', '');
 });
 
 </script>
-<script src="js/business-hours.js"></script>
+<script src="js/business-hours.js?v=2"></script>
 <script>
 (function(){
   function apply(){
     if (typeof isOpen !== 'function') return;
+    // 祝日データが今日をカバーしていない場合は、受付状況を断定せず案内のみ表示する
+    var dataOK = (typeof holidayDataCoversToday !== 'function') || holidayDataCoversToday();
     var open = isOpen();
     var b = document.getElementById('bizBadge');
-    if (b) {
-      b.innerHTML = open
+    var bTop = document.getElementById('bizBadgeTop');
+    var badgeHTML = !dataOK
+      ? ''
+      : (open
         ? '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.4);color:#1a7a4c;padding:6px 14px;border-radius:20px;white-space:nowrap;">&#9679; 受付中</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(13,59,115,.08);border:1px solid rgba(13,59,115,.25);color:#5a6b85;padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>';
+        : '<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:rgba(13,59,115,.08);border:1px solid rgba(13,59,115,.25);color:#5a6b85;padding:6px 14px;border-radius:20px;white-space:nowrap;">受付時間外</span>');
+    if (b) b.innerHTML = badgeHTML;
+    if (bTop) {
+      bTop.innerHTML = !dataOK
+        ? ''
+        : (open
+          ? '<span style="font-weight:700;color:#1a7a4c;">&#9679; 受付中</span>'
+          : '<span style="color:#5a6b85;">受付時間外</span>');
     }
     var mcTel = document.getElementById('mcTel');
     var mcForm = document.getElementById('mcForm');
     if (mcTel) {
-      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
-      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+      mcTel.innerHTML = !dataOK ? '&#128222; 電話' : (open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）');
+      mcTel.style.background = (dataOK && !open) ? 'rgba(255,255,255,.15)' : '#e0242c';
     }
     if (mcForm) {
-      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
-      mcForm.style.background = open ? '#0d3b73' : '#e0242c';
+      mcForm.innerHTML = (dataOK && !open) ? '&#9993; フォームで相談' : '&#9993; フォーム';
+      mcForm.style.background = (dataOK && !open) ? '#e0242c' : '#0d3b73';
     }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
