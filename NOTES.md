@@ -43,8 +43,17 @@
   | 絶対URL(canonical・OGP・JSON-LD・印刷用URL) | `index.html`(5)、`kansen.html`(9)、`sp.html`(3)、`story_cleaning.dc.html`(9) | 検索結果・SNS共有で旧URLが出続ける |
   | 絶対URL | `robots.txt`(1)、`sitemap.xml`(3) | 検索エンジンに旧URLを通知し続ける |
 
-  あわせて、`images/site-qr.png` のQRコードが旧URLを指していないか **要確認**(未検証)。
+  **QRコードも再生成が必須(検証済み)。** `images/site-qr.png` をデコードした結果、
+  旧URL `https://ikarugamana-hub.github.io/shobo-hp/` が埋め込まれていた。
+  `kansen.html` と `story_cleaning.dc.html` の印刷用フッターに配置されており、
+  隣のURLテキストも同じ旧URLなので、**両方の差し替えが必要**。
+  デコードは macOS 標準の CoreImage(swift + CIDetector)で実施。追加インストール不要。
+
   移設先サーバーで `404.html` をエラーページとして返す設定も必要。
+
+- **綴りに関する調査結果:** サイト内のリンクを全数調査したところ、`unilease.co.jp` への参照が28箇所あり、
+  `unielase` という綴りは1件も存在しなかった。稟議依頼時に指定された `unielase.jp` は綴り違いの可能性が高い。
+  ドメイン取得前に必ず確認すること。
 
 ### 2026-07-25(1) / Mac(manabutsurumaki)
 
