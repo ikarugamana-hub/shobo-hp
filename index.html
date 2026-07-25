@@ -171,6 +171,21 @@ button{-webkit-appearance:none;appearance:none;}
   #heroContent{padding-bottom:40px!important;}
   #s0c0{margin-bottom:0!important;}
 }
+/* 幅が狭いとサービス選択画面のヘッダーが2段に折り返して 77px→123px に増え、
+   その分パネルと下部の導線が画面外へ押し出されていた。
+   パンくずは「← 戻る」と役割が重複するので隠し、1段に収める */
+@media (max-width:900px){
+  #screen-1 header{padding:10px 16px!important;}
+  #gateBreadcrumb{display:none!important;}
+  #screen-1 header img{height:36px!important;}
+}
+/* 画面が低いときはサービス選択画面の見出し部分を圧縮し、
+   パネル内の「詳しく見る」ボタンが画面外に出ないようにする */
+@media (max-height:720px){
+  #gateLead{padding:10px 24px 6px!important;}
+  #gateLead h2{font-size:26px!important;}
+  #gateLead p{display:none!important;}
+}
 @media (max-width:768px){
   #mobileCall{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:300;box-shadow:0 -4px 16px rgba(0,0,0,.4);}
   #mobileCall a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:15px 6px;font-size:16px;font-weight:900;text-decoration:none;color:#fff;}
@@ -200,6 +215,17 @@ button{-webkit-appearance:none;appearance:none;}
   pointer-events:auto;
   z-index:2;
 }
+
+/* サービス選択画面は下に約2,500px分の内容(比較表・FAQ・会社概要)が続く。
+   macOS等ではスクロールバーが操作するまで出ないため、常時表示にして続きがあることを示す */
+#screen-1{scrollbar-width:auto;scrollbar-color:rgba(255,255,255,.45) rgba(255,255,255,.08);}
+#screen-1::-webkit-scrollbar{width:12px;}
+#screen-1::-webkit-scrollbar-track{background:rgba(255,255,255,.08);}
+#screen-1::-webkit-scrollbar-thumb{background:rgba(255,255,255,.45);border-radius:6px;border:3px solid transparent;background-clip:content-box;}
+#screen-1::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.7);background-clip:content-box;}
+
+.more-link{transition:background .2s ease,border-color .2s ease;}
+.more-link:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5);}
 
 .panel-card{transition:flex-grow .55s cubic-bezier(.4,.05,.2,1);}
 .panel-card .img-bg{transition:transform .9s cubic-bezier(.2,.6,.2,1);}
@@ -289,7 +315,7 @@ button{-webkit-appearance:none;appearance:none;}
         <div style="display:flex;align-items:center;">
           <img src="images/logo.webp" alt="都ユニリース株式会社" style="height:48px;width:auto;display:block;">
         </div>
-        <div style="display:flex;align-items:center;gap:5px;font-size:18px;color:#5a6b85;">
+        <div id="gateBreadcrumb" style="display:flex;align-items:center;gap:5px;font-size:18px;color:#5a6b85;">
           <button type="button" onclick="goBack()" style="cursor:pointer;background:none;border:none;padding:0;font:inherit;color:inherit;">トップ</button>
           <span>›</span>
           <span style="color:#1c2438;font-weight:700;">サービス選択</span>
@@ -301,12 +327,13 @@ button{-webkit-appearance:none;appearance:none;}
       </div>
     </header>
 
-    <div style="position:relative;z-index:20;text-align:center;padding:16px 24px 10px;flex:none;">
+    <div id="gateLead" style="position:relative;z-index:20;text-align:center;padding:16px 24px 10px;flex:none;">
       <h2 id="gateHeading" tabindex="-1" style="font-size:33px;font-weight:900;margin:0 0 6px;">ご検討中のサービスをお選びください</h2>
       <p style="font-size:18px;color:#aebcde;margin:0 0 10px;">各入口から詳しい内容・導入の流れをご覧いただけます</p>
     </div>
 
-    <div style="position:relative;z-index:10;display:flex;padding:0 20px 16px;height:calc(100vh - 195px);min-height:440px;">
+    <!-- 高さは sizePanelRow() が実測値から算出する。calc は JS 無効時のフォールバック -->
+    <div id="panelRow" style="position:relative;z-index:10;display:flex;padding:0 20px 16px;height:calc(100vh - 195px);min-height:440px;">
       <!-- LEFT: 感染防止衣 -->
       <div id="p1L" class="panel-card"
         style="flex:1;flex-basis:0;position:relative;overflow:hidden;border-radius:16px;margin-right:12px;box-shadow:0 16px 44px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.09);"
@@ -363,8 +390,17 @@ button{-webkit-appearance:none;appearance:none;}
       </div>
     </div>
 
+    <!-- パネル下に約2,500px分の内容が続くが、それが分かる手がかりがなかったため導線を置く -->
+    <div id="gateMore" style="position:relative;z-index:20;text-align:center;padding:0 20px 24px;">
+      <button type="button" class="more-link" data-cta="gate_more" onclick="scrollToCompare()"
+        style="display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);padding:12px 26px;border-radius:100px;cursor:pointer;font-family:inherit;">
+        2つのサービスの比較・よくあるご質問・会社概要
+        <span aria-hidden="true" style="font-size:19px;">↓</span>
+      </button>
+    </div>
+
     <!-- ===== SERVICE COMPARISON ===== -->
-    <section style="position:relative;z-index:10;background:#ffffff;padding:80px 40px;border-top:1px solid #e3e7ee;color:#1c2438;">
+    <section id="compareSection" style="position:relative;z-index:10;background:#ffffff;padding:80px 40px;border-top:1px solid #e3e7ee;color:#1c2438;">
       <div style="max-width:960px;margin:0 auto;">
         <h2 style="font-size:30px;font-weight:900;text-align:center;margin:0 0 36px;">2つのサービス</h2>
         <div class="compare-scroll" style="overflow-x:auto;" tabindex="0" role="group" aria-label="2つのサービスの比較表（横スクロールできます）">
@@ -533,6 +569,7 @@ function goToGate(fromHistory) {
   updatePanels();
   animateGate();
   loadPanelVideos();
+  sizePanelRow();
   var s1 = document.getElementById('screen-1');
   if (s1) s1.scrollTop = 0;
   moveFocusTo('gateHeading');
@@ -564,6 +601,25 @@ function animateGate() {
     el.style.animation = 'fadeIn .6s ease ' + (i * 0.13) + 's both';
     setTimeout(function() { el.style.animation = ''; }, 1500 + i * 130);
   });
+}
+
+// パネル下の導線から比較表へスクロールする
+function scrollToCompare() {
+  var s1 = document.getElementById('screen-1');
+  var target = document.getElementById('compareSection');
+  if (!s1 || !target) return;
+  var top = target.offsetTop - s1.offsetTop;
+  var reduce = prefersReducedMotion();
+  if (s1.scrollTo) {
+    s1.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+  } else {
+    s1.scrollTop = top;
+  }
+  var h2 = target.querySelector('h2');
+  if (h2) {
+    if (!h2.hasAttribute('tabindex')) h2.setAttribute('tabindex', '-1');
+    try { h2.focus({ preventScroll: true }); } catch (e) { h2.focus(); }
+  }
 }
 
 function goCleaning() {
@@ -666,6 +722,32 @@ function initHeroAdvance() {
   });
 }
 
+// パネル行の高さを実測値から決める。
+// 以前は calc(100vh - 195px) の固定値だったため、769px幅付近でヘッダーが2段に
+// 折り返すと(77px→123px)その差分だけ下にずれ、「詳しく見る」ボタンが画面外に出ていた。
+function sizePanelRow() {
+  var row = document.getElementById('panelRow');
+  var header = document.querySelector('#screen-1 header');
+  var lead = document.getElementById('gateLead');
+  var more = document.getElementById('gateMore');
+  if (!row || !header || !lead) return;
+  // 「続きがある」ことを示す導線(gateMore)も1画面目に収める必要があるので差し引く
+  var used = header.offsetHeight + lead.offsetHeight + (more ? more.offsetHeight : 0) + 16;
+  var avail = window.innerHeight - used;
+  // 下限は 360px。以前の 440px は画面が低いとき下限が勝ってしまい、
+  // パネル内の「詳しく見る」ボタンが画面外に押し出されていた
+  row.style.height = Math.max(360, avail) + 'px';
+
+  // 上の計算は余白の取り方で数十px ずれることがあるため、実測してはみ出し分を補正する。
+  // サービス選択画面が表示されている間だけ実行する(非表示時は測っても意味がない)
+  var s1 = document.getElementById('screen-1');
+  if (!more || !s1 || s1.classList.contains('hidden')) return;
+  var over = more.getBoundingClientRect().bottom - window.innerHeight;
+  if (over > 0) {
+    row.style.height = Math.max(360, parseFloat(row.style.height) - over) + 'px';
+  }
+}
+
 // 戻る・進むボタンで画面を行き来できるようにする
 function initHistory() {
   if (!window.history || !history.pushState) return;
@@ -684,6 +766,12 @@ document.addEventListener('DOMContentLoaded', function() {
   initHeroAnim();
   initHeroAdvance();
   initHistory();
+  sizePanelRow();
+  var szT;
+  window.addEventListener('resize', function() {
+    clearTimeout(szT);
+    szT = setTimeout(sizePanelRow, 120);
+  });
   // 初期状態では非表示画面をフォーカス対象から外す
   var s1 = document.getElementById('screen-1');
   if (s1 && s1.classList.contains('hidden')) s1.setAttribute('inert', '');
