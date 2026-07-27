@@ -296,7 +296,7 @@ button{-webkit-appearance:none;appearance:none;}
           style="font-size:32px;font-weight:900;letter-spacing:.1em;color:#fff;background:#e0242c;border:2px solid rgba(255,255,255,.7);cursor:pointer;padding:28px 62px;display:inline-flex;align-items:center;gap:16px;border-radius:8px;transition:transform .25s,box-shadow .25s;animation:glowRed 1.8s ease-in-out infinite;"
           onmouseenter="this.style.transform='translateY(-4px) scale(1.06)';this.style.boxShadow='0 12px 30px rgba(224,36,44,.55)'"
           onmouseleave="this.style.transform='none';this.style.boxShadow='none'">
-          サービスを選ぶ <span style="font-size:34px;">→</span>
+          サービスを選ぶ <span aria-hidden="true" style="font-size:34px;">→</span>
         </button>
       </div>
     </div>
@@ -317,7 +317,7 @@ button{-webkit-appearance:none;appearance:none;}
         </div>
         <div id="gateBreadcrumb" style="display:flex;align-items:center;gap:5px;font-size:18px;color:#5a6b85;">
           <button type="button" onclick="goBack()" style="cursor:pointer;background:none;border:none;padding:0;font:inherit;color:inherit;">トップ</button>
-          <span>›</span>
+          <span aria-hidden="true">›</span>
           <span style="color:#1c2438;font-weight:700;">サービス選択</span>
         </div>
       </div>
@@ -356,7 +356,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(159,192,255,.2);color:#9fc0ff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>2タイプから現場に合わせて選択
             </div>
           </div>
-          <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" onfocus="hoverS1(0)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_kansen_detail" onclick="window.location.href='kansen.html'" aria-label="感染防止衣について詳しく見る" onfocus="hoverS1(0)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#17307d;background:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span aria-hidden="true" style="font-size:23px;">→</span></button>
         </div>
       </div>
 
@@ -385,7 +385,7 @@ button{-webkit-appearance:none;appearance:none;}
               <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:rgba(255,179,184,.2);color:#ffb3b8;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;flex:none;">✓</span>撥水加工仕上げ
             </div>
           </div>
-          <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" onfocus="hoverS1(1)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span style="font-size:23px;">→</span></button>
+          <button type="button" class="enter-btn" data-cta="panel_cleaning_detail" onclick="goCleaning()" aria-label="防火服専門クリーニングについて詳しく見る" onfocus="hoverS1(1)" onblur="hoverS1(-1)" style="display:inline-flex;align-items:center;gap:9px;font-size:21px;font-weight:900;color:#fff;background:#e0242c;padding:13px 22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.28);width:fit-content;cursor:pointer;border:none;font-family:inherit;">詳しく見る <span aria-hidden="true" style="font-size:23px;">→</span></button>
         </div>
       </div>
     </div>

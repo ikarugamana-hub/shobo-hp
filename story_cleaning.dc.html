@@ -356,7 +356,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 
 <nav aria-label="パンくずリスト" style="max-width:1300px;margin:0 auto;padding:14px 80px 0;font-size:16px;color:#5a6b85;">
   <a href="index.html" style="color:#5a6b85;text-decoration:underline;">トップ</a>
-  <span style="margin:0 6px;color:#5a6b85;">›</span>
+  <span aria-hidden="true" style="margin:0 6px;color:#5a6b85;">›</span>
   <span style="color:#1c2438;">防火服専門クリーニング</span>
 </nav>
 
@@ -637,7 +637,7 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
       <div style="font-size:18px;letter-spacing:2px;color:#17307d;font-weight:700;">OTHER SERVICE</div>
       <h3 style="font-size:30px;font-weight:900;color:var(--ink);margin:10px 0 12px;">感染防止衣を扱っています</h3>
       <p style="font-size:19px;line-height:1.9;color:var(--muted);margin:0 0 22px;">血液・飛沫から隊員を守る感染防止衣を<br>通気性重視・バリア性重視の2タイプから選べます</p>
-      <a href="kansen.html" data-cta="cross_service_kansen" style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:900;color:#fff;background:var(--red);padding:13px 28px;border-radius:6px;text-decoration:none;">詳しく見る →</a>
+      <a href="kansen.html" data-cta="cross_service_kansen" aria-label="感染防止衣について詳しく見る" style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:900;color:#fff;background:var(--red);padding:13px 28px;border-radius:6px;text-decoration:none;">詳しく見る →</a>
     </div>
   </div>
 </section>
@@ -775,22 +775,26 @@ header.scrolled{box-shadow:0 6px 28px rgba(0,0,0,.5);}
 (function(){
   function apply(){
     if (typeof isOpen !== 'function') return;
+    // 祝日データが今日をカバーしていない場合は、受付状況を断定せず案内のみ表示する
+    var dataOK = (typeof holidayDataCoversToday !== 'function') || holidayDataCoversToday();
     var open = isOpen();
     var b = document.getElementById('bizBadge');
     if (b) {
-      b.innerHTML = open
-        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+      b.innerHTML = !dataOK
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">受付時間 平日 10:00〜17:00</span>'
+        : (open
+          ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
+          : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>');
     }
     var mcTel = document.getElementById('mcTel');
     var mcForm = document.getElementById('mcForm');
     if (mcTel) {
-      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
-      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+      mcTel.innerHTML = !dataOK ? '&#128222; 電話' : (open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）');
+      mcTel.style.background = (dataOK && !open) ? 'rgba(255,255,255,.15)' : '#e0242c';
     }
     if (mcForm) {
-      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
-      mcForm.style.background = open ? '#0d3b73' : '#e0242c';
+      mcForm.innerHTML = (dataOK && !open) ? '&#9993; フォームで相談' : '&#9993; フォーム';
+      mcForm.style.background = (dataOK && !open) ? '#e0242c' : '#0d3b73';
     }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }

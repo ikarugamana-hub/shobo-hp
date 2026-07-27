@@ -276,7 +276,7 @@ document.addEventListener('click', function(e){
 
   <nav aria-label="パンくずリスト" style="max-width:1200px; margin:0 auto; padding:14px 48px 0; font-size:16px; color:#5a6b85;">
     <a href="index.html" style="color:#5a6b85; text-decoration:underline;">トップ</a>
-    <span style="margin:0 6px; color:#5a6b85;">›</span>
+    <span aria-hidden="true" style="margin:0 6px; color:#5a6b85;">›</span>
     <span style="color:#1c2438;">感染防止衣</span>
   </nav>
 
@@ -357,7 +357,7 @@ document.addEventListener('click', function(e){
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">前面バリア性 クラス6</span>
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">背面通気構造</span>
             </div>
-            <a href="#hybrid" data-cta="lineup_hybrid_detail" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
+            <a href="#hybrid" data-cta="lineup_hybrid_detail" aria-label="ハイブリッド型について詳しく見る" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
           </div>
         </div>
         <!-- Breathable card -->
@@ -372,7 +372,7 @@ document.addEventListener('click', function(e){
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span style="font-size:18px; font-weight:700; color:#0d3b73; background:rgba(13,59,115,0.08); border:1px solid rgba(13,59,115,0.3); padding:5px 11px; border-radius:100px;">通気度 100cc/cm²·s以上</span>
             </div>
-            <a href="#breathable" data-cta="lineup_breathable_detail" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
+            <a href="#breathable" data-cta="lineup_breathable_detail" aria-label="通気性特化型について詳しく見る" style="display:inline-flex; align-items:center; gap:8px; margin-top:24px; height:46px; padding:0 24px; background:#2b8fd4; color:#fff; font-size:21px; font-weight:700; text-decoration:none; border-radius:3px;">詳しく見る →</a>
           </div>
         </div>
       </div>
@@ -649,7 +649,7 @@ document.addEventListener('click', function(e){
         <div style="font-size:18px; letter-spacing:2px; color:#c81f27; font-weight:700;">OTHER SERVICE</div>
         <h3 style="font-size:30px; font-weight:900; color:#1c2438; margin:10px 0 12px;">防火服専門クリーニングも承っています</h3>
         <p style="font-size:19px; line-height:1.9; color:#55627e; margin:0 0 22px;">防火服のニオイ・汚れ・撥水性の低下を専門クリーニングで解消<br>初回はお試しとして無償クリーニングを実施中です</p>
-        <a href="story_cleaning.dc.html" data-cta="cross_service_cleaning" style="display:inline-flex; align-items:center; gap:8px; font-size:19px; font-weight:900; color:#fff; background:#e0242c; padding:13px 28px; border-radius:6px; text-decoration:none;">詳しく見る →</a>
+        <a href="story_cleaning.dc.html" data-cta="cross_service_cleaning" aria-label="防火服専門クリーニングについて詳しく見る" style="display:inline-flex; align-items:center; gap:8px; font-size:19px; font-weight:900; color:#fff; background:#e0242c; padding:13px 28px; border-radius:6px; text-decoration:none;">詳しく見る →</a>
       </div>
     </div>
   </section>
@@ -793,22 +793,26 @@ document.addEventListener('click', function(e){
 (function(){
   function apply(){
     if (typeof isOpen !== 'function') return;
+    // 祝日データが今日をカバーしていない場合は、受付状況を断定せず案内のみ表示する
+    var dataOK = (typeof holidayDataCoversToday !== 'function') || holidayDataCoversToday();
     var open = isOpen();
     var b = document.getElementById('bizBadge');
     if (b) {
-      b.innerHTML = open
-        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
-        : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>';
+      b.innerHTML = !dataOK
+        ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">受付時間 平日 10:00〜17:00</span>'
+        : (open
+          ? '<span style="display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.5);color:#7ee2a8;padding:8px 20px;border-radius:22px;">&#9679; ただいま電話受付中です</span>'
+          : '<span style="display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.65);padding:8px 20px;border-radius:22px;">ただいま受付時間外です（平日 10:00〜17:00）</span>');
     }
     var mcTel = document.getElementById('mcTel');
     var mcForm = document.getElementById('mcForm');
     if (mcTel) {
-      mcTel.innerHTML = open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）';
-      mcTel.style.background = open ? '#e0242c' : 'rgba(255,255,255,.15)';
+      mcTel.innerHTML = !dataOK ? '&#128222; 電話' : (open ? '&#128222; ただいま受付中' : '&#128222; 電話（時間外）');
+      mcTel.style.background = (dataOK && !open) ? 'rgba(255,255,255,.15)' : '#e0242c';
     }
     if (mcForm) {
-      mcForm.innerHTML = open ? '&#9993; フォーム' : '&#9993; フォームで相談';
-      mcForm.style.background = open ? '#0d3b73' : '#e0242c';
+      mcForm.innerHTML = (dataOK && !open) ? '&#9993; フォームで相談' : '&#9993; フォーム';
+      mcForm.style.background = (dataOK && !open) ? '#e0242c' : '#0d3b73';
     }
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', apply); } else { apply(); }
