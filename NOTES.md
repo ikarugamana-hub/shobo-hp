@@ -22,6 +22,19 @@
 
 ## 作業履歴
 
+### 2026-07-28 / Windows(claudecode)
+
+- **変更内容:**
+  1. XServer VPS(契約済みインスタンス、Ubuntu 24.04)にnginxを構築し、GitHub Pagesと並行してサイトを配置。SSH鍵認証のみ許可(パスワード認証は無効化していないため要確認)。
+  2. No-IPの無料ダイナミックDNS(`ikaruga.sytes.net`)をVPSのIPに割り当て、Let's Encryptで無料SSL証明書を導入(HTTP→HTTPS自動リダイレクト設定、certbotによる自動更新タイマー有効)。
+  3. 通気性検証動画(`uploads/kansen-breathability-test.mp4`)を新素材に差し替え。元素材 13.2MB(1920x1080/17秒/音声あり)を、既存仕様に合わせて1280x720・H.264・音声なしに圧縮(647KB)。ポスター(`kansen-breathability-test-poster.webp`)も新動画の代表フレーム(通気度の検証・CLASS-6三層生地 vs 高通気度生地の2面比較)から再生成(25KB)。
+- **影響範囲:** `uploads/kansen-breathability-test.mp4`、`uploads/kansen-breathability-test-poster.webp`(GitHub PagesとVPS両方に反映済み)。VPS側のnginx設定・certbot導入はリポジトリ外(サーバー側の変更)。
+- **未対応・引き継ぎ事項:**
+  - VPS上のHTML(canonical/OGP/JSON-LD)・`sitemap.xml`・`robots.txt`・QRコードは、いずれもGitHub Pagesの旧URL(`ikarugamana-hub.github.io/shobo-hp`)のままで、VPS用ドメイン向けには未更新。2026-07-25(2)の記録にある「7ファイル・41箇所」の考慮がVPS+独自ドメインでも同様に必要。
+  - `ikaruga.sytes.net`はNo-IPの無料DDNSであり、稟議書で検討中の正式`.jp`ドメインとは別物。無料アカウントの失効リスクがあるため、正式ドメイン取得後は切り替えが必要。
+  - VPSへの反映は現時点で手動(tar+ssh)。GitHub Pagesへのpush後、VPS側への反映は別途手動で行う必要がある(自動デプロイ未整備)。
+  - VPSパネルの初期パスワードは、契約直後にチャット上へ平文で共有されたため、変更を推奨済み(実施有無は未確認)。
+
 ### 2026-07-27 / Mac(manabutsurumaki)
 
 **5つのサブエージェントを並列起動し、パフォーマンス/SEO/アクセシビリティ/ページ間一貫性/コード品質の
