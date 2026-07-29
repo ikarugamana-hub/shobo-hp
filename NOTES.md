@@ -22,6 +22,12 @@
 
 ## 作業履歴
 
+### 2026-07-30 / Windows(claudecode)
+
+- **変更内容:** 通気性検証動画(`uploads/kansen-breathability-test.mp4`)を再度差し替え。元素材 11.3MB(1920x1080/19秒/音声あり)を、既存仕様(1280x720・H.264・音声なし)に合わせて圧縮(633KB)。ポスターも新動画の代表フレームから再生成(25KB、内容は前回とほぼ同一の2面比較・キャプション文言のみ微修正版)。
+- **影響範囲:** `uploads/kansen-breathability-test.mp4`、`uploads/kansen-breathability-test-poster.webp`(GitHub PagesとVPS両方に反映済み)。
+- **未対応・引き継ぎ事項:** 2026-07-28の記録にある未対応事項(VPS上のURL類が旧URLのまま、No-IPドメインの暫定運用、手動デプロイ)は引き続き未着手。
+
 ### 2026-07-28 / Windows(claudecode)
 
 - **変更内容:**
