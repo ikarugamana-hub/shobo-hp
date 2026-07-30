@@ -22,6 +22,19 @@
 
 ## 作業履歴
 
+### 2026-07-30(3) / Windows(claudecode)
+
+- **変更内容:** VPS(ikaruga1007)をUbuntu 26.04 LTSにアップデートした結果、OSが初期化され、nginx・証明書・サイトファイルが全て消失。新しいSSH秘密鍵(パネルで再発行)で接続し、以下を再構築した。
+  1. nginx・certbot(python3-certbot-nginx)・ffmpegを再インストール、ufw(OpenSSH/Nginx Full許可)を再設定。
+  2. サイト一式(リポジトリ全体、`.git`除く)を`/var/www/shobo-hp`に再配置、所有権・パーミッションを再設定。
+  3. nginx server_block(`ikaruga.sytes.net` + IP、`error_page 404`設定込み)を再作成。
+  4. Let's Encrypt証明書を`ikaruga.sytes.net`向けに再取得(HTTP→HTTPS自動リダイレクト、次回更新2026-10-28)。
+- **影響範囲:** VPS側のみ(サーバー設定・再配置)。GitHubリポジトリの内容に変更なし。
+- **未対応・引き継ぎ事項:**
+  - VPSのOSアップデートはサイト全体の初期化を伴うことが判明した。**今後VPSのOS/イメージ更新を行う際は、事前にこの再構築手順(nginx+certbot+ufw+ファイル再配置)が必要になる前提で計画すること。**
+  - `~/.ssh/ikaruga_deploy`という、用途不明な鍵ファイルが作業PC(Windows)に残っていた。GitHub Actions等の自動デプロイ連携は現時点で組まれていない(NOTES.md内に記載なし)ため、使われていない残骸と判断し放置。実際に自動デプロイを組む場合は、この鍵を流用するか要検討。
+  - 2026-07-28の記録にある未対応事項(VPS上のURL類が旧URLのまま、No-IPドメインの暫定運用、手動デプロイ)は引き続き未着手。
+
 ### 2026-07-30(2) / Windows(claudecode)
 
 - **変更内容:**
