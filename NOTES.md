@@ -22,6 +22,30 @@
 
 ## 作業履歴
 
+### 2026-08-06 / Windows(claudecode)
+
+**過去2件の記録漏れをここに遡って追記(運用ルール違反の是正)。加えて、5エージェント監査で見つかった新規指摘を修正した。**
+
+- **記録漏れの遡及分:**
+  - `95e9a0b`(2026-07-30 20:14)「story_cleaning.dc.htmlのヒーロー文(CIR説明)を書き換え」
+  - `76e751d`(2026-07-31 10:16)「story_cleaning.dc.htmlのヒーロー文の末尾句点を削除」
+- **今回新たに修正した内容:**
+  1. `sp.html`のH1が`index.html`の現行文言(`命を守る現場を、確かな品質で支える`)と食い違っていた(過去のH1変更コミットがindex.htmlのみに適用され同期漏れ)ため、sp.html側を統一。
+  2. `sp.html`にフォント700のpreloadが無かった(index.htmlは3ウェイト全てpreload済み)ため追加。
+  3. `kansen.html`の通気性検証動画ウィジェットに`aria-expanded`/`aria-controls`が無かったため追加し、展開/折りたたみ関数内で状態を同期するようにした。
+  4. 同ウィジェットにEscapeキーでの終了操作が無かったため追加。
+  5. 動画サムネイル(`#breathabilityVideoThumb`)に`data-cta`が無くGA計測されていなかったため追加。
+  6. `kansen.html`の「防火服専門クリーニング」誘導セクションが`&lt;h2&gt;`を経ずに`&lt;h3&gt;`から始まっており見出し階層がスキップしていたため、視覚的に隠す`&lt;h2&gt;`を追加。
+  7. `breathable-detail.webp`にキャッシュ対策の`?v=`バージョン番号が無かったため`?v=1`を付与(他画像との運用統一)。
+  8. `story_cleaning.dc.html`で、フォントpreload・`@font-face`・ページCSS・初期化scriptが`&lt;body&gt;`内の非標準タグ`&lt;x-dc&gt;/&lt;helmet&gt;`に取り残されていた(姉妹ページはすべて正規の`&lt;head&gt;`内に配置)。`x-dc`/`helmet`/未使用の`&lt;template id="__bundler_thumbnail"&gt;`はリポジトリ内で他に一切参照が無いことを確認した上で、実質的に`&lt;/head&gt;&lt;body&gt;`の境界マーカーをコンテンツの前後に再配置する形で(内容自体は移動させず)`&lt;head&gt;`側に正しく収まるよう修正。
+  9. `story_cleaning.dc.html`のヒーロー文にあるCIR制度の成立経緯の記述("…定められました")について、出典を確認できなかったため、断定を弱める表現("…定められたとされています")に変更。
+  10. `sitemap.xml`の`lastmod`を各ページの実際の最終コミット日に更新。
+- **対応しなかった項目(判断済み):**
+  - `kansen.html`のmeta description/OGP/JSON-LDの句点は、本文とは別パターンとして現状維持(ユーザー確認済み)。
+  - Before/Afterスライダーへの`aria-valuetext`追加は軽微・影響小のため見送り。
+- **影響範囲:** `sp.html`、`kansen.html`、`story_cleaning.dc.html`、`sitemap.xml`(GitHub Pages・VPS両方に反映済み)。
+- **未対応・引き継ぎ事項:** 2026-07-28の記録にある未対応事項(VPS上のURL類が旧URLのまま、No-IPドメインの暫定運用)は引き続き未着手。
+
 ### 2026-07-30(3) / Windows(claudecode)
 
 - **変更内容:** VPS(ikaruga1007)をUbuntu 26.04 LTSにアップデートした結果、OSが初期化され、nginx・証明書・サイトファイルが全て消失。新しいSSH秘密鍵(パネルで再発行)で接続し、以下を再構築した。
